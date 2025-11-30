@@ -1246,14 +1246,22 @@ html { scroll-behavior: smooth; }
 /* временно скрыть кнопку Telegram в футере */
 .tg-chip { display: none !important; }
     /* --- iOS safe-area + высота верхней полоски мобильной шапки --- */
-:root { --mobile-bar-h: 56px; }        /* фактическая высота .mobile-bar */
-.mobile-bar { height: var(--mobile-bar-h); }
+/* высота верхней полоски (бургер-бар) */
+:root { --mobile-bar-h: 52px; } /* было 56 — уменьшаем «лишний» верхний зазор */
 
-/* переопределяем паддинг выпадающего меню, чтобы ничего не обрезалось сверху */
+/* безопасные отступы для мобильного меню */
 @media (max-width: 1023.98px) {
   .mobile-menu{
-    padding-top: calc(env(safe-area-inset-top, 0px) + var(--mobile-bar-h) + 8px) !important;
+    /* чтобы сверху не было лишнего, но ничего не обрезалось */
+    padding-top: calc(var(--mobile-bar-h) + max(8px, env(safe-area-inset-top, 0px))) !important;
+    /* добавим запас снизу, чтобы контент не «подрезался» линией */
+    padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 20px) !important;
   }
+}
+
+/* больше расстояние между «Контакты» и «Поддержать» */
+.mobile-nav a.nav-support{
+  margin-top: 18px !important; /* было 8px — делаем явный зазор */
 }
     </style>
 </head>
@@ -1288,7 +1296,6 @@ html { scroll-behavior: smooth; }
     </nav>
   </div>
   <div id="mobileMenuOverlay" class="mobile-overlay" hidden></div>
-</header>
     
     <div class="page">
         <header class="hero">
