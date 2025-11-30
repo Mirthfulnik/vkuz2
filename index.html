@@ -1217,7 +1217,7 @@ html { scroll-behavior: smooth; }
 <body>
     <header class="site-header desktop-only">
   <nav class="site-nav">
-    <a href="#supportTitle">Поддержать</a>
+    <a href="#support">Поддержать</a>
     <a href="#calendarTitle">Выступления</a>
     <a href="#musicTitle">Слушать</a>
     <a href="#contacts">Контакты</a>
@@ -1729,30 +1729,8 @@ function showEventDetails(date, dayNumber) {
         });
 
         renderCalendar();
-
-/* Fundraising canvas animation */
-
-// берём сумму из разметки
-const fundraisingGoal = 250000;
-const fundraisingCurrentEl = document.getElementById('fundraisingCurrent');
-const fundraisingCurrent = fundraisingCurrentEl
-    ? parseInt(fundraisingCurrentEl.dataset.amount, 10)
-    : 0;
-
-// пороги по таблице (в процентах)
-const fundraisingStages = [
-    { threshold: 0,  text: 'B' },
-    { threshold: 20, text: 'Bi' },
-    { threshold: 30, text: 'Bit' },
-    { threshold: 50, text: 'Bitc' },
-    { threshold: 70, text: 'Bitch' },
-    { threshold: 90, text: 'Bitche' },
-    { threshold: 100, text: 'Bitches' }
-];
-
-const fundraisingPercent = Math.max(
-    0,
     
+<script>
 // Делает прямую ссылку из шэр-ссылки Dropbox
 function toDirectDropbox(url) {
   try {
@@ -1764,8 +1742,12 @@ function toDirectDropbox(url) {
       if (!u.searchParams.has('raw')) u.searchParams.set('raw','1');
     }
     return u.toString();
-  } catch { return url; }
+  } catch {
+    return url;
+  }
 }
+</script>
+
         /* Audio player */
         const tracks = [
             {
