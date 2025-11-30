@@ -1237,10 +1237,10 @@ html { scroll-behavior: smooth; }
 
   <div id="mobileMenu" class="mobile-menu" hidden>
     <nav class="mobile-nav" role="menu">
-      <a href="#support">Поддержать</a>
-      <a href="#calendarTitle" role="menuitem">Выступления</a>
       <a href="#musicTitle"    role="menuitem">Слушать</a>
+      <a href="#calendarTitle" role="menuitem">Выступления</a>
       <a href="#contacts"      role="menuitem">Контакты</a>
+      <a href="#support">Поддержать</a>
     </nav>
   </div>
 
@@ -1259,25 +1259,8 @@ html { scroll-behavior: smooth; }
                 </div>
             </div>
         </header>
-
-<section class="calendar-section section-card" aria-labelledby="calendarTitle">
-    <div class="calendar-header">
-        <h2 id="calendarTitle" class="section-title">Расписание выступлений</h2>
-        <span id="calendarMonthLabel" class="calendar-month-label"></span>
-    </div>
-
-    <div class="calendar-stage" id="calendarStage" aria-live="polite"></div>
-
-    <div class="calendar-controls calendar-controls-bottom">
-        <button class="calendar-nav" id="calendarPrev" aria-label="Предыдущий месяц">⟨</button>
-        <button class="calendar-nav" id="calendarNext" aria-label="Следующий месяц">⟩</button>
-    </div>
-
-    <div class="event-wrapper" id="eventDetails"></div>
-</section>
-
-
-        <section class="music-section section-card" aria-labelledby="musicTitle">
+        
+<section class="music-section section-card" aria-labelledby="musicTitle">
             <div>
                 <h2 id="musicTitle" class="section-title">Мои песни</h2>
             </div>
@@ -1329,6 +1312,23 @@ html { scroll-behavior: smooth; }
                 </a>
             </div>
         </section>
+        
+<section class="calendar-section section-card" aria-labelledby="calendarTitle">
+    <div class="calendar-header">
+        <h2 id="calendarTitle" class="section-title">Расписание выступлений</h2>
+        <span id="calendarMonthLabel" class="calendar-month-label"></span>
+    </div>
+
+    <div class="calendar-stage" id="calendarStage" aria-live="polite"></div>
+
+    <div class="calendar-controls calendar-controls-bottom">
+        <button class="calendar-nav" id="calendarPrev" aria-label="Предыдущий месяц">⟨</button>
+        <button class="calendar-nav" id="calendarNext" aria-label="Следующий месяц">⟩</button>
+    </div>
+
+    <div class="event-wrapper" id="eventDetails"></div>
+</section>
+
 
         <footer id="contacts" class="site-footer">
   <div>По всем вопросам: 
