@@ -1048,6 +1048,40 @@ html { scroll-behavior: smooth; }
   font-size: 16px;
   letter-spacing: 0.2px;
 }
+
+    /* ——— Десктоп: «Поддержать» как розовая пилюля ——— */
+.site-nav a.nav-support{
+  display:inline-flex; align-items:center; justify-content:center;
+  padding:8px 16px;
+  border:1px solid rgba(242,148,192,0.65);           /* розовая обводка */
+  border-radius:999px;                                /* овальная форма */
+  background: rgba(242,148,192,0.10);                 /* лёгкая заливка */
+  line-height:1;                                      /* без «прыжка» по линии */
+  opacity:1;                                          /* не тускнеем как обычные ссылки */
+}
+.site-nav a.nav-support:hover{
+  border-color: rgba(242,148,192,0.85);               /* только цвет, толщина не меняется → без смещения */
+  background: rgba(242,148,192,0.16);
+  box-shadow: 0 8px 18px rgba(242,148,192,0.20);
+  transform: translateY(-1px);
+  opacity:1;                                          /* перекрываем общее правило .site-nav a:hover { opacity:.8 } */
+}
+
+/* ——— Мобильное меню: аккуратная пилюля внутри списка ——— */
+.mobile-nav a.nav-support{
+  display:inline-flex; align-items:center; justify-content:center;
+  padding:10px 18px;
+  margin:8px auto 6px;                                /* центрируем в столбце меню */
+  border:1px solid rgba(242,148,192,0.65);
+  border-radius:999px;
+  background: rgba(242,148,192,0.10);
+  width:auto;                                         /* «по контенту» */
+}
+.mobile-nav a.nav-support:hover{
+  border-color: rgba(242,148,192,0.85);
+  background: rgba(242,148,192,0.16);
+}
+
 .mobile-nav a + a { border-top: 1px dashed rgba(242,148,192,0.18); }
 
 /* затемнение вокруг меню */
@@ -1219,7 +1253,7 @@ html { scroll-behavior: smooth; }
     <a href="#musicTitle">Слушать</a>
     <a href="#calendarTitle">Выступления</a>
     <a href="#contacts">Контакты</a>
-    <a href="#support">Поддержать</a>
+    <a class="nav-support" href="https://pay.cloudtips.ru/p/ee1db799" target="_blank" rel="noopener">✨ Поддержать</a>
   </nav>
 </header>
     <header class="site-header-mobile mobile-only">
@@ -1239,7 +1273,7 @@ html { scroll-behavior: smooth; }
       <a href="#musicTitle"    role="menuitem">Слушать</a>
       <a href="#calendarTitle" role="menuitem">Выступления</a>
       <a href="#contacts"      role="menuitem">Контакты</a>
-      <a href="#support">Поддержать</a>
+      <a class="nav-support" href="https://pay.cloudtips.ru/p/ee1db799" role="menuitem" target="_blank" rel="noopener">✨ Поддержать</a>
     </nav>
   </div>
 
