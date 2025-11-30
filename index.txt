@@ -1,0 +1,966 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="theme-color" content="#020714" />
+  <title>Варя Кузнецова — официальный сайт</title>
+
+  <!-- Иконки/манифест (если есть в проекте) -->
+  <link rel="icon" href="icons/favicon.ico" type="image/x-icon" />
+  <link rel="manifest" href="icons/site.webmanifest" />
+
+  <!-- Оптимизация прямых доменов аудио -->
+  <link rel="preconnect" href="https://dl.dropboxusercontent.com" crossorigin>
+
+  <style>
+    :root{
+      --bg:#020714;
+      --bg2:#0b1429;
+      --surface:rgba(14,22,45,.92);
+      --surface2:rgba(19,28,53,.9);
+      --border:rgba(242,148,192,.28);
+      --muted:rgba(248,245,255,.6);
+      --text:#F8F5FF;
+      --text2:rgba(248,245,255,.85);
+      --pink:#F294C0;
+      --gold:#F2C53D;
+      --shadow:0 20px 40px rgba(2,6,20,.35);
+      --r:20px;
+      --r-lg:28px;
+      --ff:'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Ubuntu, 'Helvetica Neue', Arial, 'Noto Sans', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji', sans-serif;
+    }
+
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--text)}
+    body{
+      font-family:var(--ff); line-height:1.55;
+      background:
+        radial-gradient(circle at 20% 10%, rgba(242,148,192,.14), transparent 40%),
+        linear-gradient(160deg, var(--bg) 0%, var(--bg2) 60%, var(--bg) 100%);
+      background-attachment: fixed;
+      -webkit-font-smoothing: antialiased;
+    }
+    @media (max-width: 768px){ body{ background-attachment: scroll; } }
+
+    a{color:inherit}
+
+    .page{max-width:1080px;margin:0 auto;padding:clamp(28px,4vw,56px) clamp(18px,4vw,40px) 120px}
+
+    .section-card{
+      background:var(--surface);
+      border:1px solid var(--border);
+      border-radius:var(--r-lg);
+      padding:clamp(24px,3vw,40px);
+      box-shadow:var(--shadow);
+      backdrop-filter: blur(12px);
+    }
+
+    .section-title{
+      margin:0 0 14px;
+      font-size:clamp(24px,3.6vw,34px);
+      color:var(--pink);
+      letter-spacing:1.2px;
+      text-transform:uppercase;
+    }
+
+    /* ---------- Хедер ---------- */
+    html{ scroll-behavior:smooth; }
+    .desktop-only{ display:none; }
+    @media (min-width:1024px){
+      .desktop-only{ display:block; }
+      .site-header{
+        position:sticky; top:0; z-index:1000;
+        background:rgba(2,7,20,.65);
+        border-bottom:1px solid rgba(242,148,192,.12);
+        backdrop-filter: blur(6px);
+      }
+      .site-nav{
+        max-width:1200px; margin:0 auto; padding:12px 20px;
+        display:flex; gap:26px; justify-content:center;
+      }
+      .site-nav a{
+        color:var(--pink); text-decoration:none; font-size:16px; letter-spacing:.2px;
+        transition:opacity .2s ease;
+      }
+      .site-nav a:hover{ opacity:.85; }
+      .section-title[id]{ scroll-margin-top:80px; }
+      .page{ padding-top: calc(clamp(28px,4vw,56px) + 58px); }
+    }
+
+    /* Мобильная шапка: бургер справа, меню по центру, прозрачная */
+    .mobile-only{ display:block; }
+    @media (min-width:1024px){ .mobile-only{ display:none; } }
+
+    .site-header-mobile{
+      position:sticky; top:0; z-index:1100;
+      background:transparent;
+      border-bottom:none;
+    }
+    .mobile-bar{
+      display:flex; align-items:center; justify-content:flex-end;
+      padding:10px 14px;
+    }
+    .burger{
+      width:40px;height:40px;display:grid;place-items:center;
+      background:transparent;border:1px solid rgba(242,148,192,.22);border-radius:12px;
+    }
+    .burger span{display:block;width:18px;height:2px;background:var(--pink);margin:2px 0;transition:.25s}
+    .burger.is-open span:nth-child(1){ transform: translateY(4px) rotate(45deg); }
+    .burger.is-open span:nth-child(2){ opacity:0; }
+    .burger.is-open span:nth-child(3){ transform: translateY(-4px) rotate(-45deg); }
+
+    .mobile-menu{
+      position:fixed;left:0;right:0;top:0;
+      transform:translateY(-100%);opacity:0;
+      transition:transform .28s ease, opacity .28s ease;
+      background:rgba(2,7,20,.96);
+      border-bottom:1px solid rgba(242,148,192,.14);
+      padding:12px 14px 6px;z-index:1200;
+    }
+    .mobile-menu.open{ transform:translateY(0);opacity:1; }
+    .mobile-nav a{
+      display:block;padding:14px 6px;text-align:center;
+      color:var(--pink);text-decoration:none;font-size:16px;letter-spacing:.2px;
+    }
+    .mobile-overlay{
+      position:fixed; inset:0; background:rgba(2,7,20,.55);
+      z-index:1190; opacity:0; transition:opacity .28s ease;
+    }
+    .mobile-overlay.show{ opacity:1; }
+    @media (max-width:1023.98px){ .section-title[id]{ scroll-margin-top:80px; } }
+
+    /* ---------- Hero ---------- */
+    header.hero{ text-align:center; margin-bottom:clamp(28px,5vw,56px); }
+    .artist-name{
+      margin:0;font-weight:600;
+      font-size:clamp(40px,7vw,72px);
+      color:var(--gold);
+      text-transform:uppercase; letter-spacing:2px;
+    }
+
+    /* ---------- Плеер ---------- */
+    .music-section{ display:grid; gap:24px; }
+    .player-shell{ display:grid; gap:22px; }
+    .now-playing{
+      display:grid; align-items:center; gap:20px;
+      grid-template-columns:minmax(0,240px) minmax(0,1fr);
+    }
+    @media (max-width:640px){ .now-playing{ grid-template-columns:1fr; text-align:center; } }
+
+    .cover-frame{
+      position:relative; border-radius:24px; overflow:hidden; aspect-ratio:1/1;
+      border:1px solid rgba(242,148,192,.22);
+      background:linear-gradient(145deg, rgba(242,148,192,.22), rgba(191,131,78,.14));
+      box-shadow:var(--shadow);
+    }
+    .cover-frame img{ width:100%; height:100%; object-fit:cover; display:block; }
+
+    .now-playing-info{ display:grid; gap:12px; }
+    #nowPlayingTitle{ display:none; color:var(--muted); }
+    .player-playing #nowPlayingTitle{ display:inline-block; }
+
+    .track-title{ margin:0; font-size:clamp(24px,3.6vw,30px); color:var(--gold); }
+    .track-artist{ color:var(--text2); }
+
+    .seek{ -webkit-appearance:none; appearance:none; height:8px; border-radius:999px; background:rgba(242,148,192,.18); overflow:hidden; width:100%; }
+    .seek::-webkit-slider-thumb{ -webkit-appearance:none; width:18px;height:18px;border-radius:50%;background:var(--pink); box-shadow:-400px 0 0 400px rgba(242,148,192,.38); cursor:pointer;}
+    .seek::-moz-range-thumb{ width:18px;height:18px;border:none;border-radius:50%;background:var(--pink); box-shadow:-400px 0 0 400px rgba(242,148,192,.38); cursor:pointer;}
+
+    .timecodes{display:flex;justify-content:space-between;color:var(--muted);font-size:14px}
+
+    .player-controls{display:flex;gap:14px;align-items:center}
+    @media (max-width:640px){ .player-controls{ justify-content:center; } }
+    .control-btn{
+      width:52px;height:52px;border-radius:50%;
+      border:1px solid rgba(242,148,192,.32);
+      background:rgba(8,16,34,.75);color:var(--text);
+      display:inline-flex;align-items:center;justify-content:center;font-size:22px;cursor:pointer;
+      transition:transform .35s cubic-bezier(.16,1,.3,1), background .35s, border-color .35s;
+    }
+    .control-btn:hover{ transform:translateY(-3px); background:rgba(242,148,192,.2); border-color:rgba(242,148,192,.45); }
+
+    .tracklist{ display:grid; gap:10px; }
+    .track-item{
+      display:flex;justify-content:space-between;align-items:center;gap:16px;
+      padding:14px 16px;border-radius:var(--r);border:1px solid rgba(242,148,192,.18);
+      background:rgba(6,14,30,.85);color:var(--text2);cursor:pointer;
+      transition:transform .35s cubic-bezier(.16,1,.3,1), border-color .35s, color .35s;
+    }
+    .track-item:hover{ transform:translateX(4px); border-color:rgba(242,148,192,.4); color:var(--text); }
+    .track-item.is-active{ border-color:rgba(242,197,61,.55); background:linear-gradient(120deg, rgba(242,148,192,.22), rgba(242,197,61,.14)); color:var(--text); }
+    .track-duration{ font-size:13px; color:var(--muted); }
+    .badge{
+      margin-left:8px; padding:3px 8px; border-radius:999px; font-size:11px; letter-spacing:.4px; text-transform:uppercase;
+      color:var(--pink); border:1px solid rgba(242,148,192,.45); background:rgba(242,148,192,.12);
+    }
+
+    /* ---------- Стриминги ---------- */
+    .streaming-grid{ display:grid; grid-template-columns:repeat(auto-fit, minmax(220px,1fr)); gap:16px; }
+    .streaming-card{
+      display:flex; justify-content:space-between; align-items:center;
+      padding:14px 16px; border-radius:var(--r);
+      border:1px solid rgba(242,148,192,.2); background:rgba(8,16,34,.72);
+      text-decoration:none; color:var(--text2);
+      transition:transform .35s cubic-bezier(.16,1,.3,1), border-color .35s, box-shadow .35s;
+    }
+    .streaming-card:hover{ transform:translateY(-3px); border-color:rgba(242,148,192,.45); box-shadow:0 12px 22px rgba(242,148,192,.16); color:var(--text); }
+    .streaming-card.is-disabled{ opacity:.5; pointer-events:none; }
+
+    /* ---------- Календарь ---------- */
+    .calendar-section{ display:grid; gap:18px; }
+    .calendar-header{ display:flex; flex-direction:column; gap:6px; align-items:center; }
+    .calendar-month-label{ font-size:clamp(18px,2.6vw,24px); color:var(--text2); }
+
+    .calendar-stage{
+      position:relative; display:grid; grid-template-columns:1fr;
+      border:1px solid rgba(242,148,192,.22);
+      background:linear-gradient(135deg, rgba(11,23,46,.9), rgba(6,13,32,.9));
+      border-radius:var(--r); overflow:hidden;
+    }
+
+    .calendar-month{
+      grid-area:1/1/2/2; padding:16px; display:grid; gap:10px;
+      opacity:0; transform:translateY(24px);
+      transition:transform .42s cubic-bezier(.16,1,.3,1), opacity .42s;
+      pointer-events:none;
+    }
+    .calendar-month.is-active{ opacity:1; transform:none; pointer-events:auto; }
+
+    .calendar-weekdays, .calendar-grid{
+      display:grid; grid-template-columns:repeat(7, minmax(0,1fr)); gap:6px;
+    }
+    .weekday{ text-transform:uppercase; font-size:12px; color:rgba(248,245,255,.5); text-align:center; letter-spacing:1px; }
+
+    .calendar-day{
+      position:relative; aspect-ratio:1/1; border-radius:16px;
+      display:flex; align-items:center; justify-content:center;
+      font-size:clamp(14px,1.8vw,16px);
+      background:rgba(8,16,34,.65); border:1px solid rgba(242,148,192,.08); color:var(--text);
+      transition:transform .28s cubic-bezier(.16,1,.3,1), border-color .28s, box-shadow .28s;
+    }
+    .calendar-day.empty{ background:transparent; border-color:transparent; }
+    .calendar-day.performance{ border-color:rgba(242,148,192,.45); background:linear-gradient(145deg, rgba(242,148,192,.16), rgba(191,131,78,.12)); cursor:pointer; }
+    .calendar-day.performance:hover{ transform:translateY(-4px); box-shadow:0 12px 22px rgba(242,148,192,.16); }
+    .calendar-day.performance.selected{ border-color:rgba(242,197,61,.8); box-shadow:0 0 0 2px rgba(242,197,61,.25); color:var(--gold); }
+    .calendar-day.performance.past{ opacity:.45; filter:grayscale(.15); cursor:default; }
+
+    .calendar-controls{ display:flex; justify-content:center; gap:12px; }
+    .calendar-nav{
+      width:44px; height:44px; border-radius:50%;
+      border:1px solid rgba(242,148,192,.25); background:rgba(242,148,192,.12);
+      color:var(--text); display:inline-flex; align-items:center; justify-content:center; font-size:20px; cursor:pointer;
+      transition:transform .28s cubic-bezier(.16,1,.3,1), background .28s;
+    }
+    .calendar-nav:hover{ transform:translateY(-2px); background:rgba(242,148,192,.2); }
+
+    .event-wrapper{ }
+    .event-details-card{
+      display:flex; flex-direction:column; gap:18px;
+      background:var(--surface2); border:1px solid rgba(242,148,192,.16);
+      border-radius:var(--r); padding:18px; box-shadow:var(--shadow);
+    }
+    .event-info{ display:grid; gap:8px; min-width:220px; }
+    .event-date{ font-size:clamp(20px,2.6vw,24px); color:var(--gold); }
+    .event-meta{ color:var(--text2); }
+    .event-special{ display:inline-flex; gap:8px; padding:6px 10px; border-radius:999px; border:1px solid rgba(242,148,192,.35); background:rgba(242,148,192,.14); color:var(--pink); font-size:12px; text-transform:uppercase; letter-spacing:.6px; }
+    .event-map-links{ display:flex; gap:10px; flex-wrap:wrap; }
+    .map-btn{
+      display:flex; align-items:center; gap:12px; padding:12px 14px; border-radius:var(--r);
+      border:1px solid rgba(242,148,192,.2); background:rgba(8,16,34,.72); color:var(--text);
+      text-decoration:none; font-size:15px;
+      transition:transform .28s cubic-bezier(.16,1,.3,1), border-color .28s, box-shadow .28s;
+    }
+    .map-btn:hover{ transform:translateX(3px); border-color:rgba(242,148,192,.45); box-shadow:0 12px 18px rgba(242,148,192,.14); }
+    .map-btn img{ width:24px; height:24px; object-fit:contain; }
+    .event-empty{ color:var(--muted); text-align:center; }
+
+    @media (min-width:1024px){
+      .calendar-section.section-card{ padding:22px 26px; }
+      .calendar-stage{ max-width:720px; margin:0 auto; }
+    }
+
+    /* Моб. компактность календаря */
+    @media (max-width:600px){
+      .calendar-month{ padding:14px; gap:8px; }
+      .calendar-weekdays,.calendar-grid{ gap:4px; }
+      .weekday{ font-size:11px; }
+      .calendar-controls{ margin-top:6px; }
+      .calendar-header{ gap:4px; }
+    }
+
+    /* ---------- Плавающая «Поддержать» и док ---------- */
+    .support-fab{
+      position:fixed; right:16px; bottom:16px; z-index:1300;
+      display:inline-flex; align-items:center; justify-content:center; gap:10px;
+      width:clamp(140px, 25vw, 320px); padding:14px 18px; border-radius:999px;
+      border:1px solid transparent; text-decoration:none; color:var(--text);
+      background:linear-gradient(120deg, rgba(242,148,192,.22), rgba(242,197,61,.22), rgba(242,148,192,.22));
+      background-size:220% 220%;
+      animation:supportGlow 4s ease-in-out infinite;
+      box-shadow:0 14px 28px rgba(242,148,192,.25);
+      transition:transform .35s cubic-bezier(.16,1,.3,1), border-color .35s, background-position 2s ease-in-out;
+    }
+    .support-fab:hover{ transform:translateY(-2px); border-color:rgba(242,148,192,.65); }
+    @keyframes supportGlow{
+      0%{ background-position:0% 50%; box-shadow:0 0 0 rgba(242,148,192,0); }
+      50%{ background-position:100% 50%; box-shadow:0 0 16px rgba(242,148,192,.45); }
+      100%{ background-position:0% 50%; box-shadow:0 0 0 rgba(242,148,192,0); }
+    }
+
+    .support-section{ margin-top:clamp(36px,6vw,60px); }
+    .support-grid{ display:grid; grid-template-columns:1fr minmax(240px,360px); gap:16px; align-items:center; }
+    @media (max-width:800px){ .support-grid{ grid-template-columns:1fr; } }
+    .support-quote{ margin:0; color:var(--text2); font-style:italic; }
+    .support-dock{
+      min-height:62px;border:2px dashed rgba(242,148,192,.45);
+      border-radius:16px;display:flex;align-items:center;justify-content:center;padding:10px;opacity:.95;
+    }
+
+    /* ---------- Футер ---------- */
+    .site-footer{ margin-top:40px; padding:24px 16px; text-align:center; border-top:1px solid rgba(242,148,192,.14); color:var(--text); }
+    .site-footer a{ color:var(--pink); text-decoration:none; }
+    .site-footer a:hover{ text-decoration:underline; }
+    .site-footer .footer-made{ margin-top:6px; font-size:14px; color:rgba(255,255,255,.6); }
+
+    .footer-privacy{ margin-top:8px; }
+    .footer-privacy .privacy-link{
+      background:none;border:0;padding:0;cursor:pointer;color:var(--text);opacity:.85;text-decoration:underline;text-underline-offset:3px;
+    }
+    .footer-privacy .privacy-link:hover{ opacity:1; color:var(--pink); }
+
+    /* ---------- Политика / Cookies ---------- */
+    .policy-modal{ position:fixed; inset:0; z-index:1400; display:none; }
+    .policy-modal[aria-hidden="false"]{ display:block; }
+    .policy-backdrop{ position:absolute; inset:0; background:rgba(2,7,20,.65); }
+    .policy-dialog{
+      position:relative; max-width:min(820px,92vw); max-height:min(86vh,1000px); margin:6vh auto;
+      background:linear-gradient(135deg, rgba(11,23,46,.96), rgba(6,13,32,.96));
+      border:1px solid rgba(242,148,192,.18); border-radius:20px; overflow:auto; padding:22px 18px 18px;
+    }
+    .policy-close{
+      position:absolute; top:8px; right:10px; width:36px; height:36px; border-radius:10px;
+      border:1px solid rgba(242,148,192,.22); background:transparent; color:#F8F5FF; cursor:pointer;
+    }
+
+    .cookie-banner{ position:fixed; left:12px; right:12px; bottom:12px; z-index:1500; display:none; }
+    .cookie-banner.show{ display:block; }
+    .cookie-inner{ background:linear-gradient(135deg,rgba(11,23,46,.96),rgba(6,13,32,.96)); border:1px solid rgba(242,148,192,.18); border-radius:16px; padding:14px 14px; color:#F8F5FF; }
+    .cookie-actions{ display:flex; gap:10px; margin-top:10px; flex-wrap:wrap; }
+    @media (min-width:1024px){
+      .cookie-inner{ display:flex; align-items:center; gap:16px; }
+      .cookie-inner p{ margin:0; flex:1 1 auto; min-width:0; }
+      .cookie-actions{ margin-top:0; flex:0 0 auto; display:flex; gap:10px; }
+    }
+    .cookie-accept,.cookie-decline{ border-radius:999px; padding:10px 16px; cursor:pointer; border:1px solid transparent; background:transparent; }
+    .cookie-accept{ background:rgba(242,148,192,.2); border-color:rgba(242,148,192,.45); color:#F8F5FF; }
+    .cookie-decline{ border-color:rgba(248,245,255,.25); color:#F8F5FF; opacity:.85; }
+    .cookie-link{ color:var(--pink); background:none; border:0; padding:0; cursor:pointer; text-decoration:underline; text-underline-offset:3px; }
+  </style>
+</head>
+<body>
+
+  <!-- Desktop header -->
+  <header class="site-header desktop-only">
+    <nav class="site-nav">
+      <a href="#supportTitle">Поддержать</a>
+      <a href="#calendarTitle">Выступления</a>
+      <a href="#musicTitle">Слушать</a>
+      <a href="#contacts">Контакты</a>
+    </nav>
+  </header>
+
+  <!-- Mobile header (burger on right) -->
+  <header class="site-header-mobile mobile-only" aria-label="Навигация">
+    <div class="mobile-bar">
+      <button id="mobileMenuButton" class="burger" aria-label="Открыть меню" aria-expanded="false" aria-controls="mobileMenu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div id="mobileMenu" class="mobile-menu" hidden>
+      <nav class="mobile-nav" role="menu">
+        <a href="#supportTitle"  role="menuitem">Поддержать</a>
+        <a href="#calendarTitle" role="menuitem">Выступления</a>
+        <a href="#musicTitle"    role="menuitem">Слушать</a>
+        <a href="#contacts"      role="menuitem">Контакты</a>
+      </nav>
+    </div>
+    <div id="mobileMenuOverlay" class="mobile-overlay" hidden></div>
+  </header>
+
+  <div class="page">
+    <!-- Hero -->
+    <header class="hero">
+      <h1 class="artist-name">Варя Кузнецова</h1>
+    </header>
+
+    <!-- MUSIC -->
+    <section class="music-section section-card" aria-labelledby="musicTitle">
+      <h2 id="musicTitle" class="section-title">Мои песни</h2>
+
+      <div class="player-shell">
+        <div class="now-playing">
+          <div class="cover-frame">
+            <img id="trackCover" src="images/holodno.png" alt="Обложка выбранного трека" />
+          </div>
+          <div class="now-playing-info">
+            <span id="nowPlayingTitle">Сейчас звучит</span>
+            <h3 id="trackTitle" class="track-title">Выберите трек</h3>
+            <span id="trackArtist" class="track-artist"></span>
+
+            <input id="seekBar" class="seek" type="range" min="0" max="100" value="0" step="0.1" aria-label="Перемотка">
+            <div class="timecodes"><span id="currentTime">0:00</span><span id="totalTime">0:00</span></div>
+
+            <div class="player-controls">
+              <button class="control-btn" id="prevTrack" aria-label="Предыдущий">⟸</button>
+              <button class="control-btn" id="playPause" aria-label="Пуск / Пауза">▶</button>
+              <button class="control-btn" id="nextTrack" aria-label="Следующий">⟹</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="tracklist" id="trackList" aria-label="Список треков"></div>
+      </div>
+
+      <div class="streaming-grid" id="streamingLinks">
+        <a class="streaming-card" id="streamYandex" data-service="yandex" href="#" target="_blank" rel="noopener">
+          <span>Яндекс Музыка</span><span class="listen-chip">Слушать</span>
+        </a>
+        <a class="streaming-card" id="streamVK" data-service="vk" href="#" target="_blank" rel="noopener">
+          <span>VK Музыка</span><span class="listen-chip">Слушать</span>
+        </a>
+        <a class="streaming-card" id="streamMTS" data-service="mts" href="#" target="_blank" rel="noopener">
+          <span>МТС Музыка</span><span class="listen-chip">Слушать</span>
+        </a>
+        <a class="streaming-card" id="streamSpotify" data-service="spotify" href="#" target="_blank" rel="noopener">
+          <span>Spotify</span><span class="listen-chip">Слушать</span>
+        </a>
+        <a class="streaming-card" id="streamApple" data-service="apple" href="#" target="_blank" rel="noopener">
+          <span>Apple Music</span><span class="listen-chip">Слушать</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- CALENDAR -->
+    <section class="calendar-section section-card" aria-labelledby="calendarTitle">
+      <div class="calendar-header">
+        <h2 id="calendarTitle" class="section-title">Расписание выступлений</h2>
+        <span id="calendarMonthLabel" class="calendar-month-label"></span>
+      </div>
+
+      <div class="calendar-stage" id="calendarStage" aria-live="polite"></div>
+
+      <div class="calendar-controls">
+        <button class="calendar-nav" id="calendarPrev" aria-label="Предыдущий месяц">⟨</button>
+        <button class="calendar-nav" id="calendarNext" aria-label="Следующий месяц">⟩</button>
+      </div>
+
+      <div class="event-wrapper" id="eventDetails"></div>
+    </section>
+
+    <!-- SUPPORT (нижний блок с доком кнопки) -->
+    <section class="support-section section-card" aria-labelledby="supportTitle">
+      <h2 id="supportTitle" class="section-title">Собираю на сведение и мастеринг треков</h2>
+      <div class="support-grid">
+        <blockquote class="support-quote">«Собираю на сведение и мастеринг треков»</blockquote>
+        <div id="donateDock" class="support-dock" aria-label="Зона приземления кнопки «Поддержать»"></div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer id="contacts" class="site-footer">
+      <div>По всем вопросам: <a href="mailto:varrrvarkaaa@yandex.ru">varrrvarkaaa@yandex.ru</a></div>
+      <div class="footer-privacy"><button type="button" class="privacy-link" data-open-policy>Политика конфиденциальности</button></div>
+      <div style="margin-top:10px;color:var(--muted);font-size:14px">© 2025 Варя Кузнецова. Все права защищены.</div>
+      <div class="footer-made">Изготовлено <a class="footer-made-link" href="https://vibecard.ru/?utm_source=site&utm_medium=cpc&utm_campaign=varia_kuz&utm_content=link" target="_blank" rel="noopener">VibeCard</a></div>
+    </footer>
+  </div>
+
+  <!-- Плавающая кнопка -->
+  <a id="supportFab" class="support-fab" href="https://pay.cloudtips.ru/p/ee1db799" target="_blank" rel="noopener" aria-label="Поддержать">✨ Поддержать</a>
+
+  <!-- Аудио -->
+  <audio id="audioElement" preload="metadata"></audio>
+
+  <!-- Мобильное меню -->
+  <script>
+    (function(){
+      const btn = document.getElementById('mobileMenuButton');
+      const menu = document.getElementById('mobileMenu');
+      const overlay = document.getElementById('mobileMenuOverlay');
+      if(!btn || !menu || !overlay) return;
+
+      const links = menu.querySelectorAll('a');
+
+      function openMenu(){
+        btn.setAttribute('aria-expanded','true'); btn.classList.add('is-open');
+        menu.hidden=false; overlay.hidden=false;
+        requestAnimationFrame(()=>{ menu.classList.add('open'); overlay.classList.add('show'); });
+        document.body.style.overflow='hidden';
+      }
+      function closeMenu(){
+        btn.setAttribute('aria-expanded','false'); btn.classList.remove('is-open');
+        menu.classList.remove('open'); overlay.classList.remove('show');
+        setTimeout(()=>{ menu.hidden=true; overlay.hidden=true; }, 280);
+        document.body.style.overflow='';
+      }
+      function toggleMenu(){ (btn.getAttribute('aria-expanded')==='true') ? closeMenu() : openMenu(); }
+
+      btn.addEventListener('click', toggleMenu);
+      overlay.addEventListener('click', closeMenu);
+      document.addEventListener('keydown', e => { if(e.key === 'Escape') closeMenu(); });
+      links.forEach(a => a.addEventListener('click', closeMenu));
+    })();
+  </script>
+
+  <!-- Календарь -->
+  <script>
+    const monthNames = ['январь','февраль','март','апрель','май','июнь','июль','август','сентябрь','октябрь','ноябрь','декабрь'];
+
+    const performanceSchedule = {
+      '2025-11': {
+        2:{dayLabel:'вс',time:'21:00 – 00:00',venue:'бар «Берг-Коллегия»',metro:'м. Кропоткинская / Парк Культуры',address:'Берг-Коллегия, Москва'},
+        8:{dayLabel:'сб',time:'21:00 – 00:00',venue:'бар «Берг-Коллегия»',metro:'м. Кропоткинская / Парк Культуры',address:'Берг-Коллегия, Москва'},
+        11:{dayLabel:'вт',time:'19:00',venue:'бар «Really Bar»',metro:'м. Китай-город',address:'Really Bar, Москва', special:'Квартирник · День рождения'},
+        13:{dayLabel:'чт',time:'20:00 – 22:00',venue:'бар «Курорт»',metro:'м. Новокузнецкая / Третьяковская',address:'Курорт, Москва'},
+        14:{dayLabel:'пт',time:'21:00 – 23:00',venue:'бар «И в горе и в радости»',metro:'м. Сухаревская',address:'И в горе и в радости, Москва'},
+        15:{dayLabel:'сб',time:'21:00 – 00:00',venue:'бар «Берг-Коллегия»',metro:'м. Кропоткинская / Парк Культуры',address:'Берг-Коллегия, Москва'},
+        20:{dayLabel:'чт',time:'21:00 – 23:00',venue:'бар «Fest bar»',metro:'м. Пушкинская',address:'Fest bar, Москва'},
+        21:{dayLabel:'пт',time:'20:00 – 23:00',venue:'HookahPlace Lago',metro:'м. Озёрная',address:'HookahPlace Lago, ул. Озёрная, Москва'},
+        22:{dayLabel:'сб',time:'21:00 – 00:00',venue:'бар «Берг-Коллегия»',metro:'м. Кропоткинская / Парк Культуры',address:'Берг-Коллегия, Москва'},
+        23:{dayLabel:'вс',time:'18:00 – 20:00',venue:'бар «Моряк и чайка»',metro:'м. Новокузнецкая / Третьяковская',address:'Моряк и чайка, Москва'},
+        27:{dayLabel:'чт',time:'20:00 – 22:00',venue:'бар «Курорт»',metro:'м. Новокузнецкая / Третьяковская',address:'Курорт, Москва'},
+        28:{dayLabel:'пт',time:'20:00 – 22:00',venue:'паб «Маккларенс»',metro:'м. Преображенская площадь',address:'Маккларенс, Москва'},
+        29:{dayLabel:'сб',time:'21:00 – 00:00',venue:'бар «Берг-Коллегия»',metro:'м. Кропоткинская / Парк Культуры',address:'Берг-Коллегия, Москва'}
+      },
+      '2025-12': {
+        5:{dayLabel:'пт',time:'20:00 – 23:00',venue:'HookahPlace Lago',metro:'м. Озёрная',address:'HookahPlace Lago, ул. Озёрная, Москва'},
+        6:{dayLabel:'сб',time:'21:00 – 00:00',venue:'бар «Берг-Коллегия»',metro:'м. Кропоткинская / Парк Культуры',address:'Берг-Коллегия, Москва'},
+        11:{dayLabel:'чт',time:'20:00 – 22:00',venue:'бар «Курорт»',metro:'м. Новокузнецкая / Третьяковская',address:'Курорт, Москва'},
+        13:{dayLabel:'сб',time:'21:00 – 00:00',venue:'бар «Берг-Коллегия»',metro:'м. Кропоткинская / Парк Культуры',address:'Берг-Коллегия, Москва'},
+        18:{dayLabel:'чт',time:'20:00 – 22:00',venue:'бар «Курорт»',metro:'м. Новокузнецкая / Третьяковская',address:'Курорт, Москва'},
+        19:{dayLabel:'пт',time:'20:00 – 22:00',venue:'паб «Маккларенс»',metro:'м. Преображенская площадь',address:'Маккларенс, Москва'},
+        20:{dayLabel:'сб',time:'21:00 – 00:00',venue:'бар «Берг-Коллегия»',metro:'м. Кропоткинская / Парк Культуры',address:'Берг-Коллегия, Москва'},
+        25:{dayLabel:'чт',time:'20:00 – 22:00',venue:'бар «Курорт»',metro:'м. Новокузнецкая / Третьяковская',address:'Курорт, Москва'},
+        26:{dayLabel:'пт',time:'20:00 – 23:00',venue:'HookahPlace Lago',metro:'м. Озёрная',address:'HookahPlace Lago, ул. Озёрная, Москва'},
+        27:{dayLabel:'сб',time:'21:00 – 00:00',venue:'бар «Берг-Коллегия»',metro:'м. Кропоткинская / Парк Культуры',address:'Берг-Коллегия, Москва'}
+      }
+    };
+
+    function getMoscowToday(){
+      const now = new Date();
+      const s = now.toLocaleString('en-US', { timeZone:'Europe/Moscow' });
+      const d = new Date(s);
+      return new Date(d.getFullYear(), d.getMonth(), d.getDate());
+    }
+
+    const scheduleMonths = Object.keys(performanceSchedule).sort();
+    const [firstYear, firstMonth] = scheduleMonths[0].split('-').map(Number);
+    const startDate = new Date(firstYear, firstMonth - 1, 1);
+    const moscowToday = getMoscowToday();
+
+    function findNearestEvent(today){
+      let nearestFuture=null, latestPast=null;
+      scheduleMonths.forEach(mKey=>{
+        const [y,m]=mKey.split('-').map(Number);
+        Object.keys(performanceSchedule[mKey]).forEach(d=>{
+          const dateObj=new Date(y, m-1, Number(d));
+          const meta={monthKey:mKey, day:Number(d), dateObj};
+          if(dateObj>=today){ if(!nearestFuture || dateObj<nearestFuture.dateObj) nearestFuture=meta; }
+          else{ if(!latestPast || dateObj>latestPast.dateObj) latestPast=meta; }
+        });
+      });
+      return nearestFuture || latestPast;
+    }
+    const nearestEvent = findNearestEvent(moscowToday);
+
+    // заполняем будущие месяцы пустыми объектами, чтобы навигация работала
+    ['2026-01','2026-02','2026-03','2026-04','2026-05','2026-06','2026-07','2026-08','2026-09','2026-10','2026-11','2026-12']
+      .forEach(k => { if(!performanceSchedule[k]) performanceSchedule[k]={}; });
+
+    const calendarStage = document.getElementById('calendarStage');
+    const monthLabel = document.getElementById('calendarMonthLabel');
+    const prevBtn = document.getElementById('calendarPrev');
+    const nextBtn = document.getElementById('calendarNext');
+    const eventDetails = document.getElementById('eventDetails');
+
+    let activeOffset = 0, currentMonthElement = null, selectedDayKey = null;
+
+    if(nearestEvent){
+      activeOffset = (nearestEvent.dateObj.getFullYear()-startDate.getFullYear())*12 + (nearestEvent.dateObj.getMonth()-startDate.getMonth());
+      activeOffset = Math.max(0, activeOffset);
+      selectedDayKey = `${nearestEvent.monthKey}-${String(nearestEvent.day).padStart(2,'0')}`;
+    }
+
+    function getMonthDate(offset){ const d=new Date(startDate); d.setMonth(startDate.getMonth()+offset); return d; }
+    function getMonthKey(date){ return `${date.getFullYear()}-${String(date.getMonth()+1).padStart(2,'0')}`; }
+    function cap(s){ return s.charAt(0).toUpperCase()+s.slice(1); }
+    function label(date){ return `${cap(monthNames[date.getMonth()])} ${date.getFullYear()}`; }
+
+    function weekdaysRow(){
+      const days=['пн','вт','ср','чт','пт','сб','вс'];
+      const f=document.createDocumentFragment();
+      days.forEach(d=>{ const el=document.createElement('div'); el.className='weekday'; el.textContent=d; f.appendChild(el); });
+      return f;
+    }
+
+    function buildMonth(date){
+      const monthKey=getMonthKey(date);
+      const data=performanceSchedule[monthKey] || {};
+      const monthEl=document.createElement('div');
+      monthEl.className='calendar-month';
+
+      const wRow=document.createElement('div'); wRow.className='calendar-weekdays'; wRow.appendChild(weekdaysRow());
+      const grid=document.createElement('div'); grid.className='calendar-grid';
+
+      const firstDay=new Date(date.getFullYear(), date.getMonth(), 1);
+      const firstWeekday=(firstDay.getDay()+6)%7; // 0..6, где 0 - пн
+      const daysInMonth=new Date(date.getFullYear(), date.getMonth()+1, 0).getDate();
+
+      for(let i=0;i<firstWeekday;i++){ const e=document.createElement('div'); e.className='calendar-day empty'; grid.appendChild(e); }
+      for(let day=1; day<=daysInMonth; day++){
+        const cell=document.createElement('button'); cell.type='button'; cell.className='calendar-day'; cell.textContent=day;
+        const eventDate=new Date(date.getFullYear(), date.getMonth(), day);
+        const isPast=eventDate<moscowToday;
+
+        if(data[day]){
+          cell.classList.add('performance'); if(isPast) cell.classList.add('past');
+          const dayKey=`${monthKey}-${String(day).padStart(2,'0')}`; cell.dataset.dayKey=dayKey;
+          cell.addEventListener('click',()=>{ selectedDayKey=dayKey; showEvent(date, day); highlight(); });
+        }else{
+          cell.disabled=true;
+        }
+        grid.appendChild(cell);
+      }
+
+      monthEl.appendChild(wRow);
+      monthEl.appendChild(grid);
+      return monthEl;
+    }
+
+    function highlight(){
+      document.querySelectorAll('.calendar-day.performance').forEach(d=>{
+        d.classList.toggle('selected', d.dataset.dayKey===selectedDayKey);
+      });
+    }
+
+    function showEmpty(){
+      eventDetails.innerHTML = `<div class="event-details-card event-empty">В этом месяце пока нет подтвержденных выступлений.</div>`;
+    }
+
+    function showEvent(date, dayNumber){
+      const monthKey=getMonthKey(date);
+      const info=(performanceSchedule[monthKey]||{})[dayNumber];
+      if(!info){ showEmpty(); return; }
+
+      const dateObj=new Date(date.getFullYear(), date.getMonth(), dayNumber);
+      const isPast=dateObj<moscowToday;
+      const wIndex=(dateObj.getDay()+6)%7;
+      const wNames=['пн','вт','ср','чт','пт','сб','вс'];
+      const formatted=`${String(dayNumber).padStart(2,'0')} ${cap(monthNames[date.getMonth()])}`;
+      const q=encodeURIComponent(info.address);
+
+      eventDetails.innerHTML = `
+        <div class="event-details-card ${isPast ? 'past-event':''}">
+          <div class="event-info">
+            <span class="event-date">${formatted} (${wNames[wIndex]})</span>
+            <span class="event-meta">⏰ ${info.time}</span>
+            <span class="event-meta">📍 ${info.venue}</span>
+            <span class="event-meta">🚇 ${info.metro}</span>
+            ${info.special ? `<span class="event-special">${info.special}</span>` : ''}
+          </div>
+          <div class="event-map-links">
+            <a class="map-btn" href="https://yandex.ru/maps/?text=${q}" target="_blank" rel="noopener">
+              <span>Яндекс.Карты</span><img src="icons/Yandex_Maps_icon.png" alt="Яндекс Карты">
+            </a>
+            <a class="map-btn" href="https://2gis.ru/search/${q}" target="_blank" rel="noopener">
+              <span>2ГИС</span><img src="icons/2GIS_icon.png" alt="2ГИС">
+            </a>
+          </div>
+        </div>`;
+    }
+
+    function renderCalendar(dir){
+      const d=getMonthDate(activeOffset);
+      monthLabel.textContent=label(d);
+
+      const mEl=buildMonth(d);
+      calendarStage.appendChild(mEl);
+      requestAnimationFrame(()=> mEl.classList.add('is-active'));
+
+      if(currentMonthElement){
+        currentMonthElement.parentElement && currentMonthElement.parentElement.removeChild(currentMonthElement);
+      }
+      currentMonthElement=mEl;
+
+      const match = Array.from(mEl.querySelectorAll('.calendar-day.performance')).find(dy => dy.dataset.dayKey===selectedDayKey);
+      if(match){
+        const dayNumber=Number(match.textContent);
+        showEvent(d, dayNumber);
+        highlight();
+      }else{
+        selectedDayKey=null;
+        const first= mEl.querySelector('.calendar-day.performance');
+        if(first){
+          selectedDayKey=first.dataset.dayKey;
+          showEvent(d, Number(first.textContent));
+          highlight();
+        }else{
+          showEmpty();
+        }
+      }
+    }
+
+    document.getElementById('calendarPrev').addEventListener('click',()=>{ activeOffset=Math.max(0, activeOffset-1); renderCalendar('prev'); });
+    document.getElementById('calendarNext').addEventListener('click',()=>{ activeOffset+=1; renderCalendar('next'); });
+
+    renderCalendar();
+  </script>
+
+  <!-- Политика / Cookies -->
+  <script>
+    (function(){
+      const modal=document.getElementById('policyModal');
+      const openers=document.querySelectorAll('[data-open-policy]');
+      if(!modal || !openers.length) return;
+      const closers=modal.querySelectorAll('[data-policy-close], .policy-close');
+
+      function open(){ modal.setAttribute('aria-hidden','false'); document.body.style.overflow='hidden'; }
+      function close(){ modal.setAttribute('aria-hidden','true'); document.body.style.overflow=''; }
+      openers.forEach(el=>el.addEventListener('click', open));
+      closers.forEach(el=>el.addEventListener('click', close));
+      document.addEventListener('keydown', e=>{ if(e.key==='Escape') close(); });
+    })();
+
+    (function(){
+      const banner=document.getElementById('cookieBanner'); if(!banner) return;
+      const accept=document.getElementById('cookieAccept');
+      const decline=document.getElementById('cookieDecline');
+      const KEY='cookieConsentVarvara';
+      const saved=localStorage.getItem(KEY);
+
+      function show(){ banner.hidden=false; banner.classList.add('show'); }
+      function hide(){ banner.classList.remove('show'); setTimeout(()=>banner.hidden=true, 280); }
+      function loadAnalytics(){ /* подключение аналитики */ }
+
+      if(saved==='accepted'){ loadAnalytics(); }
+      else if(saved!=='declined'){ show(); }
+
+      accept?.addEventListener('click', ()=>{ localStorage.setItem(KEY,'accepted'); hide(); loadAnalytics(); });
+      decline?.addEventListener('click', ()=>{ localStorage.setItem(KEY,'declined'); hide(); });
+    })();
+  </script>
+
+  <!-- «Сейчас звучит» -->
+  <script>
+    (function(){
+      const audio=document.getElementById('audioElement');
+      if(!audio) return;
+      function playing(){ document.body.classList.add('player-playing'); }
+      function stopped(){ document.body.classList.remove('player-playing'); }
+      audio.addEventListener('play', playing);
+      audio.addEventListener('pause', stopped);
+      audio.addEventListener('ended', stopped);
+      if(!audio.paused && !audio.ended) playing();
+    })();
+  </script>
+
+  <!-- Плеер -->
+  <script>
+    function toDirectDropbox(url){
+      try{
+        const u=new URL(url);
+        if(u.hostname.endsWith('dropbox.com')){
+          u.hostname='dl.dropboxusercontent.com';
+          u.searchParams.delete('dl'); u.searchParams.delete('st');
+          if(!u.searchParams.has('raw')) u.searchParams.set('raw','1');
+        }
+        return u.toString();
+      }catch{ return url; }
+    }
+
+    const tracks=[
+      {
+        title:'Холодно',
+        artist:'Варя Кузнецова',
+        src:'https://www.dropbox.com/scl/fi/a5dx05ghgpx3oxncktp3z/Varya_Kuznecova_-_Holodno_-TheMP3.Info.mp3?rlkey=wnt75pauy3lr4if36b3qkohw5&st=p5uqo3zj&dl=0',
+        cover:'images/holodno.png',
+        links:{
+          yandex:'https://music.yandex.ru/album/35070253',
+          vk:'https://music.vk.com/link/JzjyT',
+          mts:'https://music.mts.ru/album/35070253',
+          spotify:'https://open.spotify.com/album/4nMqCkHKgnWQKcX8GqGYYL',
+          apple:'https://music.apple.com/us/album/1796888584'
+        }
+      },
+      {
+        title:'Кошка',
+        artist:'Варя Кузнецова',
+        src:'https://www.dropbox.com/scl/fi/27lr9a6hhtxzbs2tsb027/Varya_Kuznecova_-_Koshka_-TheMP3.Info.mp3?rlkey=gjk40wi42v214tzbmss5gt3ni&st=f21juylk&dl=0',
+        cover:'images/koshka.jpeg',
+        links:{
+          yandex:'https://music.yandex.ru/album/35905040',
+          vk:'https://music.vk.com/link/nqmOx',
+          spotify:'https://open.spotify.com/album/6Zo6GMcDIknIGtJm3DW2Gh',
+          apple:'https://music.apple.com/us/album/1804106048'
+        }
+      },
+      {
+        title:'Суки',
+        artist:'Варя Кузнецова',
+        badge:'Премьера!',
+        src:'https://www.dropbox.com/scl/fi/h5bv9k0q4r9ysmcq45zho/Varya_Kuznecova_-_Suki_-TheMP3.Info.wav?rlkey=aqji9437wfpsgx1pw96u2pd6c&st=azpf4e64&dl=0',
+        cover:'images/Suki.png',
+        links:{}
+      }
+    ];
+
+    const audio=document.getElementById('audioElement');
+    const trackCover=document.getElementById('trackCover');
+    const trackTitle=document.getElementById('trackTitle');
+    const trackArtist=document.getElementById('trackArtist');
+    const playPauseButton=document.getElementById('playPause');
+    const prevTrackButton=document.getElementById('prevTrack');
+    const nextTrackButton=document.getElementById('nextTrack');
+    const seekBar=document.getElementById('seekBar');
+    const currentTimeEl=document.getElementById('currentTime');
+    const totalTimeEl=document.getElementById('totalTime');
+    const trackListEl=document.getElementById('trackList');
+    const streamingButtons={
+      yandex:document.getElementById('streamYandex'),
+      vk:document.getElementById('streamVK'),
+      mts:document.getElementById('streamMTS'),
+      spotify:document.getElementById('streamSpotify'),
+      apple:document.getElementById('streamApple')
+    };
+
+    let currentTrackIndex=0, isPlaying=false;
+    const trackButtons=[];
+
+    function fmt(sec){ if(!Number.isFinite(sec)) return '0:00'; const m=Math.floor(sec/60); const s=Math.floor(sec%60).toString().padStart(2,'0'); return `${m}:${s}`; }
+    function updateIcon(){ playPauseButton.textContent = isPlaying ? '❚❚' : '▶'; }
+
+    function updateStreaming(track){
+      Object.entries(streamingButtons).forEach(([svc,btn])=>{
+        const link = track.links?.[svc] || null;
+        if(link){ btn.href=link; btn.classList.remove('is-disabled'); btn.removeAttribute('aria-disabled'); btn.removeAttribute('tabindex'); }
+        else{ btn.href='#'; btn.classList.add('is-disabled'); btn.setAttribute('aria-disabled','true'); btn.setAttribute('tabindex','-1'); }
+      });
+    }
+
+    function loadTrack(i, autoplay=false){
+      const t = tracks[i]; currentTrackIndex=i;
+      audio.src = toDirectDropbox(t.src); audio.crossOrigin='anonymous';
+
+      trackCover.src = t.cover || 'images/holodno.png';
+      trackCover.alt = `Обложка: ${t.title}`;
+      trackTitle.textContent = t.title;
+      trackArtist.textContent = t.artist || '';
+
+      seekBar.value=0; currentTimeEl.textContent='0:00'; totalTimeEl.textContent='0:00';
+      trackButtons.forEach(b => b.classList.toggle('is-active', Number(b.dataset.index)===i));
+      updateStreaming(t);
+
+      if(autoplay){
+        audio.play().then(()=>{ isPlaying=true; updateIcon(); }).catch(()=>{ isPlaying=false; updateIcon(); });
+      }else{
+        isPlaying=false; updateIcon();
+      }
+    }
+
+    tracks.forEach((t, i)=>{
+      const btn=document.createElement('button');
+      btn.className='track-item'; btn.type='button'; btn.dataset.index=i;
+      const badge = t.badge ? `<span class="badge">${t.badge}</span>` : '';
+      btn.innerHTML = `<span>${t.title}${badge ? ' '+badge : ''}</span><span class="track-duration" data-duration></span>`;
+      btn.addEventListener('click', ()=>{ const auto=(currentTrackIndex===i)? !isPlaying : true; loadTrack(i, auto); });
+      trackListEl.appendChild(btn); trackButtons.push(btn);
+    });
+
+    playPauseButton.addEventListener('click', ()=>{
+      if(!audio.src){ loadTrack(0,true); return; }
+      if(audio.paused){ audio.play().then(()=>{ isPlaying=true; updateIcon(); }); }
+      else{ audio.pause(); isPlaying=false; updateIcon(); }
+    });
+    prevTrackButton.addEventListener('click', ()=>{ const i=(currentTrackIndex-1+tracks.length)%tracks.length; loadTrack(i, isPlaying); });
+    nextTrackButton.addEventListener('click', ()=>{ const i=(currentTrackIndex+1)%tracks.length; loadTrack(i, isPlaying); });
+
+    audio.addEventListener('loadedmetadata', ()=>{
+      totalTimeEl.textContent = fmt(audio.duration);
+      const span=trackButtons[currentTrackIndex].querySelector('[data-duration]');
+      if(span) span.textContent = fmt(audio.duration);
+    });
+    audio.addEventListener('timeupdate', ()=>{
+      if(audio.duration){ seekBar.value = (audio.currentTime/audio.duration)*100; }
+      currentTimeEl.textContent = fmt(audio.currentTime);
+    });
+    audio.addEventListener('ended', ()=>{ const i=(currentTrackIndex+1)%tracks.length; loadTrack(i, true); });
+
+    seekBar.addEventListener('input', ()=>{ if(!audio.duration) return; audio.currentTime = (seekBar.value/100)*audio.duration; });
+
+    loadTrack(0,false);
+  </script>
+
+  <!-- Док плавающей кнопки -->
+  <script>
+    (function(){
+      const fab=document.getElementById('supportFab');
+      const dock=document.getElementById('donateDock');
+      if(!fab || !dock) return;
+
+      let docked=false;
+
+      function dockFab(){
+        if(docked) return; docked=true;
+        fab.style.position='static';
+        fab.style.width='100%';
+        fab.style.transform='none';
+        dock.appendChild(fab);
+      }
+      function undockFab(){
+        if(!docked) return; docked=false;
+        fab.style.position='fixed';
+        fab.style.width='clamp(140px, 25vw, 320px)';
+        document.body.appendChild(fab);
+      }
+
+      const io=new IntersectionObserver((entries)=>{
+        entries.forEach(entry=>{
+          if(entry.isIntersecting){ dockFab(); }
+          else{ undockFab(); }
+        });
+      }, { threshold: 0.75 });
+
+      io.observe(dock);
+    })();
+  </script>
+
+  <!-- Политика и cookie-разметка -->
+  <div class="policy-modal" id="policyModal" aria-hidden="true">
+    <div class="policy-backdrop" data-policy-close></div>
+    <div class="policy-dialog" role="dialog" aria-modal="true" aria-labelledby="policyTitle">
+      <button class="policy-close" type="button" aria-label="Закрыть" data-policy-close>✕</button>
+      <div class="policy-content">
+        <h2 id="policyTitle">Политика конфиденциальности</h2>
+        <p class="muted">Краткая версия. Полный текст доступен <a href="policy.html" target="_blank" rel="noopener">на отдельной странице</a>.</p>
+        <h3>Оператор</h3><p>Самозанятая <strong>Кузнецова Варвара Алексеевна</strong>.</p>
+        <h3>Какие данные</h3><p>Обезличенные данные (cookies, IP, устройство/браузер, источник перехода, события на сайте).</p>
+        <h3>Зачем</h3>
+        <ul><li>Аналитика и улучшение UX</li><li>Измерение эффективности рекламы</li><li>Работа функционала сайта</li></ul>
+        <h3>Инструменты</h3><p>Яндекс.Метрика, Яндекс.Директ, ВК Реклама.</p>
+        <h3>Права</h3><p>Запросить сведения/удаление/уточнение. Связь: <a href="https://t.me/alekseevnavarvara" target="_blank" rel="noopener">@alekseevnavarvara</a>.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="cookie-banner" id="cookieBanner" hidden>
+    <div class="cookie-inner">
+      <p>Мой сайт становится лучше благодаря «печенькам». Остаётесь со мной — значит, вы ими делитесь. Подробности в <button class="cookie-link" data-open-policy>Политике</button>. Спасибо за угощение!</p>
+      <div class="cookie-actions">
+        <button class="cookie-accept" id="cookieAccept">Да, бери!</button>
+        <button class="cookie-decline" id="cookieDecline">Оставлю себе</button>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
