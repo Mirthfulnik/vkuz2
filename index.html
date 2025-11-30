@@ -1,1131 +1,2297 @@
 <!DOCTYPE html>
 <html lang="ru">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="theme-color" content="#020714" />
-  <title>Варя Кузнецова — официальный сайт</title>
+<head> 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="icons/favicon.ico" type="image/x-icon">
+    <!-- iOS home screen icon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="icons/apple-touch-icon.png">
+    <!-- Android / PWA -->
+    <link rel="manifest" href="icons/site.webmanifest">
+    <meta name="theme-color" content="#020714">
+    <!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+    (function(m,e,t,r,i,k,a){
+        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+        m[i].l=1*new Date();
+        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=105181388', 'ym');
 
-  <!-- Иконки/манифест (если есть в проекте) -->
-  <link rel="icon" href="icons/favicon.ico" type="image/x-icon" />
-  <link rel="manifest" href="icons/site.webmanifest" />
+    ym(105181388, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", accurateTrackBounce:true, trackLinks:true});
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/105181388" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+    <!-- Top.Mail.Ru counter -->
+<script type="text/javascript">
+var _tmr = window._tmr || (window._tmr = []);
+_tmr.push({id: "3716134", type: "pageView", start: (new Date()).getTime()});
+(function (d, w, id) {
+  if (d.getElementById(id)) return;
+  var ts = d.createElement("script"); ts.type = "text/javascript"; ts.async = true; ts.id = id;
+  ts.src = "https://top-fwz1.mail.ru/js/code.js";
+  var f = function () {var s = d.getElementsByTagName("script")[0]; s.parentNode.insertBefore(ts, s);};
+  if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); }
+})(document, window, "tmr-code");
+</script>
+<noscript><div><img src="https://top-fwz1.mail.ru/counter?id=3716134;js=na" style="position:absolute;left:-9999px;" alt="Top.Mail.Ru" /></div></noscript>
+<!-- /Top.Mail.Ru counter -->
+    <link rel="preconnect" href="https://dl.dropboxusercontent.com" crossorigin>
+    <title>Официальный сайт автора-исполнителя Вари Кузнецовой</title>
+    <style>
+        :root {
+            --color-night-01: #020714;
+            --color-night-02: #050d25;
+            --color-night-03: #0b1429;
+            --color-night-04: rgba(8, 15, 33, 0.85);
+            --color-night-05: rgba(10, 18, 40, 0.65);
+            --color-pink: #F294C0;
+            --color-gold: #F2C53D;
+            --color-bronze: #BF834E;
+            --color-text-primary: #F8F5FF;
+            --color-text-secondary: rgba(248, 245, 255, 0.72);
+            --color-text-muted: rgba(248, 245, 255, 0.55);
+            --color-surface: rgba(14, 22, 45, 0.92);
+            --color-surface-alt: rgba(19, 28, 53, 0.9);
+            --color-border: rgba(242, 148, 192, 0.28);
+            --color-border-strong: rgba(242, 197, 61, 0.4);
+            --shadow-strong: 0 32px 60px rgba(2, 6, 20, 0.55);
+            --shadow-soft: 0 20px 40px rgba(2, 6, 20, 0.35);
+            --shadow-inner: inset 0 0 0 1px rgba(242, 148, 192, 0.12);
+            --radius-sm: 12px;
+            --radius-base: 20px;
+            --radius-lg: 28px;
+            --radius-pill: 999px;
+            --font-family-base: 'Excalifont', 'Excalifont Fallback', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            --transition-snappy: cubic-bezier(0.16, 1, 0.3, 1);
+            --transition-duration: 420ms;
+        }
 
-  <!-- Оптимизация прямых доменов аудио -->
-  <link rel="preconnect" href="https://dl.dropboxusercontent.com" crossorigin>
-  <link rel="preload" href="fonts/Excalifont-Regular.woff2" as="font" type="font/woff2" crossorigin>
-  <style>
-    /* === HERO v2 (как на примере) === */
-.hero-intro { margin-top: clamp(24px, 6vw, 60px); }
+        @font-face {
+            font-family: 'Excalifont';
+            src: url('fonts/Excalifont-Regular.woff2') format('woff2'),
+                 url('fonts/Excalifont-Regular.ttf') format('truetype');
+            font-display: swap;
+            font-weight: 400;
+            font-style: normal;
+        }
 
-.hero-wrap{
-  display:grid;
-  grid-template-columns: minmax(220px, clamp(220px, 34vw, 360px)) 1fr;
-  align-items:center;
-  gap: clamp(24px, 6vw, 72px);
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        html, body {
+            padding: 0;
+            margin: 0;
+        }
+        
+html {
+    background-color: #020714; /* основной ночной цвет */
+}       
+
+        body {
+            min-height: 100vh;
+            font-family: var(--font-family-base);
+            color: var(--color-text-primary);
+            background: radial-gradient(circle at top right, rgba(11, 40, 92, 0.55), transparent 45%),
+                        radial-gradient(circle at 20% 20%, rgba(242, 148, 192, 0.18), transparent 40%),
+                        linear-gradient(160deg, var(--color-night-01) 0%, var(--color-night-03) 60%, #020714 100%);
+            background-attachment: fixed;
+            line-height: 1.55;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        @media (max-width: 768px) {
+    body {
+        background-attachment: scroll;
+    }
 }
 
-@media (max-width: 900px){
-  .hero-wrap{ grid-template-columns: 1fr; justify-items:center; text-align:center; }
+        a {
+            color: inherit;
+        }
+
+        .page {
+            max-width: 1080px;
+            margin: 0 auto;
+            padding: clamp(32px, 4vw, 64px) clamp(20px, 4vw, 48px) 120px;
+        }
+
+        .section-card {
+            background: var(--color-surface);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--color-border);
+            box-shadow: var(--shadow-strong);
+            padding: clamp(32px, 3vw, 48px);
+            backdrop-filter: blur(18px);
+        }
+
+        header.hero {
+            text-align: center;
+            margin-bottom: clamp(40px, 6vw, 72px);
+        }
+
+        .hero-inner {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: clamp(20px, 3vw, 36px);
+        }
+
+        @media (min-width: 720px) {
+            .hero-inner {
+                flex-direction: row;
+                justify-content: center;
+            }
+        }
+
+        .artist-avatar {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .artist-avatar::before {
+            content: '';
+            position: absolute;
+            inset: -14px;
+            border-radius: 50%;
+            background: conic-gradient(from 140deg, rgba(242, 148, 192, 0.12), rgba(191, 131, 78, 0.4), rgba(242, 197, 61, 0.12));
+            filter: blur(20px);
+            opacity: 0.75;
+        }
+
+        .artist-avatar-frame {
+            width: clamp(160px, 22vw, 220px);
+            aspect-ratio: 1 / 1;
+            border-radius: 50%;
+            border: 4px solid rgba(242, 148, 192, 0.65);
+            box-shadow: 0 24px 48px rgba(2, 6, 20, 0.65), 0 0 0 12px rgba(242, 148, 192, 0.08);
+            overflow: hidden;
+            position: relative;
+            background: radial-gradient(circle at 30% 30%, rgba(242, 148, 192, 0.4), transparent 65%),
+                        var(--color-night-04);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .artist-avatar-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .artist-avatar-placeholder {
+            font-size: clamp(48px, 6vw, 72px);
+            font-weight: 400;
+            color: rgba(242, 197, 61, 0.85);
+            letter-spacing: 8px;
+        }
+
+        .hero-copy {
+            max-width: 520px;
+        }
+
+        .artist-name {
+            font-size: clamp(40px, 7vw, 76px);
+            font-weight: 400;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin: 0;
+            background: linear-gradient(120deg, var(--color-pink), var(--color-gold) 55%, var(--color-bronze));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-tagline {
+            margin-top: 16px;
+            font-size: clamp(16px, 2.2vw, 20px);
+            color: var(--color-text-secondary);
+        }
+
+        .section-title {
+            font-size: clamp(28px, 4vw, 36px);
+            font-weight: 400;
+            margin: 0 0 16px;
+            color: var(--color-pink);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* Центруем заголовки у календаря и музыки */
+            .calendar-section .section-title,
+            .music-section .section-title {
+            text-align: center;
+            width: 100%;
+        }
+
+
+        .section-subtitle {
+            margin: 0 0 32px;
+            font-size: 18px;
+            color: var(--color-text-muted);
+        }
+
+        /* Fundraising */
+        .fundraising {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .fundraising::after {
+            content: '';
+            position: absolute;
+            inset: -40% -20% auto -20%;
+            height: 80%;
+            background: radial-gradient(circle, rgba(242, 148, 192, 0.3), transparent 70%);
+            opacity: 0.6;
+            pointer-events: none;
+        }
+
+        .fundraising-content {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 28px;
+            align-items: center;
+            text-align: center;
+        }
+
+        .fundraising-canvas {
+            width: min(520px, 100%);
+            aspect-ratio: 3.6 / 1;
+            border-radius: 32px;
+            background: rgba(4, 9, 27, 0.6);
+            box-shadow: var(--shadow-inner);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 18px 24px;
+        }
+
+        #bitchesCanvas {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        .fundraising-stats {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            font-size: 18px;
+            text-align: center;
+        }
+
+        .fundraising-break {
+    display: none;
 }
 
-.hero-avatar{
-  position: relative;
-  width: 100%;
-  aspect-ratio: 1/1;
-  border-radius: 50%;
-  display: grid; place-items: center;
+@media (max-width: 480px) {
+    .fundraising-break {
+        display: block;
+    }
 }
 
-.hero-avatar::before{
-  /* мягкое внешнее свечение в фирменных цветах */
-  content:"";
-  position:absolute; inset:-14px;
-  border-radius:50%;
-  background:
-    radial-gradient(70% 70% at 30% 10%, rgba(242,148,192,.25), transparent 60%),
-    radial-gradient(68% 68% at 80% 60%, rgba(242,197,61,.18), transparent 60%);
-  filter: blur(10px);
-  z-index:-1;
+        .fundraising-stats strong {
+            color: var(--color-gold);
+            font-weight: 400;
+        }
+
+        .support-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 16px 32px;
+    border-radius: var(--radius-pill);
+    border: 1px solid transparent;
+    background: linear-gradient(120deg,
+        rgba(242, 148, 192, 0.22),
+        rgba(242, 197, 61, 0.22),
+        rgba(242, 148, 192, 0.22)
+    );
+    background-size: 220% 220%;
+    color: var(--color-text-primary);
+    text-decoration: none;
+    font-size: 18px;
+    transition: transform var(--transition-duration) var(--transition-snappy),
+                box-shadow var(--transition-duration) var(--transition-snappy),
+                border-color var(--transition-duration) var(--transition-snappy),
+                background-position 2s ease-in-out;
+    animation: supportGlow 4s ease-in-out infinite;
 }
 
-.hero-avatar img{
-  width:100%; height:100%; object-fit:cover; border-radius:50%;
-  /* двойная «рамка» + тень как на примере */
-  box-shadow:
-    0 0 0 6px rgba(242,148,192,.16),
-    0 0 0 14px rgba(242,148,192,.08),
-    0 18px 60px rgba(0,0,0,.35);
+.support-btn:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 18px 30px rgba(242, 148, 192, 0.35);
+    border-color: rgba(242, 148, 192, 0.7);
 }
 
-.artist-name{
-  margin:0;
-  font-weight:600;
-  font-size: clamp(40px, 9vw, 96px);
-  color: var(--gold);
-  text-transform: uppercase;
-  line-height: .95;
-  letter-spacing: 1.5px;
+        @keyframes supportGlow {
+    0% {
+        background-position: 0% 50%;
+        box-shadow: 0 0 0 rgba(242, 148, 192, 0);
+    }
+    50% {
+        background-position: 100% 50%;
+        box-shadow: 0 0 18px rgba(242, 148, 192, 0.55);
+    }
+    100% {
+        background-position: 0% 50%;
+        box-shadow: 0 0 0 rgba(242, 148, 192, 0);
+    }
 }
 
-    @font-face{
-  font-family: 'Excalifont';
-  src: url('fonts/Excalifont-Regular.woff2') format('woff2');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
+        /* Calendar */
+        .calendar-section {
+            margin-top: clamp(48px, 7vw, 72px);
+            display: grid;
+            gap: 32px;
+        }
+
+.calendar-header {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: center;
 }
-    :root{
-      --bg:#020714;
-      --bg2:#0b1429;
-      --surface:rgba(14,22,45,.92);
-      --surface2:rgba(19,28,53,.9);
-      --border:rgba(242,148,192,.28);
-      --muted:rgba(248,245,255,.6);
-      --text:#F8F5FF;
-      --text2:rgba(248,245,255,.85);
-      --pink:#F294C0;
-      --gold:#F2C53D;
-      --shadow:0 20px 40px rgba(2,6,20,.35);
-      --r:20px;
-      --r-lg:28px;
-      --ff:'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Ubuntu, 'Helvetica Neue', Arial, 'Noto Sans', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji', sans-serif;
-      --font-family-base: 'Excalifont', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
-      --ff: var(--font-family-base);
+
+.calendar-month-label {
+    font-size: clamp(20px, 3vw, 26px);
+    letter-spacing: 1px;
+    color: var(--color-text-primary);
+    text-align: center;
+    align-self: center;
+}
+
+
+.calendar-controls {
+    margin-top: -12px; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+}
+
+@media (max-width: 480px) {
+    .calendar-header {
+        align-items: flex-start;
     }
 
-    :root{
-  --page-gutter: clamp(16px, 4vw, 42px);          /* одинаковый внутренний отступ по краям */
-  --fab-w: clamp(180px, 25vw, 360px);             /* 1/4 экрана с ограничениями */
-  --fab-h: 64px;
-  --fab-r: 999px;
+    .calendar-controls {
+        margin-top: 12px;
+    }
 }
-.container{padding-inline: var(--page-gutter);}
 
-.support-fab{
-  position: fixed; inset: auto var(--page-gutter) 18px auto; /* right привязан к тому же gutter */
-  width: var(--fab-w); height: var(--fab-h); border-radius: var(--fab-r);
-  display: inline-flex; align-items: center; justify-content: center; gap:10px;
-  background: linear-gradient(90deg,#3e3340,#4c3f41);
-  color:#ffd89a; border:1px solid rgba(255,216,154,.25);
-  box-shadow: 0 0 28px rgba(242,148,192,.18), 0 10px 34px rgba(0,0,0,.35);
-  transition: transform .25s ease, opacity .2s ease, box-shadow .25s ease;
-  z-index: 1000;
+        @media (max-width: 600px) {
+    .calendar-controls {
+        margin-top: -20px; /* ближе к сетке календаря */
+    }
 }
-.support-fab:hover{ transform: translateY(-2px); box-shadow: 0 0 34px rgba(242,148,192,.26), 0 14px 40px rgba(0,0,0,.4);}
-.support-fab[hidden]{opacity:0; pointer-events:none;}
+        
+        .calendar-nav {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: rgba(242, 148, 192, 0.16);
+            border: 1px solid rgba(242, 148, 192, 0.25);
+            color: var(--color-text-primary);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            cursor: pointer;
+            transition: transform var(--transition-duration) var(--transition-snappy),
+                        background var(--transition-duration) var(--transition-snappy);
+        }
 
-.support-slot{
-  display:flex; justify-content:flex-end;          /* та же ось по правому краю */
+        .calendar-nav:hover {
+            transform: translateY(-3px);
+            background: rgba(242, 148, 192, 0.28);
+        }
+
+.calendar-stage {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-auto-rows: auto;
+    margin-top: -12px;
+    border-radius: var(--radius-base);
+    border: 1px solid rgba(242, 148, 192, 0.22);
+    background: linear-gradient(135deg, rgba(11, 23, 46, 0.9), rgba(6, 13, 32, 0.9));
+    overflow: hidden;
 }
-.support-slot .slot-box{
-  width: var(--fab-w); height: var(--fab-h);
-  border-radius: var(--fab-r);
-  border: 2px dashed rgba(242,148,192,.45);
+
+        .calendar-month {
+            position: relative;
+            grid-area: 1 / 1 / 2 / 2;
+            padding: clamp(20px, 4vw, 36px);
+            display: grid;
+            gap: 18px;
+            opacity: 0;
+            transform: translateY(40%);
+            pointer-events: none;
+            transition: transform 520ms var(--transition-snappy), opacity 520ms var(--transition-snappy);
+        }
+
+        .calendar-month.is-active {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+
+        .calendar-month.entering-from-top {
+            transform: translateY(-35%);
+        }
+
+        .calendar-month.leaving-to-top {
+            transform: translateY(-35%);
+            opacity: 0;
+        }
+
+        .calendar-month.entering-from-bottom {
+            transform: translateY(35%);
+        }
+
+        .calendar-month.leaving-to-bottom {
+            transform: translateY(35%);
+            opacity: 0;
+        }
+
+        .calendar-weekdays .weekday,
+        .calendar-day {
+            font-family: var(--font-family-base);
+        }
+
+        .calendar-weekdays,
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, minmax(0, 1fr));
+            gap: 12px;
+        }
+
+        .weekday {
+            text-transform: uppercase;
+            font-size: 14px;
+            color: rgba(248, 245, 255, 0.4);
+            letter-spacing: 1.6px;
+            text-align: center;
+        }
+
+        .calendar-day {
+            position: relative;
+            aspect-ratio: 1 / 1;
+            border-radius: 22px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: clamp(16px, 2.1vw, 18px);
+            background: rgba(8, 16, 34, 0.65);
+            border: 1px solid rgba(242, 148, 192, 0.08);
+            color: var(--color-text-primary);
+            transition: transform 320ms var(--transition-snappy),
+                        border-color 320ms var(--transition-snappy),
+                        box-shadow 320ms var(--transition-snappy);
+            z-index: 0;
+        }
+
+        .calendar-day.empty {
+            background: transparent;
+            border-color: transparent;
+        }
+
+        .calendar-day.performance {
+            border-color: rgba(242, 148, 192, 0.5);
+            background: linear-gradient(145deg, rgba(242, 148, 192, 0.2), rgba(191, 131, 78, 0.18));
+            cursor: pointer;
+        }
+
+        .calendar-day.performance:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 16px 26px rgba(242, 148, 192, 0.18);
+        }
+
+        .calendar-day.pencil-ring::before {
+            content: '';
+            position: absolute;
+            inset: -8%;
+            border-radius: 50%;
+            border: 3px solid rgba(255, 78, 110, 0.9);
+            box-shadow: 0 0 14px rgba(255, 78, 110, 0.55);
+            transform: rotate(-4deg) scale(1.05);
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .calendar-day.performance.selected {
+            border-color: rgba(242, 197, 61, 0.8);
+            box-shadow: 0 0 0 3px rgba(242, 197, 61, 0.25);
+            color: var(--color-gold);
+        }
+
+        .calendar-day.performance.past {
+            opacity: 0.4;
+            filter: grayscale(0.25);
+            cursor: default;
+        }
+
+        .event-wrapper {
+            margin-top: -12px;
+        }
+
+        .event-details-card {
+            display: flex;
+            flex-direction: column;
+            gap: 28px;
+            background: var(--color-surface-alt);
+            border-radius: var(--radius-base);
+            border: 1px solid rgba(242, 148, 192, 0.16);
+            padding: clamp(24px, 3vw, 32px);
+            box-shadow: var(--shadow-soft);
+        }
+
+        .event-details-top {
+            display: flex;
+            gap: 36px;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .event-info {
+            display: grid;
+            gap: 10px;
+            min-width: 240px;
+        }
+
+        .event-date {
+            font-size: clamp(24px, 3vw, 30px);
+            letter-spacing: 1.2px;
+            color: var(--color-gold);
+        }
+
+        .event-special {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 14px;
+            border-radius: var(--radius-pill);
+            border: 1px solid rgba(242, 148, 192, 0.35);
+            background: rgba(242, 148, 192, 0.14);
+            color: var(--color-pink);
+            font-size: 14px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .event-meta {
+            color: var(--color-text-secondary);
+            font-size: 18px;
+        }
+
+        .event-map-links {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            align-items: stretch;
+            justify-content: center;
+        }
+
+        .map-btn {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            padding: 14px 18px;
+            border-radius: var(--radius-base);
+            border: 1px solid rgba(242, 148, 192, 0.2);
+            background: rgba(8, 16, 34, 0.72);
+            color: var(--color-text-primary);
+            text-decoration: none;
+            font-size: 16px;
+            letter-spacing: 0.5px;
+            transition: transform var(--transition-duration) var(--transition-snappy),
+                        border-color var(--transition-duration) var(--transition-snappy),
+                        box-shadow var(--transition-duration) var(--transition-snappy);
+        }
+
+        .map-btn:hover {
+            transform: translateX(4px);
+            border-color: rgba(242, 148, 192, 0.45);
+            box-shadow: 0 16px 22px rgba(242, 148, 192, 0.16);
+        }
+
+        .map-btn img {
+            width: 28px;
+            height: 28px;
+            object-fit: contain;
+        }
+
+        .event-empty {
+            color: var(--color-text-muted);
+            text-align: center;
+            font-size: 18px;
+        }
+
+        .event-details-card.past-event {
+            opacity: 0.6;
+            filter: grayscale(0.15);
+        }
+
+
+@media (min-width: 1024px) {
+    .calendar-section.section-card {
+        padding: 24px 32px 24px;
+    }
+
+    .calendar-stage {
+        max-width: 760px;
+        margin: 0 auto;
+        min-height: 340px;
+        }
+    }
+
+@media (max-width: 600px) {
+    .calendar-month {
+        padding: 20px 16px;
+    }
+    .calendar-weekdays,
+    .calendar-grid {
+        gap: 6px;
+    }
+    .weekday {
+        font-size: 12px;
+    }
+    .calendar-day {
+        border-radius: 16px;
+        font-size: 14px;
+    }
+}
+
+
+
+        /* Music */
+        .music-section {
+            margin-top: clamp(48px, 7vw, 72px);
+            display: grid;
+            gap: 32px;
+        }
+
+        .player-shell {
+            display: grid;
+            gap: 28px;
+        }
+
+        .now-playing {
+            display: grid;
+            gap: 24px;
+            grid-template-columns: minmax(0, 260px) minmax(0, 1fr);
+            align-items: center;
+        }
+
+        @media (max-width: 640px) {
+            .now-playing {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .event-details-top {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .event-map-links {
+                width: 100%;
+            }
+        }
+
+        .cover-frame {
+            position: relative;
+            border-radius: 28px;
+            overflow: hidden;
+            aspect-ratio: 1 / 1;
+            border: 1px solid rgba(242, 148, 192, 0.22);
+            background: linear-gradient(145deg, rgba(242, 148, 192, 0.25), rgba(191, 131, 78, 0.18));
+            box-shadow: var(--shadow-soft);
+        }
+
+        .cover-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .cover-placeholder {
+            width: 100%;
+            height: 100%;
+            display: grid;
+            place-items: center;
+            color: rgba(248, 245, 255, 0.45);
+            font-size: 18px;
+        }
+
+        .now-playing-info {
+            display: grid;
+            gap: 14px;
+        }
+
+        .now-playing-label {
+            font-size: 16px;
+            letter-spacing: 1.2px;
+            color: var(--color-text-muted);
+            text-transform: uppercase;
+        }
+
+        .track-title {
+        font-size: clamp(26px, 4vw, 34px);
+        color: var(--color-gold);
+        margin: 0;
+        font-family: var(--font-family-base);
+        }
+
+        .track-artist {
+            font-size: 20px;
+            color: var(--color-text-secondary);
+        }
+
+        .progress-bar {
+            display: grid;
+            gap: 14px;
+        }
+
+        .seek {
+            -webkit-appearance: none;
+            appearance: none;
+            height: 8px;
+            border-radius: 999px;
+            background: rgba(242, 148, 192, 0.18);
+            overflow: hidden;
+        }
+
+        .seek::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: var(--color-pink);
+            box-shadow: -400px 0 0 400px rgba(242, 148, 192, 0.38);
+            cursor: pointer;
+        }
+
+        .seek::-moz-range-thumb {
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            border: none;
+            background: var(--color-pink);
+            box-shadow: -400px 0 0 400px rgba(242, 148, 192, 0.38);
+            cursor: pointer;
+        }
+
+        .timecodes {
+            display: flex;
+            justify-content: space-between;
+            color: var(--color-text-muted);
+            font-size: 14px;
+        }
+
+        .player-controls {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+@media (max-width: 640px) {
+    .player-controls {
+        justify-content: center;
+    }
+}
+
+        .control-btn {
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            border: 1px solid rgba(242, 148, 192, 0.32);
+            background: rgba(8, 16, 34, 0.75);
+            color: var(--color-text-primary);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            cursor: pointer;
+            transition: transform var(--transition-duration) var(--transition-snappy),
+                        background var(--transition-duration) var(--transition-snappy),
+                        border-color var(--transition-duration) var(--transition-snappy);
+        }
+
+        .control-btn:hover {
+            transform: translateY(-3px);
+            background: rgba(242, 148, 192, 0.2);
+            border-color: rgba(242, 148, 192, 0.45);
+        }
+
+        .tracklist {
+            display: grid;
+            gap: 12px;
+        }
+
+        .track-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 24px;
+            padding: 16px 20px;
+            border-radius: var(--radius-base);
+            border: 1px solid rgba(242, 148, 192, 0.18);
+            background: rgba(6, 14, 30, 0.85);
+            color: var(--color-text-secondary);
+            cursor: pointer;
+            transition: transform var(--transition-duration) var(--transition-snappy),
+                        border-color var(--transition-duration) var(--transition-snappy),
+                        color var(--transition-duration) var(--transition-snappy);
+        }
+
+        .track-item:hover {
+            transform: translateX(4px);
+            border-color: rgba(242, 148, 192, 0.4);
+            color: var(--color-text-primary);
+        }
+
+        .track-item.is-active {
+            border-color: rgba(242, 197, 61, 0.55);
+            background: linear-gradient(120deg, rgba(242, 148, 192, 0.28), rgba(242, 197, 61, 0.18));
+            color: var(--color-text-primary);
+        }
+
+        .track-item span:first-child {
+        font-family: var(--font-family-base);
+        font-size: 18px;
+        }
+
+        .track-duration {
+            font-size: 14px;
+            color: var(--color-text-muted);
+        }
+
+        /* Streaming services */
+        .streaming-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 18px;
+        }
+
+        .streaming-card {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 20px;
+            border-radius: var(--radius-base);
+            border: 1px solid rgba(242, 148, 192, 0.2);
+            background: rgba(8, 16, 34, 0.72);
+            text-decoration: none;
+            color: var(--color-text-secondary);
+            transition: transform var(--transition-duration) var(--transition-snappy),
+                        border-color var(--transition-duration) var(--transition-snappy),
+                        box-shadow var(--transition-duration) var(--transition-snappy);
+        }
+        
+        @media (max-width: 480px) {
+            .streaming-grid {
+                grid-template-columns: minmax(0, 1fr);
+            }
+
+            .streaming-card {
+                padding: 16px;
+            }
+        }
+
+        .streaming-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(242, 148, 192, 0.45);
+            box-shadow: 0 16px 26px rgba(242, 148, 192, 0.16);
+            color: var(--color-text-primary);
+        }
+
+        .streaming-card.is-disabled {
+            opacity: 0.45;
+            pointer-events: none;
+            border-color: rgba(242, 148, 192, 0.12);
+            background: rgba(6, 14, 30, 0.45);
+        }
+
+        .service-name {
+            font-size: 18px;
+        }
+
+        .listen-chip {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 20px;
+            border-radius: var(--radius-pill);
+            background: linear-gradient(120deg, rgba(242, 148, 192, 0.28), rgba(191, 131, 78, 0.18));
+            color: var(--color-text-primary);
+            letter-spacing: 1px;
+            font-size: 14px;
+            text-transform: uppercase;
+        }
+
+        /* Гладкий скролл к якорям */
+html { scroll-behavior: smooth; }
+
+/* По умолчанию прячем хедер, показываем на ПК */
+.desktop-only { display: none; }
+
+@media (min-width: 1024px) {
+  .desktop-only { display: block; }
+
+  .site-header {
+    position: sticky; /* остаётся сверху при прокрутке */
+    top: 0;
+    z-index: 1000;
+    backdrop-filter: blur(6px);
+    background: rgba(2, 7, 20, 0.65);
+    border-bottom: 1px solid rgba(242, 148, 192, 0.12);
+  }
+
+  .site-nav {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 12px 20px;
+    display: flex;
+    gap: 24px;
+    justify-content: center;
+  }
+
+  .site-nav a {
+    font-family: var(--font-family-base);
+    color: #F294C0;
+    text-decoration: none;
+    font-size: 16px;
+    letter-spacing: 0.2px;
+    transition: opacity .2s ease;
+  }
+
+  .site-nav a:hover { opacity: 0.8; }
+
+  /* Чтобы якоря не прятались под хедер: отступ при прокрутке */
+  .section-title[id] { scroll-margin-top: 80px; }
+}
+
+/* Футер */
+.site-footer {
+  margin-top: 40px;
+  padding: 24px 16px;
+  text-align: center;
+  border-top: 1px solid rgba(242, 148, 192, 0.14);
+  color: var(--color-text-primary);
+}
+
+.site-footer a {
+  color: #F294C0;
+  text-decoration: none;
+}
+
+.site-footer a:hover { text-decoration: underline; }
+
+
+        footer {
+            margin-top: clamp(60px, 8vw, 100px);
+            text-align: center;
+            color: var(--color-text-muted);
+            font-size: 14px;
+            letter-spacing: 1px;
+        }
+@media (min-width: 1024px) {
+  .page { padding-top: calc(clamp(32px, 4vw, 64px) + 64px); }
+}
+        /* по умолчанию моб. блок виден только на узких экранах */
+.mobile-only { display: block; }
+@media (min-width: 1024px) { .mobile-only { display: none; } }
+
+/* шапка на мобилках (занимает место в потоке, не перекрывает контент) */
+.site-header-mobile {
+  position: sticky;
+  top: 0;
+  z-index: 1100;
+  background: rgba(2, 7, 20, 0.8);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid rgba(242, 148, 192, 0.12);
+}
+
+/* верхняя полоска с бургером */
+.mobile-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 14px;
+}
+
+
+
+/* бургер */
+.burger {
+  width: 40px; height: 40px;
+  display: grid; place-items: center;
   background: transparent;
+  border: 1px solid rgba(242,148,192,0.22);
+  border-radius: 12px;
+}
+.burger span {
+  display: block;
+  width: 18px; height: 2px;
+  background: #F294C0;
+  margin: 2px 0;
 }
 
-    html,body{margin:0;padding:0;background:var(--bg);color:var(--text)}
-    body{
-      font-family:var(--ff); line-height:1.55;
-      background:
-        radial-gradient(circle at 20% 10%, rgba(242,148,192,.14), transparent 40%),
-        linear-gradient(160deg, var(--bg) 0%, var(--bg2) 60%, var(--bg) 100%);
-      background-attachment: fixed;
-      -webkit-font-smoothing: antialiased;
-    }
-    @media (max-width: 768px){ body{ background-attachment: scroll; } }
-
-    a{color:inherit}
-
-    .page{max-width:1080px;margin:0 auto;padding:clamp(28px,4vw,56px) clamp(18px,4vw,40px) 120px}
-
-    .section-card{
-      background:var(--surface);
-      border:1px solid var(--border);
-      border-radius:var(--r-lg);
-      padding:clamp(24px,3vw,40px);
-      box-shadow:var(--shadow);
-      backdrop-filter: blur(12px);
-    }
-
-    .section-title{
-      margin:0 0 14px;
-      font-size:clamp(24px,3.6vw,34px);
-      color:var(--pink);
-      letter-spacing:1.2px;
-      text-transform:uppercase;
-    }
-
-    /* ---------- Хедер ---------- */
-    html{ scroll-behavior:smooth; }
-    .desktop-only{ display:none; }
-    @media (min-width:1024px){
-      .desktop-only{ display:block; }
-      .site-header{
-        position:sticky; top:0; z-index:1000;
-        background:rgba(2,7,20,.65);
-        border-bottom:1px solid rgba(242,148,192,.12);
-        backdrop-filter: blur(6px);
-      }
-      .site-nav{
-        max-width:1200px; margin:0 auto; padding:12px 20px;
-        display:flex; gap:26px; justify-content:center;
-      }
-      .site-nav a{
-        color:var(--pink); text-decoration:none; font-size:16px; letter-spacing:.2px;
-        transition:opacity .2s ease;
-      }
-      .site-nav a:hover{ opacity:.85; }
-      .section-title[id]{ scroll-margin-top:80px; }
-      .page{ padding-top: calc(clamp(28px,4vw,56px) + 58px); }
-    }
-
-    /* Мобильная шапка: бургер справа, меню по центру, прозрачная */
-    .mobile-only{ display:block; }
-    @media (min-width:1024px){ .mobile-only{ display:none; } }
-
-    .site-header-mobile{
-      position:sticky; top:0; z-index:1100;
-      background:transparent;
-      border-bottom:none;
-    }
-    .mobile-bar{
-      display:flex; align-items:center; justify-content:flex-end;
-      padding:10px 14px;
-    }
-    .burger{
-      width:40px;height:40px;display:grid;place-items:center;
-      background:transparent;border:1px solid rgba(242,148,192,.22);border-radius:12px;
-    }
-    .burger span{display:block;width:18px;height:2px;background:var(--pink);margin:2px 0;transition:.25s}
-    .burger.is-open span:nth-child(1){ transform: translateY(4px) rotate(45deg); }
-    .burger.is-open span:nth-child(2){ opacity:0; }
-    .burger.is-open span:nth-child(3){ transform: translateY(-4px) rotate(-45deg); }
-
-    .mobile-menu{
-      position:fixed;left:0;right:0;top:0;
-      transform:translateY(-100%);opacity:0;
-      transition:transform .28s ease, opacity .28s ease;
-      background:rgba(2,7,20,.96);
-      border-bottom:1px solid rgba(242,148,192,.14);
-      padding:12px 14px 6px;z-index:1200;
-    }
-    .mobile-menu.open{ transform:translateY(0);opacity:1; }
-    .mobile-nav a{
-      display:block;padding:14px 6px;text-align:center;
-      color:var(--pink);text-decoration:none;font-size:16px;letter-spacing:.2px;
-    }
-    .mobile-overlay{
-      position:fixed; inset:0; background:rgba(2,7,20,.55);
-      z-index:1190; opacity:0; transition:opacity .28s ease;
-    }
-    .mobile-overlay.show{ opacity:1; }
-    @media (max-width:1023.98px){ .section-title[id]{ scroll-margin-top:80px; } }
-
-    /* ---------- Hero ---------- */
-    header.hero{ text-align:center; margin-bottom:clamp(28px,5vw,56px); }
-    .artist-name{
-      margin:0;font-weight:600;
-      font-size:clamp(40px,7vw,72px);
-      color:var(--gold);
-      text-transform:uppercase; letter-spacing:2px;
-    }
-
-    /* ---------- Плеер ---------- */
-    .music-section{ display:grid; gap:24px; }
-    .player-shell{ display:grid; gap:22px; }
-    .now-playing{
-      display:grid; align-items:center; gap:20px;
-      grid-template-columns:minmax(0,240px) minmax(0,1fr);
-    }
-    @media (max-width:640px){ .now-playing{ grid-template-columns:1fr; text-align:center; } }
-
-    .cover-frame{
-      position:relative; border-radius:24px; overflow:hidden; aspect-ratio:1/1;
-      border:1px solid rgba(242,148,192,.22);
-      background:linear-gradient(145deg, rgba(242,148,192,.22), rgba(191,131,78,.14));
-      box-shadow:var(--shadow);
-    }
-    .cover-frame img{ width:100%; height:100%; object-fit:cover; display:block; }
-
-    .now-playing-info{ display:grid; gap:12px; }
-    #nowPlayingTitle{ display:none; color:var(--muted); }
-    .player-playing #nowPlayingTitle{ display:inline-block; }
-
-    .track-title{ margin:0; font-size:clamp(24px,3.6vw,30px); color:var(--gold); }
-    .track-artist{ color:var(--text2); }
-
-    .seek{ -webkit-appearance:none; appearance:none; height:8px; border-radius:999px; background:rgba(242,148,192,.18); overflow:hidden; width:100%; }
-    .seek::-webkit-slider-thumb{ -webkit-appearance:none; width:18px;height:18px;border-radius:50%;background:var(--pink); box-shadow:-400px 0 0 400px rgba(242,148,192,.38); cursor:pointer;}
-    .seek::-moz-range-thumb{ width:18px;height:18px;border:none;border-radius:50%;background:var(--pink); box-shadow:-400px 0 0 400px rgba(242,148,192,.38); cursor:pointer;}
-
-    .timecodes{display:flex;justify-content:space-between;color:var(--muted);font-size:14px}
-
-    .player-controls{display:flex;gap:14px;align-items:center}
-    @media (max-width:640px){ .player-controls{ justify-content:center; } }
-    .control-btn{
-      width:52px;height:52px;border-radius:50%;
-      border:1px solid rgba(242,148,192,.32);
-      background:rgba(8,16,34,.75);color:var(--text);
-      display:inline-flex;align-items:center;justify-content:center;font-size:22px;cursor:pointer;
-      transition:transform .35s cubic-bezier(.16,1,.3,1), background .35s, border-color .35s;
-    }
-    .control-btn:hover{ transform:translateY(-3px); background:rgba(242,148,192,.2); border-color:rgba(242,148,192,.45); }
-
-    .tracklist{ display:grid; gap:10px; }
-    .track-item{
-      display:flex;justify-content:space-between;align-items:center;gap:16px;
-      padding:14px 16px;border-radius:var(--r);border:1px solid rgba(242,148,192,.18);
-      background:rgba(6,14,30,.85);color:var(--text2);cursor:pointer;
-      transition:transform .35s cubic-bezier(.16,1,.3,1), border-color .35s, color .35s;
-    }
-    .track-item:hover{ transform:translateX(4px); border-color:rgba(242,148,192,.4); color:var(--text); }
-    .track-item.is-active{ border-color:rgba(242,197,61,.55); background:linear-gradient(120deg, rgba(242,148,192,.22), rgba(242,197,61,.14)); color:var(--text); }
-    .track-duration{ font-size:13px; color:var(--muted); }
-    .badge{
-      margin-left:8px; padding:3px 8px; border-radius:999px; font-size:11px; letter-spacing:.4px; text-transform:uppercase;
-      color:var(--pink); border:1px solid rgba(242,148,192,.45); background:rgba(242,148,192,.12);
-    }
-
-    /* ---------- Стриминги ---------- */
-    .streaming-grid{ display:grid; grid-template-columns:repeat(auto-fit, minmax(220px,1fr)); gap:16px; }
-    .streaming-card{
-      display:flex; justify-content:space-between; align-items:center;
-      padding:14px 16px; border-radius:var(--r);
-      border:1px solid rgba(242,148,192,.2); background:rgba(8,16,34,.72);
-      text-decoration:none; color:var(--text2);
-      transition:transform .35s cubic-bezier(.16,1,.3,1), border-color .35s, box-shadow .35s;
-    }
-    .streaming-card:hover{ transform:translateY(-3px); border-color:rgba(242,148,192,.45); box-shadow:0 12px 22px rgba(242,148,192,.16); color:var(--text); }
-    .streaming-card.is-disabled{ opacity:.5; pointer-events:none; }
-
-    /* ---------- Календарь ---------- */
-    .calendar-section{ display:grid; gap:18px; }
-    .calendar-header{ display:flex; flex-direction:column; gap:6px; align-items:center; }
-    .calendar-month-label{ font-size:clamp(18px,2.6vw,24px); color:var(--text2); }
-
-    .calendar-stage{
-      position:relative; display:grid; grid-template-columns:1fr;
-      border:1px solid rgba(242,148,192,.22);
-      background:linear-gradient(135deg, rgba(11,23,46,.9), rgba(6,13,32,.9));
-      border-radius:var(--r); overflow:hidden;
-    }
-
-    .calendar-month{
-      grid-area:1/1/2/2; padding:16px; display:grid; gap:10px;
-      opacity:0; transform:translateY(24px);
-      transition:transform .42s cubic-bezier(.16,1,.3,1), opacity .42s;
-      pointer-events:none;
-    }
-    .calendar-month.is-active{ opacity:1; transform:none; pointer-events:auto; }
-
-    .calendar-weekdays, .calendar-grid{
-      display:grid; grid-template-columns:repeat(7, minmax(0,1fr)); gap:6px;
-    }
-    .weekday{ text-transform:uppercase; font-size:12px; color:rgba(248,245,255,.5); text-align:center; letter-spacing:1px; }
-
-    .calendar-day{
-      position:relative; aspect-ratio:1/1; border-radius:16px;
-      display:flex; align-items:center; justify-content:center;
-      font-size:clamp(14px,1.8vw,16px);
-      background:rgba(8,16,34,.65); border:1px solid rgba(242,148,192,.08); color:var(--text);
-      transition:transform .28s cubic-bezier(.16,1,.3,1), border-color .28s, box-shadow .28s;
-    }
-    .calendar-day.empty{ background:transparent; border-color:transparent; }
-    .calendar-day.performance{ border-color:rgba(242,148,192,.45); background:linear-gradient(145deg, rgba(242,148,192,.16), rgba(191,131,78,.12)); cursor:pointer; }
-    .calendar-day.performance:hover{ transform:translateY(-4px); box-shadow:0 12px 22px rgba(242,148,192,.16); }
-    .calendar-day.performance.selected{ border-color:rgba(242,197,61,.8); box-shadow:0 0 0 2px rgba(242,197,61,.25); color:var(--gold); }
-    .calendar-day.performance.past{ opacity:.45; filter:grayscale(.15); cursor:default; }
-
-    .calendar-controls{ display:flex; justify-content:center; gap:12px; }
-    .calendar-nav{
-      width:44px; height:44px; border-radius:50%;
-      border:1px solid rgba(242,148,192,.25); background:rgba(242,148,192,.12);
-      color:var(--text); display:inline-flex; align-items:center; justify-content:center; font-size:20px; cursor:pointer;
-      transition:transform .28s cubic-bezier(.16,1,.3,1), background .28s;
-    }
-    .calendar-nav:hover{ transform:translateY(-2px); background:rgba(242,148,192,.2); }
-
-    .event-wrapper{ }
-    .event-details-card{
-      display:flex; flex-direction:column; gap:18px;
-      background:var(--surface2); border:1px solid rgba(242,148,192,.16);
-      border-radius:var(--r); padding:18px; box-shadow:var(--shadow);
-    }
-    .event-info{ display:grid; gap:8px; min-width:220px; }
-    .event-date{ font-size:clamp(20px,2.6vw,24px); color:var(--gold); }
-    .event-meta{ color:var(--text2); }
-    .event-special{ display:inline-flex; gap:8px; padding:6px 10px; border-radius:999px; border:1px solid rgba(242,148,192,.35); background:rgba(242,148,192,.14); color:var(--pink); font-size:12px; text-transform:uppercase; letter-spacing:.6px; }
-    .event-map-links{ display:flex; gap:10px; flex-wrap:wrap; }
-    .map-btn{
-      display:flex; align-items:center; gap:12px; padding:12px 14px; border-radius:var(--r);
-      border:1px solid rgba(242,148,192,.2); background:rgba(8,16,34,.72); color:var(--text);
-      text-decoration:none; font-size:15px;
-      transition:transform .28s cubic-bezier(.16,1,.3,1), border-color .28s, box-shadow .28s;
-    }
-    .map-btn:hover{ transform:translateX(3px); border-color:rgba(242,148,192,.45); box-shadow:0 12px 18px rgba(242,148,192,.14); }
-    .map-btn img{ width:24px; height:24px; object-fit:contain; }
-    .event-empty{ color:var(--muted); text-align:center; }
-
-    @media (min-width:1024px){
-      .calendar-section.section-card{ padding:22px 26px; }
-      .calendar-stage{ max-width:720px; margin:0 auto; }
-    }
-
-    /* Моб. компактность календаря */
-    @media (max-width:600px){
-      .calendar-month{ padding:14px; gap:8px; }
-      .calendar-weekdays,.calendar-grid{ gap:4px; }
-      .weekday{ font-size:11px; }
-      .calendar-controls{ margin-top:6px; }
-      .calendar-header{ gap:4px; }
-    }
-
-    /* ---------- Плавающая «Поддержать» и док ---------- */
-    .support-fab{
-      position:fixed; right:16px; bottom:16px; z-index:1300;
-      display:inline-flex; align-items:center; justify-content:center; gap:10px;
-      width:clamp(140px, 25vw, 320px); padding:14px 18px; border-radius:999px;
-      border:1px solid transparent; text-decoration:none; color:var(--text);
-      background:linear-gradient(120deg, rgba(242,148,192,.22), rgba(242,197,61,.22), rgba(242,148,192,.22));
-      background-size:220% 220%;
-      animation:supportGlow 4s ease-in-out infinite;
-      box-shadow:0 14px 28px rgba(242,148,192,.25);
-      transition:transform .35s cubic-bezier(.16,1,.3,1), border-color .35s, background-position 2s ease-in-out;
-    }
-    .support-fab:hover{ transform:translateY(-2px); border-color:rgba(242,148,192,.65); }
-    @keyframes supportGlow{
-      0%{ background-position:0% 50%; box-shadow:0 0 0 rgba(242,148,192,0); }
-      50%{ background-position:100% 50%; box-shadow:0 0 16px rgba(242,148,192,.45); }
-      100%{ background-position:0% 50%; box-shadow:0 0 0 rgba(242,148,192,0); }
-    }
-
-    .support-section{ margin-top:clamp(36px,6vw,60px); }
-    .support-grid{ display:grid; grid-template-columns:1fr minmax(240px,360px); gap:16px; align-items:center; }
-    @media (max-width:800px){ .support-grid{ grid-template-columns:1fr; } }
-    .support-quote{ margin:0; color:var(--text2); font-style:italic; }
-    .support-dock{
-      min-height:62px;border:2px dashed rgba(242,148,192,.45);
-      border-radius:16px;display:flex;align-items:center;justify-content:center;padding:10px;opacity:.95;
-    }
-
-    /* ---------- Футер ---------- */
-    .site-footer{ margin-top:40px; padding:24px 16px; text-align:center; border-top:1px solid rgba(242,148,192,.14); color:var(--text); }
-    .site-footer a{ color:var(--pink); text-decoration:none; }
-    .site-footer a:hover{ text-decoration:underline; }
-    .site-footer .footer-made{ margin-top:6px; font-size:14px; color:rgba(255,255,255,.6); }
-
-    .footer-privacy{ margin-top:8px; }
-    .footer-privacy .privacy-link{
-      background:none;border:0;padding:0;cursor:pointer;color:var(--text);opacity:.85;text-decoration:underline;text-underline-offset:3px;
-    }
-    .footer-privacy .privacy-link:hover{ opacity:1; color:var(--pink); }
-
-    /* ---------- Политика / Cookies ---------- */
-    .policy-modal{ position:fixed; inset:0; z-index:1400; display:none; }
-    .policy-modal[aria-hidden="false"]{ display:block; }
-    .policy-backdrop{ position:absolute; inset:0; background:rgba(2,7,20,.65); }
-    .policy-dialog{
-      position:relative; max-width:min(820px,92vw); max-height:min(86vh,1000px); margin:6vh auto;
-      background:linear-gradient(135deg, rgba(11,23,46,.96), rgba(6,13,32,.96));
-      border:1px solid rgba(242,148,192,.18); border-radius:20px; overflow:auto; padding:22px 18px 18px;
-    }
-    .policy-close{
-      position:absolute; top:8px; right:10px; width:36px; height:36px; border-radius:10px;
-      border:1px solid rgba(242,148,192,.22); background:transparent; color:#F8F5FF; cursor:pointer;
-    }
-
-    .cookie-banner{ position:fixed; left:12px; right:12px; bottom:12px; z-index:1500; display:none; }
-    .cookie-banner.show{ display:block; }
-    .cookie-inner{ background:linear-gradient(135deg,rgba(11,23,46,.96),rgba(6,13,32,.96)); border:1px solid rgba(242,148,192,.18); border-radius:16px; padding:14px 14px; color:#F8F5FF; }
-    .cookie-actions{ display:flex; gap:10px; margin-top:10px; flex-wrap:wrap; }
-    @media (min-width:1024px){
-      .cookie-inner{ display:flex; align-items:center; gap:16px; }
-      .cookie-inner p{ margin:0; flex:1 1 auto; min-width:0; }
-      .cookie-actions{ margin-top:0; flex:0 0 auto; display:flex; gap:10px; }
-    }
-    .cookie-accept,.cookie-decline{ border-radius:999px; padding:10px 16px; cursor:pointer; border:1px solid transparent; background:transparent; }
-    .cookie-accept{ background:rgba(242,148,192,.2); border-color:rgba(242,148,192,.45); color:#F8F5FF; }
-    .cookie-decline{ border-color:rgba(248,245,255,.25); color:#F8F5FF; opacity:.85; }
-    .cookie-link{ color:var(--pink); background:none; border:0; padding:0; cursor:pointer; text-decoration:underline; text-underline-offset:3px; }
-    html, body, button, input, select, textarea {
-  font-family: var(--ff);
+/* выпадающее меню: слайд сверху */
+.mobile-menu {
+  position: fixed;
+  left: 0; right: 0; top: 0;
+  transform: translateY(-100%);
+  transition: transform .28s ease, opacity .28s ease;
+  background: rgba(2, 7, 20, 0.96);
+  border-bottom: 1px solid rgba(242,148,192,0.14);
+  padding: 12px 14px 6px;
+  z-index: 1200;
+  opacity: 0;
 }
-.section-title,
-.calendar-day,
-.track-item,
-.streaming-card,
-.support-fab,
-.mobile-nav a,
+.mobile-menu.open {
+  transform: translateY(0);
+  opacity: 1;
+}
+.mobile-nav a {
+  display: block;
+  padding: 12px 6px;
+  font-family: var(--font-family-base);
+  color: #F294C0;
+  text-decoration: none;
+  font-size: 16px;
+  letter-spacing: 0.2px;
+}
+.mobile-nav a + a { border-top: 1px dashed rgba(242,148,192,0.18); }
+
+/* затемнение вокруг меню */
+.mobile-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(2,7,20,0.55);
+  z-index: 1190;
+  opacity: 0;
+  transition: opacity .28s ease;
+}
+.mobile-overlay.show { opacity: 1; }
+
+/* чтобы якоря не прятались под шапкой на мобилках */
+@media (max-width: 1023.98px) {
+  .section-title[id] { scroll-margin-top: 80px; }
+}
+
+/* для компактности: ещё чуть ближе кнопки к календарю на мобилках (если хочешь) */
+@media (max-width: 600px) {
+  .calendar-controls { margin-top: -20px; }
+}
+/* solid gold title instead of gradient */
 .artist-name {
-  font-family: inherit;
+  background: none !important;
+  -webkit-text-fill-color: var(--color-gold) !important;
+  color: var(--color-gold) !important;
 }
-    .section{margin-block: clamp(28px,4vw,56px);} /* фикс слепания секций */
+        /* центрируем пункты меню */
+.mobile-nav a { text-align: center; }
 
-.hero-frame{
-  height: clamp(220px, 36vw, 420px);
-  border-radius: 24px;
-  background: radial-gradient(120% 120% at 10% 0%, rgba(255,255,255,.07), rgba(8,14,30,.3));
-  border: 1px solid rgba(242,148,192,.18);
-  box-shadow: 0 10px 40px rgba(0,0,0,.35) inset, 0 20px 60px rgba(0,0,0,.25);
-  overflow: hidden;
-  display: grid; place-items: center;
-}
-.hero-frame img{
-  width: 100%; height: 100%; object-fit: cover;
-  filter: saturate(1.05) contrast(1.02);
+/* убираем разделительные линии */
+.mobile-nav a + a { border-top: 0 !important; }
+
+/* делаем шапку на мобильных прозрачной */
+.site-header-mobile {
+  background: transparent !important;
+  border-bottom: 0 !important;
+  backdrop-filter: none !important;
 }
 
-  </style>
+/* анимация бургера в крестик */
+.burger { position: relative; }
+.burger span {
+  transition: transform .25s var(--transition-snappy), opacity .25s var(--transition-snappy);
+}
+.burger.is-open span:nth-child(1) { transform: translateY(4px) rotate(45deg); }
+.burger.is-open span:nth-child(2) { opacity: 0; }
+.burger.is-open span:nth-child(3) { transform: translateY(-4px) rotate(-45deg); }
+
+  .site-footer .footer-made {
+  margin-top: 6px;                    /* под «Все права защищены» */
+  font-family: var(--font-family-base);
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.6);    /* серый; можно заменить на var(--color-text-muted) */
+}
+
+.site-footer .footer-made-link {
+  color: inherit;                      /* тот же серый */
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.site-footer .footer-made-link:hover {
+  opacity: .85;
+}
+@media (max-width: 1023.98px) {
+  .mobile-brand { order: 1; }  /* слева */
+  .burger       { order: 2; }  /* справа */
+}
+        /* --- footer link --- */
+.footer-privacy { margin-top: 8px; }
+.footer-privacy .privacy-link{
+  background: none; border: 0; padding: 0; cursor: pointer;
+  color: var(--color-text-primary, #F8F5FF); opacity: .8;
+  font-family: var(--font-family-base); text-decoration: underline; text-underline-offset: 3px;
+}
+.footer-privacy .privacy-link:hover{ opacity: 1; color: #F294C0; }
+
+/* --- policy modal --- */
+.policy-modal{ position: fixed; inset:0; z-index:1400; display:none; }
+.policy-modal[aria-hidden="false"]{ display:block; }
+.policy-backdrop{ position:absolute; inset:0; background:rgba(2,7,20,.65); }
+.policy-dialog{
+  position:relative; max-width:min(820px, 92vw); max-height:min(86vh, 1000px);
+  margin:6vh auto; background:linear-gradient(135deg,rgba(11,23,46,.96),rgba(6,13,32,.96));
+  border:1px solid rgba(242,148,192,.18); border-radius:20px; overflow:auto;
+  padding:22px 18px 18px;
+}
+.policy-close{
+  position:absolute; top:8px; right:10px; width:36px; height:36px;
+  border-radius:10px; border:1px solid rgba(242,148,192,.22);
+  background:transparent; color:#F8F5FF; cursor:pointer;
+}
+.policy-content{ color:#F8F5FF; font-family:var(--font-family-base); }
+.policy-content h2{ color:#F2C53D; margin:6px 0 8px; font-size:clamp(20px,3vw,26px); }
+.policy-content h3{ color:#F294C0; margin:16px 0 6px; font-size:18px; }
+.policy-content a{ color:#F294C0; text-decoration:none }
+.policy-content a:hover{ text-decoration:underline }
+.policy-content .muted{ color:rgba(248,245,255,.7) }
+
+/* --- cookie banner --- */
+.cookie-banner{
+  position: fixed; left: 12px; right: 12px; bottom: 12px; z-index:1500;
+  display: none;
+}
+.cookie-banner.show{ display:block; }
+.cookie-inner{
+  background:linear-gradient(135deg,rgba(11,23,46,.96),rgba(6,13,32,.96));
+  border:1px solid rgba(242,148,192,.18); border-radius:16px; padding:14px 14px;
+  color:#F8F5FF; font-family:var(--font-family-base); font-size:14px;
+}
+.cookie-actions{ display:flex; gap:10px; margin-top:10px; flex-wrap:wrap }
+.cookie-accept, .cookie-decline{
+  border-radius:999px; padding:10px 16px; cursor:pointer; border:1px solid transparent; background:transparent;
+  font-family:var(--font-family-base);
+}
+.cookie-accept{ background:rgba(242,148,192,.2); border-color:rgba(242,148,192,.45); color:#F8F5FF; }
+.cookie-accept:hover{ background:rgba(242,148,192,.3); }
+.cookie-decline{ border-color:rgba(248,245,255,.25); color:#F8F5FF; opacity:.8 }
+.cookie-decline:hover{ opacity:1 }
+.cookie-link{
+  color:#F294C0; background:none; border:0; padding:0; cursor:pointer;
+  text-decoration: underline; text-underline-offset:3px;
+}
+
+/* чтобы якоря не прятались под десктоп-хедером */
+@media (min-width: 1024px){ .section-title[id]{ scroll-margin-top: 90px; } }
+        /* Cookie banner: на ПК кнопки справа от текста */
+@media (min-width: 1024px) {
+  .cookie-inner{
+    display: flex;
+    align-items: center;
+    gap: 16px;                /* расстояние между текстом и кнопками */
+  }
+  .cookie-inner p{
+    margin: 0;
+    flex: 1 1 auto;           /* текст занимает всё доступное слева */
+    min-width: 0;             /* позволяет корректно переносить строки */
+  }
+  .cookie-actions{
+    margin-top: 0;            /* убираем отступ сверху */
+    flex: 0 0 auto;           /* ширина по контенту (кнопкам) */
+    display: flex;
+    gap: 10px;                /* расстояние между кнопками */
+  }
+}
+        /* Кнопка-логотип Telegram в футере */
+.tg-chip{
+  display:inline-flex; align-items:center; justify-content:center;
+  height:30px; width:36px; padding:0; margin-left:10px;
+  border:1px solid var(--color-gold); border-radius:12px;
+  background: transparent; text-decoration:none; transition:transform .15s ease;
+  vertical-align:middle;
+}
+.tg-chip:hover{ transform: translateY(-1px); }
+.tg-chip img{ display:block; width:22px; height:22px; }
+/* По умолчанию скрыто */
+#nowPlayingTitle{ display:none; }
+/* Когда плеер играет — показываем */
+.player-playing #nowPlayingTitle{ display:block; }
+/* временно скрыть кнопку Telegram в футере */
+.tg-chip { display: none !important; }
+    </style>
 </head>
 <body>
-
-  <!-- Desktop header -->
-  <header class="site-header desktop-only">
-    <nav class="site-nav">
-      <a href="#supportTitle">Поддержать</a>
-      <a href="#calendarTitle">Выступления</a>
-      <a href="#musicTitle">Слушать</a>
-      <a href="#contacts">Контакты</a>
-    </nav>
-  </header>
-
-  <section id="hero" class="section hero-intro">
-  <div class="container">
-    <div class="hero-wrap">
-      <div class="hero-avatar">
-        <!-- положи свою фотографию в images/ и поменяй путь при необходимости -->
-        <img src="images/artist.jpg" alt="Варя Кузнецова" loading="eager">
-      </div>
-      <h1 class="artist-name">ВАРЯ<br>КУЗНЕЦОВА</h1>
-    </div>
+    <header class="site-header desktop-only">
+  <nav class="site-nav">
+    <a href="#supportTitle">Поддержать</a>
+    <a href="#calendarTitle">Выступления</a>
+    <a href="#musicTitle">Слушать</a>
+    <a href="#contacts">Контакты</a>
+  </nav>
+</header>
+    <header class="site-header-mobile mobile-only">
+  <div class="mobile-bar">
+    <button id="mobileMenuButton"
+            class="burger"
+            aria-label="Открыть меню"
+            aria-expanded="false"
+            aria-controls="mobileMenu">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="mobile-brand"></div>
   </div>
-</section>
 
-  <!-- Mobile header (burger on right) -->
-  <header class="site-header-mobile mobile-only" aria-label="Навигация">
-    <div class="mobile-bar">
-      <button id="mobileMenuButton" class="burger" aria-label="Открыть меню" aria-expanded="false" aria-controls="mobileMenu">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-    <div id="mobileMenu" class="mobile-menu" hidden>
-      <nav class="mobile-nav" role="menu">
-        <a href="#supportTitle"  role="menuitem">Поддержать</a>
-        <a href="#calendarTitle" role="menuitem">Выступления</a>
-        <a href="#musicTitle"    role="menuitem">Слушать</a>
-        <a href="#contacts"      role="menuitem">Контакты</a>
-      </nav>
-    </div>
-    <div id="mobileMenuOverlay" class="mobile-overlay" hidden></div>
-  </header>
+  <div id="mobileMenu" class="mobile-menu" hidden>
+    <nav class="mobile-nav" role="menu">
+      <a href="#supportTitle"  role="menuitem">Поддержать</a>
+      <a href="#calendarTitle" role="menuitem">Выступления</a>
+      <a href="#musicTitle"    role="menuitem">Слушать</a>
+      <a href="#contacts"      role="menuitem">Контакты</a>
+    </nav>
+  </div>
 
-  <div class="page">
-    <!-- Hero -->
-    <header class="hero">
-      <h1 class="artist-name">Варя Кузнецова</h1>
-    </header>
-
-    <!-- MUSIC -->
-    <section class="music-section section-card" aria-labelledby="musicTitle">
-      <h2 id="musicTitle" class="section-title">Мои песни</h2>
-
-      <div class="player-shell">
-        <div class="now-playing">
-          <div class="cover-frame">
-            <img id="trackCover" src="images/holodno.png" alt="Обложка выбранного трека" />
-          </div>
-          <div class="now-playing-info">
-            <span id="nowPlayingTitle">Сейчас звучит</span>
-            <h3 id="trackTitle" class="track-title">Выберите трек</h3>
-            <span id="trackArtist" class="track-artist"></span>
-
-            <input id="seekBar" class="seek" type="range" min="0" max="100" value="0" step="0.1" aria-label="Перемотка">
-            <div class="timecodes"><span id="currentTime">0:00</span><span id="totalTime">0:00</span></div>
-
-            <div class="player-controls">
-              <button class="control-btn" id="prevTrack" aria-label="Предыдущий">⟸</button>
-              <button class="control-btn" id="playPause" aria-label="Пуск / Пауза">▶</button>
-              <button class="control-btn" id="nextTrack" aria-label="Следующий">⟹</button>
+  <div id="mobileMenuOverlay" class="mobile-overlay" hidden></div>
+</header>
+    <div class="page">
+        <header class="hero">
+            <div class="hero-inner">
+                <div class="artist-avatar" aria-hidden="true">
+                    <div class="artist-avatar-frame">
+                        <img src="images/artist.jpg" alt="Фото Вари Кузнецовой" />
+                    </div>
+                </div>
+                <div class="hero-copy">
+                    <h1 class="artist-name">Варя Кузнецова</h1>
+                </div>
             </div>
+        </header>
+
+        <section class="fundraising section-card">
+          <div class="fundraising-content">
+            <div>
+            <h2 id="supportTitle" class="section-title">Собираю на съемки клипа</h2>
+            </div>
+
+            <div class="fundraising-canvas">
+              <canvas id="bitchesCanvas" aria-hidden="true"></canvas>
+            </div>
+              
+<div class="fundraising-stats">
+  <span class="fundraising-amount">
+    Собрано:
+    <strong id="fundraisingCurrent" data-amount="12450">12 450 ₽</strong>
+    <br class="fundraising-break">
+    из 250 000 ₽
+  </span>
+  <span>Цель: снять клип до конца осени.</span>
+</div>
+
+            <a class="support-btn" href="https://pay.cloudtips.ru/p/ee1db799" target="_blank" rel="noopener">
+              ✨ Поддержать
+            </a>
           </div>
-        </div>
+        </section>
 
-        <div class="tracklist" id="trackList" aria-label="Список треков"></div>
-      </div>
-
-      <div class="streaming-grid" id="streamingLinks">
-        <a class="streaming-card" id="streamYandex" data-service="yandex" href="#" target="_blank" rel="noopener">
-          <span>Яндекс Музыка</span><span class="listen-chip">Слушать</span>
-        </a>
-        <a class="streaming-card" id="streamVK" data-service="vk" href="#" target="_blank" rel="noopener">
-          <span>VK Музыка</span><span class="listen-chip">Слушать</span>
-        </a>
-        <a class="streaming-card" id="streamMTS" data-service="mts" href="#" target="_blank" rel="noopener">
-          <span>МТС Музыка</span><span class="listen-chip">Слушать</span>
-        </a>
-        <a class="streaming-card" id="streamSpotify" data-service="spotify" href="#" target="_blank" rel="noopener">
-          <span>Spotify</span><span class="listen-chip">Слушать</span>
-        </a>
-        <a class="streaming-card" id="streamApple" data-service="apple" href="#" target="_blank" rel="noopener">
-          <span>Apple Music</span><span class="listen-chip">Слушать</span>
-        </a>
-      </div>
-    </section>
-
-    <!-- CALENDAR -->
-    <section class="calendar-section section-card" aria-labelledby="calendarTitle">
-      <div class="calendar-header">
+<section class="calendar-section section-card" aria-labelledby="calendarTitle">
+    <div class="calendar-header">
         <h2 id="calendarTitle" class="section-title">Расписание выступлений</h2>
         <span id="calendarMonthLabel" class="calendar-month-label"></span>
-      </div>
+    </div>
 
-      <div class="calendar-stage" id="calendarStage" aria-live="polite"></div>
+    <div class="calendar-stage" id="calendarStage" aria-live="polite"></div>
 
-      <div class="calendar-controls">
+    <div class="calendar-controls calendar-controls-bottom">
         <button class="calendar-nav" id="calendarPrev" aria-label="Предыдущий месяц">⟨</button>
         <button class="calendar-nav" id="calendarNext" aria-label="Следующий месяц">⟩</button>
-      </div>
-
-      <div class="event-wrapper" id="eventDetails"></div>
-    </section>
-
-    <!-- SUPPORT (нижний блок с доком кнопки) -->
-    <section id="support" class="section">
-  <div class="container">
-    <h2 class="section-title">Собираю на сведение и мастеринг треков</h2>
-
-    <div class="support-layout" style="display:grid;grid-template-columns:1fr auto;gap:24px;align-items:center;">
-      <blockquote class="quote" style="margin:0;color:#d6d7e1;opacity:.9">«Собираю на сведение и мастеринг треков»</blockquote>
-      <div class="support-slot">
-        <div class="slot-box" id="supportDock" aria-hidden="true"></div>
-      </div>
     </div>
-  </div>
+
+    <div class="event-wrapper" id="eventDetails"></div>
 </section>
 
-    <!-- FOOTER -->
-    <footer id="contacts" class="site-footer">
-      <div>По всем вопросам: <a href="mailto:varrrvarkaaa@yandex.ru">varrrvarkaaa@yandex.ru</a></div>
-      <div class="footer-privacy"><button type="button" class="privacy-link" data-open-policy>Политика конфиденциальности</button></div>
-      <div style="margin-top:10px;color:var(--muted);font-size:14px">© 2025 Варя Кузнецова. Все права защищены.</div>
-      <div class="footer-made">Изготовлено <a class="footer-made-link" href="https://vibecard.ru/?utm_source=site&utm_medium=cpc&utm_campaign=varia_kuz&utm_content=link" target="_blank" rel="noopener">VibeCard</a></div>
-    </footer>
+
+        <section class="music-section section-card" aria-labelledby="musicTitle">
+            <div>
+                <h2 id="musicTitle" class="section-title">Мои песни</h2>
+            </div>
+            <div class="player-shell">
+                <div class="now-playing">
+                    <div class="cover-frame">
+                        <img id="trackCover" src="images/holodno.png" alt="Обложка выбранного трека" />
+                    </div>
+                    <div class="now-playing-info">
+                          <span id="nowPlayingTitle" class="now-playing-label">Сейчас звучит</span>
+                          <h3 id="trackTitle" class="track-title">Выберите трек из списка</h3>
+                        <span id="trackArtist" class="track-artist"></span>
+                        <div class="progress-bar">
+                            <input id="seekBar" class="seek" type="range" min="0" max="100" value="0" step="0.1" aria-label="Перемотка трека">
+                            <div class="timecodes">
+                                <span id="currentTime">0:00</span>
+                                <span id="totalTime">0:00</span>
+                            </div>
+                        </div>
+                        <div class="player-controls">
+                            <button class="control-btn" id="prevTrack" aria-label="Предыдущий трек">⟸</button>
+                            <button class="control-btn" id="playPause" aria-label="Пуск / пауза">▶</button>
+                            <button class="control-btn" id="nextTrack" aria-label="Следующий трек">⟹</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="tracklist" id="trackList" aria-label="Список треков"></div>
+            </div>
+            <div class="streaming-grid" id="streamingLinks">
+                <a class="streaming-card" id="streamYandex" data-service="yandex" href="#" target="_blank" rel="noopener">
+                    <span class="service-name">Яндекс Музыка</span>
+                    <span class="listen-chip">Слушать</span>
+                </a>
+                <a class="streaming-card" id="streamVK" data-service="vk" href="#" target="_blank" rel="noopener">
+                    <span class="service-name">VK Музыка</span>
+                    <span class="listen-chip">Слушать</span>
+                </a>
+                <a class="streaming-card" id="streamMTS" data-service="mts" href="#" target="_blank" rel="noopener">
+                    <span class="service-name">МТС Музыка</span>
+                    <span class="listen-chip">Слушать</span>
+                </a>
+                <a class="streaming-card" id="streamSpotify" data-service="spotify" href="#" target="_blank" rel="noopener">
+                    <span class="service-name">Spotify</span>
+                    <span class="listen-chip">Слушать</span>
+                </a>
+                <a class="streaming-card" id="streamApple" data-service="apple" href="#" target="_blank" rel="noopener">
+                    <span class="service-name">Apple Music</span>
+                    <span class="listen-chip">Слушать</span>
+                </a>
+            </div>
+        </section>
+
+        <footer id="contacts" class="site-footer">
+  <div>По всем вопросам: 
+  <a href="mailto:varrrvarkaaa@yandex.ru">varrrvarkaaa@yandex.ru</a>
+</div>
+  <div class="footer-privacy">
+  <button type="button" class="privacy-link" data-open-policy>Политика конфиденциальности</button>
+</div>
+  <div style="margin-top:10px; color:var(--color-text-muted); font-size:14px;">© 2025 Варя Кузнецова. Все права защищены.</div>
+  <div class="footer-made">Изготовлено <a class="footer-made-link" href="https://vibecard.ru/?utm_source=site&utm_medium=cpc&utm_campaign=varia_kuz&utm_content=link" target="_blank" rel="noopener">Vibe Card</a>
   </div>
+        </footer>
 
-  <!-- Плавающая кнопка -->
-  <a id="supportFab" class="support-fab" href="https://pay.cloudtips.ru/p/ee1db799" target="_blank" rel="noopener" aria-label="Поддержать">✨ Поддержать</a>
+    </div>
 
-  <!-- Аудио -->
-  <audio id="audioElement" preload="metadata"></audio>
+    <audio id="audioElement" preload="metadata"></audio>
 
-  <!-- Мобильное меню -->
-  <script>
-    (function(){
-      const btn = document.getElementById('mobileMenuButton');
-      const menu = document.getElementById('mobileMenu');
-      const overlay = document.getElementById('mobileMenuOverlay');
-      if(!btn || !menu || !overlay) return;
+    <script>
+        const monthNames = [
+            'январь', 'февраль', 'март', 'апрель', 'май', 'июнь',
+            'июль', 'август', 'сентябрь', 'октябрь', 'ноябрь', 'декабрь'
+        ];
 
-      const links = menu.querySelectorAll('a');
+      const performanceSchedule = {
+    '2025-11': {
+        2: { dayLabel: 'вс', time: '21:00 – 00:00', venue: 'бар «Берг-Коллегия»', metro: 'м. Кропоткинская / Парк Культуры', address: 'Берг-Коллегия, Москва' },
+        8: { dayLabel: 'сб', time: '21:00 – 00:00', venue: 'бар «Берг-Коллегия»', metro: 'м. Кропоткинская / Парк Культуры', address: 'Берг-Коллегия, Москва' },
+        11: { dayLabel: 'вт', time: '19:00', venue: 'бар «Really Bar»', metro: 'м. Китай-город', address: 'Really Bar, Москва', special: 'Квартирник · День рождения' },
+        13: { dayLabel: 'чт', time: '20:00 – 22:00', venue: 'бар «Курорт»', metro: 'м. Новокузнецкая / Третьяковская', address: 'Курорт, Москва' },
+        14: { dayLabel: 'пт', time: '21:00 – 23:00', venue: 'бар «И в горе и в радости»', metro: 'м. Сухаревская', address: 'И в горе и в радости, Москва' },
+        15: { dayLabel: 'сб', time: '21:00 – 00:00', venue: 'бар «Берг-Коллегия»', metro: 'м. Кропоткинская / Парк Культуры', address: 'Берг-Коллегия, Москва' },
+        20: { dayLabel: 'чт', time: '21:00 – 23:00', venue: 'бар «Fest bar»', metro: 'м. Пушкинская', address: 'Fest bar, Москва' },
+        21: { dayLabel: 'пт', time: '20:00 – 23:00', venue: 'HookahPlace Lago', metro: 'м. Озёрная', address: 'HookahPlace Lago, ул. Озёрная, Москва' },
+        22: { dayLabel: 'сб', time: '21:00 – 00:00', venue: 'бар «Берг-Коллегия»', metro: 'м. Кропоткинская / Парк Культуры', address: 'Берг-Коллегия, Москва' },
+        23: { dayLabel: 'вс', time: '18:00 – 20:00', venue: 'бар «Моряк и чайка»', metro: 'м. Новокузнецкая / Третьяковская', address: 'Моряк и чайка, Москва' },
+        27: { dayLabel: 'чт', time: '20:00 – 22:00', venue: 'бар «Курорт»', metro: 'м. Новокузнецкая / Третьяковская', address: 'Курорт, Москва' },
+        28: { dayLabel: 'пт', time: '20:00 – 22:00', venue: 'паб «Маккларенс»', metro: 'м. Преображенская площадь', address: 'Маккларенс, Москва' },
+        29: { dayLabel: 'сб', time: '21:00 – 00:00', venue: 'бар «Берг-Коллегия»', metro: 'м. Кропоткинская / Парк Культуры', address: 'Берг-Коллегия, Москва' }
+    },
 
-      function openMenu(){
-        btn.setAttribute('aria-expanded','true'); btn.classList.add('is-open');
-        menu.hidden=false; overlay.hidden=false;
-        requestAnimationFrame(()=>{ menu.classList.add('open'); overlay.classList.add('show'); });
-        document.body.style.overflow='hidden';
-      }
-      function closeMenu(){
-        btn.setAttribute('aria-expanded','false'); btn.classList.remove('is-open');
-        menu.classList.remove('open'); overlay.classList.remove('show');
-        setTimeout(()=>{ menu.hidden=true; overlay.hidden=true; }, 280);
-        document.body.style.overflow='';
-      }
-      function toggleMenu(){ (btn.getAttribute('aria-expanded')==='true') ? closeMenu() : openMenu(); }
+    '2025-12': {
+  5:  { // уже было: HookahPlace Lago (пт)
+    dayLabel: 'пт',
+    time: '20:00 – 23:00',
+    venue: 'HookahPlace Lago',
+    metro: 'м. Озёрная',
+    address: 'HookahPlace Lago, ул. Озёрная, Москва'
+  },
 
-      btn.addEventListener('click', toggleMenu);
-      overlay.addEventListener('click', closeMenu);
-      document.addEventListener('keydown', e => { if(e.key === 'Escape') closeMenu(); });
-      links.forEach(a => a.addEventListener('click', closeMenu));
-    })();
-  </script>
+  6:  { // новая суббота: Берг-Коллегия
+    dayLabel: 'сб',
+    time: '21:00 – 00:00',
+    venue: 'бар «Берг-Коллегия»',
+    metro: 'м. Кропоткинская / Парк Культуры',
+    address: 'Берг-Коллегия, Москва'
+  },
 
-  <!-- Календарь -->
-  <script>
-    const monthNames = ['январь','февраль','март','апрель','май','июнь','июль','август','сентябрь','октябрь','ноябрь','декабрь'];
+  11: { // новый «Курорт» (чт)
+    dayLabel: 'чт',
+    time: '20:00 – 22:00',
+    venue: 'бар «Курорт»',
+    metro: 'м. Новокузнецкая / Третьяковская',
+    address: 'Курорт, Москва'
+  },
 
-    const performanceSchedule = {
-      '2025-11': {
-        2:{dayLabel:'вс',time:'21:00 – 00:00',venue:'бар «Берг-Коллегия»',metro:'м. Кропоткинская / Парк Культуры',address:'Берг-Коллегия, Москва'},
-        8:{dayLabel:'сб',time:'21:00 – 00:00',venue:'бар «Берг-Коллегия»',metro:'м. Кропоткинская / Парк Культуры',address:'Берг-Коллегия, Москва'},
-        11:{dayLabel:'вт',time:'19:00',venue:'бар «Really Bar»',metro:'м. Китай-город',address:'Really Bar, Москва', special:'Квартирник · День рождения'},
-        13:{dayLabel:'чт',time:'20:00 – 22:00',venue:'бар «Курорт»',metro:'м. Новокузнецкая / Третьяковская',address:'Курорт, Москва'},
-        14:{dayLabel:'пт',time:'21:00 – 23:00',venue:'бар «И в горе и в радости»',metro:'м. Сухаревская',address:'И в горе и в радости, Москва'},
-        15:{dayLabel:'сб',time:'21:00 – 00:00',venue:'бар «Берг-Коллегия»',metro:'м. Кропоткинская / Парк Культуры',address:'Берг-Коллегия, Москва'},
-        20:{dayLabel:'чт',time:'21:00 – 23:00',venue:'бар «Fest bar»',metro:'м. Пушкинская',address:'Fest bar, Москва'},
-        21:{dayLabel:'пт',time:'20:00 – 23:00',venue:'HookahPlace Lago',metro:'м. Озёрная',address:'HookahPlace Lago, ул. Озёрная, Москва'},
-        22:{dayLabel:'сб',time:'21:00 – 00:00',venue:'бар «Берг-Коллегия»',metro:'м. Кропоткинская / Парк Культуры',address:'Берг-Коллегия, Москва'},
-        23:{dayLabel:'вс',time:'18:00 – 20:00',venue:'бар «Моряк и чайка»',metro:'м. Новокузнецкая / Третьяковская',address:'Моряк и чайка, Москва'},
-        27:{dayLabel:'чт',time:'20:00 – 22:00',venue:'бар «Курорт»',metro:'м. Новокузнецкая / Третьяковская',address:'Курорт, Москва'},
-        28:{dayLabel:'пт',time:'20:00 – 22:00',venue:'паб «Маккларенс»',metro:'м. Преображенская площадь',address:'Маккларенс, Москва'},
-        29:{dayLabel:'сб',time:'21:00 – 00:00',venue:'бар «Берг-Коллегия»',metro:'м. Кропоткинская / Парк Культуры',address:'Берг-Коллегия, Москва'}
-      },
-      '2025-12': {
-        5:{dayLabel:'пт',time:'20:00 – 23:00',venue:'HookahPlace Lago',metro:'м. Озёрная',address:'HookahPlace Lago, ул. Озёрная, Москва'},
-        6:{dayLabel:'сб',time:'21:00 – 00:00',venue:'бар «Берг-Коллегия»',metro:'м. Кропоткинская / Парк Культуры',address:'Берг-Коллегия, Москва'},
-        11:{dayLabel:'чт',time:'20:00 – 22:00',venue:'бар «Курорт»',metro:'м. Новокузнецкая / Третьяковская',address:'Курорт, Москва'},
-        13:{dayLabel:'сб',time:'21:00 – 00:00',venue:'бар «Берг-Коллегия»',metro:'м. Кропоткинская / Парк Культуры',address:'Берг-Коллегия, Москва'},
-        18:{dayLabel:'чт',time:'20:00 – 22:00',venue:'бар «Курорт»',metro:'м. Новокузнецкая / Третьяковская',address:'Курорт, Москва'},
-        19:{dayLabel:'пт',time:'20:00 – 22:00',venue:'паб «Маккларенс»',metro:'м. Преображенская площадь',address:'Маккларенс, Москва'},
-        20:{dayLabel:'сб',time:'21:00 – 00:00',venue:'бар «Берг-Коллегия»',metro:'м. Кропоткинская / Парк Культуры',address:'Берг-Коллегия, Москва'},
-        25:{dayLabel:'чт',time:'20:00 – 22:00',venue:'бар «Курорт»',metro:'м. Новокузнецкая / Третьяковская',address:'Курорт, Москва'},
-        26:{dayLabel:'пт',time:'20:00 – 23:00',venue:'HookahPlace Lago',metro:'м. Озёрная',address:'HookahPlace Lago, ул. Озёрная, Москва'},
-        27:{dayLabel:'сб',time:'21:00 – 00:00',venue:'бар «Берг-Коллегия»',metro:'м. Кропоткинская / Парк Культуры',address:'Берг-Коллегия, Москва'}
-      }
-    };
+  13: { // новая суббота: Берг-Коллегия
+    dayLabel: 'сб',
+    time: '21:00 – 00:00',
+    venue: 'бар «Берг-Коллегия»',
+    metro: 'м. Кропоткинская / Парк Культуры',
+    address: 'Берг-Коллегия, Москва'
+  },
 
-    function getMoscowToday(){
-      const now = new Date();
-      const s = now.toLocaleString('en-US', { timeZone:'Europe/Moscow' });
-      const d = new Date(s);
-      return new Date(d.getFullYear(), d.getMonth(), d.getDate());
-    }
+  18: { // новый «Курорт» (чт)
+    dayLabel: 'чт',
+    time: '20:00 – 22:00',
+    venue: 'бар «Курорт»',
+    metro: 'м. Новокузнецкая / Третьяковская',
+    address: 'Курорт, Москва'
+  },
 
-    const scheduleMonths = Object.keys(performanceSchedule).sort();
-    const [firstYear, firstMonth] = scheduleMonths[0].split('-').map(Number);
-    const startDate = new Date(firstYear, firstMonth - 1, 1);
-    const moscowToday = getMoscowToday();
+  19: { // уже было: Маккларенс (пт)
+    dayLabel: 'пт',
+    time: '20:00 – 22:00',
+    venue: 'паб «Маккларенс»',
+    metro: 'м. Преображенская площадь',
+    address: 'Маккларенс, Москва'
+  },
 
-    function findNearestEvent(today){
-      let nearestFuture=null, latestPast=null;
-      scheduleMonths.forEach(mKey=>{
-        const [y,m]=mKey.split('-').map(Number);
-        Object.keys(performanceSchedule[mKey]).forEach(d=>{
-          const dateObj=new Date(y, m-1, Number(d));
-          const meta={monthKey:mKey, day:Number(d), dateObj};
-          if(dateObj>=today){ if(!nearestFuture || dateObj<nearestFuture.dateObj) nearestFuture=meta; }
-          else{ if(!latestPast || dateObj>latestPast.dateObj) latestPast=meta; }
+  20: { // новая суббота: Берг-Коллегия
+    dayLabel: 'сб',
+    time: '21:00 – 00:00',
+    venue: 'бар «Берг-Коллегия»',
+    metro: 'м. Кропоткинская / Парк Культуры',
+    address: 'Берг-Коллегия, Москва'
+  },
+
+  25: { // новый «Курорт» (чт)
+    dayLabel: 'чт',
+    time: '20:00 – 22:00',
+    venue: 'бар «Курорт»',
+    metro: 'м. Новокузнецкая / Третьяковская',
+    address: 'Курорт, Москва'
+  },
+
+  26: { // уже было: HookahPlace Lago (пт)
+    dayLabel: 'пт',
+    time: '20:00 – 23:00',
+    venue: 'HookahPlace Lago',
+    metro: 'м. Озёрная',
+    address: 'HookahPlace Lago, ул. Озёрная, Москва'
+  },
+
+  27: { // новая суббота: Берг-Коллегия
+    dayLabel: 'сб',
+    time: '21:00 – 00:00',
+    venue: 'бар «Берг-Коллегия»',
+    metro: 'м. Кропоткинская / Парк Культуры',
+    address: 'Берг-Коллегия, Москва'
+  }
+}
+};
+
+        // "Сегодня" по московскому времени (Europe/Moscow)
+function getMoscowToday() {
+    const now = new Date();
+    const moscowString = now.toLocaleString('en-US', { timeZone: 'Europe/Moscow' });
+    const moscowNow = new Date(moscowString);
+    return new Date(moscowNow.getFullYear(), moscowNow.getMonth(), moscowNow.getDate());
+}
+
+const scheduleMonths = Object.keys(performanceSchedule).sort();
+const [firstYear, firstMonth] = scheduleMonths[0].split('-').map(Number);
+const startDate = new Date(firstYear, firstMonth - 1, 1);
+const moscowToday = getMoscowToday();
+
+function findNearestEvent(todayDate) {
+    let nearestFuture = null;
+    let latestPast = null;
+
+    scheduleMonths.forEach(monthKey => {
+        const [year, month] = monthKey.split('-').map(Number);
+        const daysObj = performanceSchedule[monthKey];
+        Object.keys(daysObj).forEach(dayStr => {
+            const day = Number(dayStr);
+            const dateObj = new Date(year, month - 1, day);
+            const meta = { monthKey, day, dateObj };
+
+            if (dateObj >= todayDate) {
+                if (!nearestFuture || dateObj < nearestFuture.dateObj) {
+                    nearestFuture = meta;
+                }
+            } else {
+                if (!latestPast || dateObj > latestPast.dateObj) {
+                    latestPast = meta;
+                }
+            }
         });
-      });
-      return nearestFuture || latestPast;
-    }
-    const nearestEvent = findNearestEvent(moscowToday);
-
-    // заполняем будущие месяцы пустыми объектами, чтобы навигация работала
-    ['2026-01','2026-02','2026-03','2026-04','2026-05','2026-06','2026-07','2026-08','2026-09','2026-10','2026-11','2026-12']
-      .forEach(k => { if(!performanceSchedule[k]) performanceSchedule[k]={}; });
-
-    const calendarStage = document.getElementById('calendarStage');
-    const monthLabel = document.getElementById('calendarMonthLabel');
-    const prevBtn = document.getElementById('calendarPrev');
-    const nextBtn = document.getElementById('calendarNext');
-    const eventDetails = document.getElementById('eventDetails');
-
-    let activeOffset = 0, currentMonthElement = null, selectedDayKey = null;
-
-    if(nearestEvent){
-      activeOffset = (nearestEvent.dateObj.getFullYear()-startDate.getFullYear())*12 + (nearestEvent.dateObj.getMonth()-startDate.getMonth());
-      activeOffset = Math.max(0, activeOffset);
-      selectedDayKey = `${nearestEvent.monthKey}-${String(nearestEvent.day).padStart(2,'0')}`;
-    }
-
-    function getMonthDate(offset){ const d=new Date(startDate); d.setMonth(startDate.getMonth()+offset); return d; }
-    function getMonthKey(date){ return `${date.getFullYear()}-${String(date.getMonth()+1).padStart(2,'0')}`; }
-    function cap(s){ return s.charAt(0).toUpperCase()+s.slice(1); }
-    function label(date){ return `${cap(monthNames[date.getMonth()])} ${date.getFullYear()}`; }
-
-    function weekdaysRow(){
-      const days=['пн','вт','ср','чт','пт','сб','вс'];
-      const f=document.createDocumentFragment();
-      days.forEach(d=>{ const el=document.createElement('div'); el.className='weekday'; el.textContent=d; f.appendChild(el); });
-      return f;
-    }
-
-    function buildMonth(date){
-      const monthKey=getMonthKey(date);
-      const data=performanceSchedule[monthKey] || {};
-      const monthEl=document.createElement('div');
-      monthEl.className='calendar-month';
-
-      const wRow=document.createElement('div'); wRow.className='calendar-weekdays'; wRow.appendChild(weekdaysRow());
-      const grid=document.createElement('div'); grid.className='calendar-grid';
-
-      const firstDay=new Date(date.getFullYear(), date.getMonth(), 1);
-      const firstWeekday=(firstDay.getDay()+6)%7; // 0..6, где 0 - пн
-      const daysInMonth=new Date(date.getFullYear(), date.getMonth()+1, 0).getDate();
-
-      for(let i=0;i<firstWeekday;i++){ const e=document.createElement('div'); e.className='calendar-day empty'; grid.appendChild(e); }
-      for(let day=1; day<=daysInMonth; day++){
-        const cell=document.createElement('button'); cell.type='button'; cell.className='calendar-day'; cell.textContent=day;
-        const eventDate=new Date(date.getFullYear(), date.getMonth(), day);
-        const isPast=eventDate<moscowToday;
-
-        if(data[day]){
-          cell.classList.add('performance'); if(isPast) cell.classList.add('past');
-          const dayKey=`${monthKey}-${String(day).padStart(2,'0')}`; cell.dataset.dayKey=dayKey;
-          cell.addEventListener('click',()=>{ selectedDayKey=dayKey; showEvent(date, day); highlight(); });
-        }else{
-          cell.disabled=true;
-        }
-        grid.appendChild(cell);
-      }
-
-      monthEl.appendChild(wRow);
-      monthEl.appendChild(grid);
-      return monthEl;
-    }
-
-    function highlight(){
-      document.querySelectorAll('.calendar-day.performance').forEach(d=>{
-        d.classList.toggle('selected', d.dataset.dayKey===selectedDayKey);
-      });
-    }
-
-    function showEmpty(){
-      eventDetails.innerHTML = `<div class="event-details-card event-empty">В этом месяце пока нет подтвержденных выступлений.</div>`;
-    }
-
-    function showEvent(date, dayNumber){
-      const monthKey=getMonthKey(date);
-      const info=(performanceSchedule[monthKey]||{})[dayNumber];
-      if(!info){ showEmpty(); return; }
-
-      const dateObj=new Date(date.getFullYear(), date.getMonth(), dayNumber);
-      const isPast=dateObj<moscowToday;
-      const wIndex=(dateObj.getDay()+6)%7;
-      const wNames=['пн','вт','ср','чт','пт','сб','вс'];
-      const formatted=`${String(dayNumber).padStart(2,'0')} ${cap(monthNames[date.getMonth()])}`;
-      const q=encodeURIComponent(info.address);
-
-      eventDetails.innerHTML = `
-        <div class="event-details-card ${isPast ? 'past-event':''}">
-          <div class="event-info">
-            <span class="event-date">${formatted} (${wNames[wIndex]})</span>
-            <span class="event-meta">⏰ ${info.time}</span>
-            <span class="event-meta">📍 ${info.venue}</span>
-            <span class="event-meta">🚇 ${info.metro}</span>
-            ${info.special ? `<span class="event-special">${info.special}</span>` : ''}
-          </div>
-          <div class="event-map-links">
-            <a class="map-btn" href="https://yandex.ru/maps/?text=${q}" target="_blank" rel="noopener">
-              <span>Яндекс.Карты</span><img src="icons/Yandex_Maps_icon.png" alt="Яндекс Карты">
-            </a>
-            <a class="map-btn" href="https://2gis.ru/search/${q}" target="_blank" rel="noopener">
-              <span>2ГИС</span><img src="icons/2GIS_icon.png" alt="2ГИС">
-            </a>
-          </div>
-        </div>`;
-    }
-
-    function renderCalendar(dir){
-      const d=getMonthDate(activeOffset);
-      monthLabel.textContent=label(d);
-
-      const mEl=buildMonth(d);
-      calendarStage.appendChild(mEl);
-      requestAnimationFrame(()=> mEl.classList.add('is-active'));
-
-      if(currentMonthElement){
-        currentMonthElement.parentElement && currentMonthElement.parentElement.removeChild(currentMonthElement);
-      }
-      currentMonthElement=mEl;
-
-      const match = Array.from(mEl.querySelectorAll('.calendar-day.performance')).find(dy => dy.dataset.dayKey===selectedDayKey);
-      if(match){
-        const dayNumber=Number(match.textContent);
-        showEvent(d, dayNumber);
-        highlight();
-      }else{
-        selectedDayKey=null;
-        const first= mEl.querySelector('.calendar-day.performance');
-        if(first){
-          selectedDayKey=first.dataset.dayKey;
-          showEvent(d, Number(first.textContent));
-          highlight();
-        }else{
-          showEmpty();
-        }
-      }
-    }
-
-    document.getElementById('calendarPrev').addEventListener('click',()=>{ activeOffset=Math.max(0, activeOffset-1); renderCalendar('prev'); });
-    document.getElementById('calendarNext').addEventListener('click',()=>{ activeOffset+=1; renderCalendar('next'); });
-
-    renderCalendar();
-  </script>
-
-  <!-- Политика / Cookies -->
-  <script>
-    (function(){
-      const modal=document.getElementById('policyModal');
-      const openers=document.querySelectorAll('[data-open-policy]');
-      if(!modal || !openers.length) return;
-      const closers=modal.querySelectorAll('[data-policy-close], .policy-close');
-
-      function open(){ modal.setAttribute('aria-hidden','false'); document.body.style.overflow='hidden'; }
-      function close(){ modal.setAttribute('aria-hidden','true'); document.body.style.overflow=''; }
-      openers.forEach(el=>el.addEventListener('click', open));
-      closers.forEach(el=>el.addEventListener('click', close));
-      document.addEventListener('keydown', e=>{ if(e.key==='Escape') close(); });
-    })();
-
-    (function(){
-      const banner=document.getElementById('cookieBanner'); if(!banner) return;
-      const accept=document.getElementById('cookieAccept');
-      const decline=document.getElementById('cookieDecline');
-      const KEY='cookieConsentVarvara';
-      const saved=localStorage.getItem(KEY);
-
-      function show(){ banner.hidden=false; banner.classList.add('show'); }
-      function hide(){ banner.classList.remove('show'); setTimeout(()=>banner.hidden=true, 280); }
-      function loadAnalytics(){ /* подключение аналитики */ }
-
-      if(saved==='accepted'){ loadAnalytics(); }
-      else if(saved!=='declined'){ show(); }
-
-      accept?.addEventListener('click', ()=>{ localStorage.setItem(KEY,'accepted'); hide(); loadAnalytics(); });
-      decline?.addEventListener('click', ()=>{ localStorage.setItem(KEY,'declined'); hide(); });
-    })();
-  </script>
-
-  <!-- «Сейчас звучит» -->
-  <script>
-    (function(){
-      const audio=document.getElementById('audioElement');
-      if(!audio) return;
-      function playing(){ document.body.classList.add('player-playing'); }
-      function stopped(){ document.body.classList.remove('player-playing'); }
-      audio.addEventListener('play', playing);
-      audio.addEventListener('pause', stopped);
-      audio.addEventListener('ended', stopped);
-      if(!audio.paused && !audio.ended) playing();
-    })();
-  </script>
-
-  <!-- Плеер -->
-  <script>
-    function toDirectDropbox(url){
-      try{
-        const u=new URL(url);
-        if(u.hostname.endsWith('dropbox.com')){
-          u.hostname='dl.dropboxusercontent.com';
-          u.searchParams.delete('dl'); u.searchParams.delete('st');
-          if(!u.searchParams.has('raw')) u.searchParams.set('raw','1');
-        }
-        return u.toString();
-      }catch{ return url; }
-    }
-
-    const tracks=[
-      {
-        title:'Холодно',
-        artist:'Варя Кузнецова',
-        src:'https://www.dropbox.com/scl/fi/a5dx05ghgpx3oxncktp3z/Varya_Kuznecova_-_Holodno_-TheMP3.Info.mp3?rlkey=wnt75pauy3lr4if36b3qkohw5&st=p5uqo3zj&dl=0',
-        cover:'images/holodno.png',
-        links:{
-          yandex:'https://music.yandex.ru/album/35070253',
-          vk:'https://music.vk.com/link/JzjyT',
-          mts:'https://music.mts.ru/album/35070253',
-          spotify:'https://open.spotify.com/album/4nMqCkHKgnWQKcX8GqGYYL',
-          apple:'https://music.apple.com/us/album/1796888584'
-        }
-      },
-      {
-        title:'Кошка',
-        artist:'Варя Кузнецова',
-        src:'https://www.dropbox.com/scl/fi/27lr9a6hhtxzbs2tsb027/Varya_Kuznecova_-_Koshka_-TheMP3.Info.mp3?rlkey=gjk40wi42v214tzbmss5gt3ni&st=f21juylk&dl=0',
-        cover:'images/koshka.jpeg',
-        links:{
-          yandex:'https://music.yandex.ru/album/35905040',
-          vk:'https://music.vk.com/link/nqmOx',
-          spotify:'https://open.spotify.com/album/6Zo6GMcDIknIGtJm3DW2Gh',
-          apple:'https://music.apple.com/us/album/1804106048'
-        }
-      },
-      {
-        title:'Суки',
-        artist:'Варя Кузнецова',
-        badge:'Премьера!',
-        src:'https://www.dropbox.com/scl/fi/h5bv9k0q4r9ysmcq45zho/Varya_Kuznecova_-_Suki_-TheMP3.Info.wav?rlkey=aqji9437wfpsgx1pw96u2pd6c&st=azpf4e64&dl=0',
-        cover:'images/Suki.png',
-        links:{
-          yandex:'https://music.yandex.ru/album/39261991?utm_source=bandlink&utm_medium=%D0%92%D0%B0%D1%80%D1%8F%20%D0%9A%D1%83%D0%B7%D0%BD%D0%B5%D1%86%D0%BE%D0%B2%D0%B0&utm_campaign=%D0%A1%D1%83%D0%BA%D0%B8&utm_term=ZIGLl',
-          vk:'https://music.vk.com/link/uI0hm',
-          mts:'https://music.mts.ru/album/39261991',
-          spotify:'https://open.spotify.com/album/6dc8l7anhM2OFAMUfAnTdX',
-          apple:'https://band.link/ZIGLl'
-        }
-      }
-    ];
-
-    const audio=document.getElementById('audioElement');
-    const trackCover=document.getElementById('trackCover');
-    const trackTitle=document.getElementById('trackTitle');
-    const trackArtist=document.getElementById('trackArtist');
-    const playPauseButton=document.getElementById('playPause');
-    const prevTrackButton=document.getElementById('prevTrack');
-    const nextTrackButton=document.getElementById('nextTrack');
-    const seekBar=document.getElementById('seekBar');
-    const currentTimeEl=document.getElementById('currentTime');
-    const totalTimeEl=document.getElementById('totalTime');
-    const trackListEl=document.getElementById('trackList');
-    const streamingButtons={
-      yandex:document.getElementById('streamYandex'),
-      vk:document.getElementById('streamVK'),
-      mts:document.getElementById('streamMTS'),
-      spotify:document.getElementById('streamSpotify'),
-      apple:document.getElementById('streamApple')
-    };
-
-    let currentTrackIndex=0, isPlaying=false;
-    const trackButtons=[];
-
-    function fmt(sec){ if(!Number.isFinite(sec)) return '0:00'; const m=Math.floor(sec/60); const s=Math.floor(sec%60).toString().padStart(2,'0'); return `${m}:${s}`; }
-    function updateIcon(){ playPauseButton.textContent = isPlaying ? '❚❚' : '▶'; }
-
-    function updateStreaming(track){
-      Object.entries(streamingButtons).forEach(([svc,btn])=>{
-        const link = track.links?.[svc] || null;
-        if(link){ btn.href=link; btn.classList.remove('is-disabled'); btn.removeAttribute('aria-disabled'); btn.removeAttribute('tabindex'); }
-        else{ btn.href='#'; btn.classList.add('is-disabled'); btn.setAttribute('aria-disabled','true'); btn.setAttribute('tabindex','-1'); }
-      });
-    }
-
-    function loadTrack(i, autoplay=false){
-      const t = tracks[i]; currentTrackIndex=i;
-      audio.src = toDirectDropbox(t.src); audio.crossOrigin='anonymous';
-
-      trackCover.src = t.cover || 'images/holodno.png';
-      trackCover.alt = `Обложка: ${t.title}`;
-      trackTitle.textContent = t.title;
-      trackArtist.textContent = t.artist || '';
-
-      seekBar.value=0; currentTimeEl.textContent='0:00'; totalTimeEl.textContent='0:00';
-      trackButtons.forEach(b => b.classList.toggle('is-active', Number(b.dataset.index)===i));
-      updateStreaming(t);
-
-      if(autoplay){
-        audio.play().then(()=>{ isPlaying=true; updateIcon(); }).catch(()=>{ isPlaying=false; updateIcon(); });
-      }else{
-        isPlaying=false; updateIcon();
-      }
-    }
-
-    tracks.forEach((t, i)=>{
-      const btn=document.createElement('button');
-      btn.className='track-item'; btn.type='button'; btn.dataset.index=i;
-      const badge = t.badge ? `<span class="badge">${t.badge}</span>` : '';
-      btn.innerHTML = `<span>${t.title}${badge ? ' '+badge : ''}</span><span class="track-duration" data-duration></span>`;
-      btn.addEventListener('click', ()=>{ const auto=(currentTrackIndex===i)? !isPlaying : true; loadTrack(i, auto); });
-      trackListEl.appendChild(btn); trackButtons.push(btn);
     });
 
-    playPauseButton.addEventListener('click', ()=>{
-      if(!audio.src){ loadTrack(0,true); return; }
-      if(audio.paused){ audio.play().then(()=>{ isPlaying=true; updateIcon(); }); }
-      else{ audio.pause(); isPlaying=false; updateIcon(); }
-    });
-    prevTrackButton.addEventListener('click', ()=>{ const i=(currentTrackIndex-1+tracks.length)%tracks.length; loadTrack(i, isPlaying); });
-    nextTrackButton.addEventListener('click', ()=>{ const i=(currentTrackIndex+1)%tracks.length; loadTrack(i, isPlaying); });
+    // если все концерты в прошлом — берём самый последний
+    return nearestFuture || latestPast;
+}
 
-    audio.addEventListener('loadedmetadata', ()=>{
-      totalTimeEl.textContent = fmt(audio.duration);
-      const span=trackButtons[currentTrackIndex].querySelector('[data-duration]');
-      if(span) span.textContent = fmt(audio.duration);
-    });
-    audio.addEventListener('timeupdate', ()=>{
-      if(audio.duration){ seekBar.value = (audio.currentTime/audio.duration)*100; }
-      currentTimeEl.textContent = fmt(audio.currentTime);
-    });
-    audio.addEventListener('ended', ()=>{ const i=(currentTrackIndex+1)%tracks.length; loadTrack(i, true); });
+const nearestEvent = findNearestEvent(moscowToday);
 
-    seekBar.addEventListener('input', ()=>{ if(!audio.duration) return; audio.currentTime = (seekBar.value/100)*audio.duration; });
-
-    loadTrack(0,false);
-  </script>
-
-  <!-- Док плавающей кнопки -->
-  <script>
-    (function(){
-      const fab=document.getElementById('supportFab');
-      const dock=document.getElementById('donateDock');
-      if(!fab || !dock) return;
-
-      let docked=false;
-
-      function dockFab(){
-        if(docked) return; docked=true;
-        fab.style.position='static';
-        fab.style.width='100%';
-        fab.style.transform='none';
-        dock.appendChild(fab);
-      }
-      function undockFab(){
-        if(!docked) return; docked=false;
-        fab.style.position='fixed';
-        fab.style.width='clamp(140px, 25vw, 320px)';
-        document.body.appendChild(fab);
-      }
-
-      const io=new IntersectionObserver((entries)=>{
-        entries.forEach(entry=>{
-          if(entry.isIntersecting){ dockFab(); }
-          else{ undockFab(); }
+        [
+            '2025-12', '2026-01', '2026-02', '2026-03', '2026-04', '2026-05', '2026-06', '2026-07',
+            '2026-08', '2026-09', '2026-10', '2026-11', '2026-12'
+        ].forEach(key => {
+            if (!performanceSchedule[key]) {
+                performanceSchedule[key] = {};
+            }
         });
-      }, { threshold: 0.75 });
 
-      io.observe(dock);
-    })();
-  </script>
+const calendarStage = document.getElementById('calendarStage');
+const monthLabel = document.getElementById('calendarMonthLabel');
+const prevBtn = document.getElementById('calendarPrev');
+const nextBtn = document.getElementById('calendarNext');
+const eventDetails = document.getElementById('eventDetails');
 
+let activeOffset = 0;
+let currentMonthElement = null;
+let selectedDayKey = null;
+
+if (nearestEvent) {
+    activeOffset = (nearestEvent.dateObj.getFullYear() - startDate.getFullYear()) * 12 +
+                   (nearestEvent.dateObj.getMonth() - startDate.getMonth());
+    activeOffset = Math.max(0, activeOffset);
+
+    selectedDayKey = `${nearestEvent.monthKey}-${String(nearestEvent.day).padStart(2, '0')}`;
+}
+
+        function getMonthDate(offset) {
+            const date = new Date(startDate);
+            date.setMonth(startDate.getMonth() + offset);
+            return date;
+        }
+
+        function getMonthKey(date) {
+            return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}`;
+        }
+
+        function capitalise(word) {
+            return word.charAt(0).toUpperCase() + word.slice(1);
+        }
+
+        function formatMonthLabel(date) {
+            const month = capitalise(monthNames[date.getMonth()]);
+            return `${month} ${date.getFullYear()}`;
+        }
+
+        function createWeekdaysRow() {
+            const weekdays = ['пн', 'вт', 'ср', 'чт', 'пт', 'сб', 'вс'];
+            const fragment = document.createDocumentFragment();
+            weekdays.forEach(day => {
+                const el = document.createElement('div');
+                el.className = 'weekday';
+                el.textContent = day;
+                fragment.appendChild(el);
+            });
+            return fragment;
+        }
+
+        function buildMonth(date) {
+            const monthKey = getMonthKey(date);
+            const data = performanceSchedule[monthKey] || {};
+            const monthElement = document.createElement('div');
+            monthElement.className = 'calendar-month';
+
+            const weekdaysRow = document.createElement('div');
+            weekdaysRow.className = 'calendar-weekdays';
+            weekdaysRow.appendChild(createWeekdaysRow());
+
+            const grid = document.createElement('div');
+            grid.className = 'calendar-grid';
+
+            const firstDay = new Date(date.getFullYear(), date.getMonth(), 1);
+            const firstWeekday = (firstDay.getDay() + 6) % 7;
+            const daysInMonth = new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate();
+
+            for (let i = 0; i < firstWeekday; i += 1) {
+                const emptyCell = document.createElement('div');
+                emptyCell.className = 'calendar-day empty';
+                grid.appendChild(emptyCell);
+            }
+
+for (let day = 1; day <= daysInMonth; day += 1) {
+    const cell = document.createElement('button');
+    cell.type = 'button';
+    cell.className = 'calendar-day';
+    cell.textContent = day;
+    cell.setAttribute('aria-label', `${day} ${formatMonthLabel(date)}`);
+
+    const eventDate = new Date(date.getFullYear(), date.getMonth(), day);
+    const isPast = eventDate < moscowToday;
+
+    if (data[day]) {
+        cell.classList.add('performance');
+        if (isPast) {
+            cell.classList.add('past');
+        }
+        if (data[day].special) {
+            cell.classList.add('special');
+        }
+        const dayKey = `${monthKey}-${String(day).padStart(2, '0')}`;
+        cell.dataset.dayKey = dayKey;
+        cell.addEventListener('click', () => {
+            selectedDayKey = dayKey;
+            showEventDetails(date, day);
+            highlightSelectedDay();
+        });
+    } else {
+        cell.disabled = true;
+    }
+
+    grid.appendChild(cell);
+}
+
+
+            monthElement.appendChild(weekdaysRow);
+            monthElement.appendChild(grid);
+            return monthElement;
+        }
+
+        function highlightSelectedDay() {
+            document.querySelectorAll('.calendar-day.performance').forEach(dayEl => {
+                dayEl.classList.toggle('selected', dayEl.dataset.dayKey === selectedDayKey);
+            });
+        }
+
+        function showEmptyState() {
+            eventDetails.innerHTML = `<div class="event-details-card event-empty">Пока нет подтвержденных выступлений в этом месяце — следите за обновлениями!</div>`;
+        }
+
+function showEventDetails(date, dayNumber) {
+    const monthKey = getMonthKey(date);
+    const dayData = (performanceSchedule[monthKey] || {})[dayNumber];
+    if (!dayData) {
+        showEmptyState();
+        return;
+    }
+
+    const dateObj = new Date(date.getFullYear(), date.getMonth(), dayNumber);
+    const isPast = dateObj < moscowToday;
+    const weekDayIndex = (dateObj.getDay() + 6) % 7;
+            const weekdays = ['пн', 'вт', 'ср', 'чт', 'пт', 'сб', 'вс'];
+            const formattedDate = `${String(dayNumber).padStart(2, '0')} ${capitalise(monthNames[date.getMonth()])}`;
+            const mapsQuery = encodeURIComponent(dayData.address);
+
+          eventDetails.innerHTML = `
+                <div class="event-details-card ${isPast ? 'past-event' : ''}">
+                    <div class="event-details-top">
+                        <div class="event-info">
+                            <span class="event-date">${formattedDate} (${weekdays[weekDayIndex]})</span>
+                            <span class="event-meta">⏰ ${dayData.time}</span>
+                            <span class="event-meta">📍 ${dayData.venue}</span>
+                            <span class="event-meta">🚇 ${dayData.metro}</span>
+                            ${dayData.special ? `<span class="event-special">${dayData.special}</span>` : ''}
+                        </div>
+                        <div class="event-map-links">
+                            <a class="map-btn" href="https://yandex.ru/maps/?text=${mapsQuery}" target="_blank" rel="noopener">
+                                <span>Яндекс.Карты</span>
+                                <img src="icons/Yandex_Maps_icon.png" alt="Логотип Яндекс Карт">
+                            </a>
+                            <a class="map-btn" href="https://2gis.ru/search/${mapsQuery}" target="_blank" rel="noopener">
+                                <span>2ГИС</span>
+                                <img src="icons/2GIS_icon.png" alt="Логотип 2ГИС">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderCalendar(direction) {
+            const monthDate = getMonthDate(activeOffset);
+            monthLabel.textContent = formatMonthLabel(monthDate);
+
+            const monthElement = buildMonth(monthDate);
+            if (direction === 'next') {
+                monthElement.classList.add('entering-from-bottom');
+            } else if (direction === 'prev') {
+                monthElement.classList.add('entering-from-top');
+            }
+
+            calendarStage.appendChild(monthElement);
+
+            requestAnimationFrame(() => {
+                monthElement.classList.add('is-active');
+                monthElement.classList.remove('entering-from-bottom', 'entering-from-top');
+            });
+
+            if (currentMonthElement) {
+                currentMonthElement.classList.remove('entering-from-bottom', 'entering-from-top', 'is-active');
+                currentMonthElement.classList.add(direction === 'next' ? 'leaving-to-top' : 'leaving-to-bottom');
+
+                const elementToRemove = currentMonthElement;
+                elementToRemove.addEventListener('transitionend', () => {
+                    if (elementToRemove.parentElement) {
+                    elementToRemove.parentElement.removeChild(elementToRemove);
+                    }
+                }, { once: true });
+            }
+
+            currentMonthElement = monthElement;
+
+            const existingSelection = Array.from(monthElement.querySelectorAll('.calendar-day.performance'))
+                .find(dayEl => dayEl.dataset.dayKey === selectedDayKey);
+
+            if (existingSelection) {
+                existingSelection.classList.add('selected');
+                const dayNumber = Number(existingSelection.textContent);
+                showEventDetails(monthDate, dayNumber);
+            } else {
+                selectedDayKey = null;
+                const firstAvailable = monthElement.querySelector('.calendar-day.performance');
+                if (firstAvailable) {
+                    const dayNumber = Number(firstAvailable.textContent);
+                    selectedDayKey = firstAvailable.dataset.dayKey;
+                    showEventDetails(monthDate, dayNumber);
+                    highlightSelectedDay();
+                    firstAvailable.focus({ preventScroll: true });
+                } else {
+                    showEmptyState();
+                }
+            }
+        }
+
+        prevBtn.addEventListener('click', () => {
+            activeOffset -= 1;
+            renderCalendar('prev');
+        });
+
+        nextBtn.addEventListener('click', () => {
+            activeOffset += 1;
+            renderCalendar('next');
+        });
+
+        renderCalendar();
+
+/* Fundraising canvas animation */
+
+// берём сумму из разметки
+const fundraisingGoal = 250000;
+const fundraisingCurrentEl = document.getElementById('fundraisingCurrent');
+const fundraisingCurrent = fundraisingCurrentEl
+    ? parseInt(fundraisingCurrentEl.dataset.amount, 10)
+    : 0;
+
+// пороги по таблице (в процентах)
+const fundraisingStages = [
+    { threshold: 0,  text: 'B' },
+    { threshold: 20, text: 'Bi' },
+    { threshold: 30, text: 'Bit' },
+    { threshold: 50, text: 'Bitc' },
+    { threshold: 70, text: 'Bitch' },
+    { threshold: 90, text: 'Bitche' },
+    { threshold: 100, text: 'Bitches' }
+];
+
+const fundraisingPercent = Math.max(
+    0,
+    Math.min(100, (fundraisingCurrent / fundraisingGoal) * 100)
+);
+
+const canvas = document.getElementById('bitchesCanvas');
+const ctx = canvas.getContext('2d');
+const fullWord = 'Bitches';
+
+let coloredLettersCount = 1;
+let lastCanvasWidth = 0;
+
+function getStageText(percent) {
+    let result = fundraisingStages[0].text;
+    fundraisingStages.forEach(stage => {
+        if (percent >= stage.threshold) {
+            result = stage.text;
+        }
+    });
+    return result;
+}
+
+function updateColoredLetters() {
+    // длина строки Bi / Bit / ... = сколько букв красим розовым
+    coloredLettersCount = getStageText(fundraisingPercent).length;
+}
+
+const baseFontFamily =
+    getComputedStyle(document.documentElement)
+        .getPropertyValue('--font-family-base')
+        .trim() ||
+    'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif';
+        
+function resizeCanvas() {
+    const ratio = window.devicePixelRatio || 1;
+    const rect = canvas.parentElement.getBoundingClientRect();
+    const displayWidth = rect.width;
+    const displayHeight = displayWidth / 3.6; // пропорция как в CSS
+
+    lastCanvasWidth = displayWidth;
+
+    canvas.width = displayWidth * ratio;
+    canvas.height = displayHeight * ratio;
+    canvas.style.width = `${displayWidth}px`;
+    canvas.style.height = `${displayHeight}px`;
+
+    ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
+
+    const isMobile = window.matchMedia('(max-width: 600px)').matches;
+    const fontScale = isMobile ? 0.145 : 0.18;
+    const baseFont = Math.max(42, Math.min(displayWidth * fontScale, 110));
+
+    ctx.font = `${baseFont}px ${baseFontFamily}`;
+    ctx.textAlign = 'left';
+    ctx.textBaseline = 'middle';
+}
+
+function drawWord() {
+    const ratio = window.devicePixelRatio || 1;
+    const logicalWidth = canvas.width / ratio;
+    const logicalHeight = canvas.height / ratio;
+
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    const isMobile = logicalWidth < 480;
+    const blur = isMobile ? 16 : 24;
+
+    const activeColor = '#F294C0';                     // розовые буквы
+    const inactiveColor = 'rgba(248, 245, 255, 0.35)'; // серые буквы
+
+    const letters = fullWord.split('');
+    const metrics = letters.map(ch => ctx.measureText(ch).width);
+    const avgWidth = metrics.reduce((a, w) => a + w, 0) / letters.length;
+    const letterSpacing = avgWidth * 0.18;
+
+    const totalWidth =
+        metrics.reduce((a, w) => a + w, 0) + letterSpacing * (letters.length - 1);
+
+    let x = (logicalWidth - totalWidth) / 2;
+    const y = logicalHeight / 2;
+
+    letters.forEach((ch, index) => {
+        const isActive = index < coloredLettersCount;
+
+        const posX = x;
+
+        // базовый серый текст — один и тот же для всех букв
+        ctx.shadowBlur = 0;
+        ctx.shadowColor = 'transparent';
+        ctx.fillStyle = inactiveColor;
+        ctx.fillText(ch, posX, y);
+
+        // поверх — розовый с glow для активных букв
+        if (isActive) {
+            ctx.shadowBlur = blur;
+            ctx.shadowColor = 'rgba(242, 148, 192, 0.6)';
+            ctx.fillStyle = activeColor;
+            ctx.fillText(ch, posX, y);
+        }
+
+        x += metrics[index] + letterSpacing;
+    });
+}
+
+
+function renderFundraisingWord(force = false) {
+    if (!canvas) return;
+
+    const containerWidth = canvas.parentElement.getBoundingClientRect().width;
+    if (!force && Math.abs(containerWidth - lastCanvasWidth) < 1) {
+        return;
+    }
+
+    updateColoredLetters();
+    resizeCanvas();
+    drawWord();
+}
+
+const debouncedResize = (() => {
+    let timeout;
+    return () => {
+        clearTimeout(timeout);
+        timeout = setTimeout(() => {
+            renderFundraisingWord(false);
+        }, 180);
+    };
+})();
+
+window.addEventListener('resize', debouncedResize);
+document.fonts.ready.then(() => renderFundraisingWord(true));
+// Делает прямую ссылку из шэр-ссылки Dropbox
+function toDirectDropbox(url) {
+  try {
+    const u = new URL(url);
+    if (u.hostname.endsWith('dropbox.com')) {
+      u.hostname = 'dl.dropboxusercontent.com'; // прямой CDN
+      u.searchParams.delete('dl');
+      u.searchParams.delete('st');              // временный токен
+      if (!u.searchParams.has('raw')) u.searchParams.set('raw','1');
+    }
+    return u.toString();
+  } catch { return url; }
+}
+        /* Audio player */
+        const tracks = [
+            {
+                title: 'Холодно',
+                artist: 'Варя Кузнецова',
+                src: 'https://www.dropbox.com/scl/fi/a5dx05ghgpx3oxncktp3z/Varya_Kuznecova_-_Holodno_-TheMP3.Info.mp3?rlkey=wnt75pauy3lr4if36b3qkohw5&st=p5uqo3zj&dl=0',
+                cover: 'images/holodno.png',
+                links: {
+                    yandex: 'https://music.yandex.ru/album/35070253?utm_source=bandlink&utm_medium=%D0%92%D0%B0%D1%80%D1%8F%20%D0%9A%D1%83%D0%B7%D0%BD%D0%B5%D1%86%D0%BE%D0%B2%D0%B0&utm_campaign=%D0%A5%D0%BE%D0%BB%D0%BE%D0%B4%D0%BD%D0%BE&utm_term=P5gdA',
+                    vk: 'https://music.vk.com/link/JzjyT',
+                    mts: 'https://music.mts.ru/album/35070253',
+                    spotify: 'https://open.spotify.com/album/4nMqCkHKgnWQKcX8GqGYYL',
+                    apple: 'https://music.apple.com/us/album/1796888584?mt=1&at=1000lqjf&ct=bq&app=music'
+                }
+            },
+            {
+                title: 'Кошка',
+                artist: 'Варя Кузнецова',
+                src: 'https://www.dropbox.com/scl/fi/27lr9a6hhtxzbs2tsb027/Varya_Kuznecova_-_Koshka_-TheMP3.Info.mp3?rlkey=gjk40wi42v214tzbmss5gt3ni&st=f21juylk&dl=0',
+                cover: 'images/koshka.jpeg',
+                links: {
+                    yandex: 'https://music.yandex.ru/album/35905040?utm_source=bandlink&utm_medium=%D0%92%D0%B0%D1%80%D1%8F%20%D0%9A%D1%83%D0%B7%D0%BD%D0%B5%D1%86%D0%BE%D0%B2%D0%B0&utm_campaign=%D0%9A%D0%BE%D1%88%D0%BA%D0%B0&utm_term=uuhVz',
+                    vk: 'https://music.vk.com/link/nqmOx',
+                    spotify: 'https://open.spotify.com/album/6Zo6GMcDIknIGtJm3DW2Gh',
+                    apple: 'https://music.apple.com/us/album/1804106048?mt=1&at=1000lqjf&ct=bq&app=music'
+                }
+            }
+        ];
+
+        const audio = document.getElementById('audioElement');
+        const trackCover = document.getElementById('trackCover');
+        const trackTitle = document.getElementById('trackTitle');
+        const trackArtist = document.getElementById('trackArtist');
+        const playPauseButton = document.getElementById('playPause');
+        const prevTrackButton = document.getElementById('prevTrack');
+        const nextTrackButton = document.getElementById('nextTrack');
+        const seekBar = document.getElementById('seekBar');
+        const currentTimeEl = document.getElementById('currentTime');
+        const totalTimeEl = document.getElementById('totalTime');
+        const trackListEl = document.getElementById('trackList');
+        const streamingButtons = {
+            yandex: document.getElementById('streamYandex'),
+            vk: document.getElementById('streamVK'),
+            mts: document.getElementById('streamMTS'),
+            spotify: document.getElementById('streamSpotify'),
+            apple: document.getElementById('streamApple')
+        };
+
+        let currentTrackIndex = 0;
+        let isPlaying = false;
+        const trackButtons = [];
+
+        function formatTime(seconds) {
+            if (!Number.isFinite(seconds)) return '0:00';
+            const mins = Math.floor(seconds / 60);
+            const secs = Math.floor(seconds % 60).toString().padStart(2, '0');
+            return `${mins}:${secs}`;
+        }
+
+        function updatePlayPauseIcon() {
+            playPauseButton.textContent = isPlaying ? '❚❚' : '▶';
+        }
+
+        function updateStreamingLinks(track) {
+            Object.entries(streamingButtons).forEach(([service, button]) => {
+                const link = track.links?.[service] || null;
+                if (link) {
+                    button.href = link;
+                    button.removeAttribute('aria-disabled');
+                    button.removeAttribute('tabindex');
+                    button.classList.remove('is-disabled');
+                } else {
+                    button.href = '#';
+                    button.setAttribute('aria-disabled', 'true');
+                    button.setAttribute('tabindex', '-1');
+                    button.classList.add('is-disabled');
+                }
+            });
+        }
+
+        function loadTrack(index, autoplay = false) {
+            const track = tracks[index];
+            currentTrackIndex = index;
+            audio.src = toDirectDropbox(track.src);
+            audio.crossOrigin = 'anonymous';
+            trackCover.src = track.cover ||'images/holodno.png';
+            trackCover.alt = `Обложка трека «${track.title}»`;
+            trackTitle.textContent = track.title;
+            trackArtist.textContent = track.artist || '';
+            seekBar.value = 0;
+            currentTimeEl.textContent = '0:00';
+            totalTimeEl.textContent = '0:00';
+            trackButtons.forEach(btn => btn.classList.toggle('is-active', Number(btn.dataset.index) === index));
+            updateStreamingLinks(track);
+            if (autoplay) {
+                audio.play().then(() => {
+                    isPlaying = true;
+                    updatePlayPauseIcon();
+                }).catch(() => {
+                    isPlaying = false;
+                    updatePlayPauseIcon();
+                });
+            } else {
+                isPlaying = false;
+                updatePlayPauseIcon();
+            }
+        }
+
+        tracks.forEach((track, index) => {
+            const button = document.createElement('button');
+            button.className = 'track-item';
+            button.type = 'button';
+            button.dataset.index = index;
+            button.innerHTML = `<span>${track.title}</span><span class="track-duration" data-duration></span>`;
+            button.addEventListener('click', () => {
+                const needAutoplay = currentTrackIndex === index ? !isPlaying : true;
+                loadTrack(index, needAutoplay);
+            });
+            trackListEl.appendChild(button);
+            trackButtons.push(button);
+        });
+
+        playPauseButton.addEventListener('click', () => {
+            if (!audio.src) {
+                loadTrack(0, true);
+                return;
+            }
+            if (audio.paused) {
+                audio.play().then(() => {
+                    isPlaying = true;
+                    updatePlayPauseIcon();
+                });
+            } else {
+                audio.pause();
+                isPlaying = false;
+                updatePlayPauseIcon();
+            }
+        });
+
+        prevTrackButton.addEventListener('click', () => {
+            const nextIndex = (currentTrackIndex - 1 + tracks.length) % tracks.length;
+            loadTrack(nextIndex, isPlaying);
+        });
+
+        nextTrackButton.addEventListener('click', () => {
+            const nextIndex = (currentTrackIndex + 1) % tracks.length;
+            loadTrack(nextIndex, isPlaying);
+        });
+
+        audio.addEventListener('loadedmetadata', () => {
+            totalTimeEl.textContent = formatTime(audio.duration);
+            const durationSpan = trackButtons[currentTrackIndex].querySelector('[data-duration]');
+            if (durationSpan) {
+                durationSpan.textContent = formatTime(audio.duration);
+            }
+        });
+
+        audio.addEventListener('timeupdate', () => {
+            if (audio.duration) {
+                seekBar.value = (audio.currentTime / audio.duration) * 100;
+            }
+            currentTimeEl.textContent = formatTime(audio.currentTime);
+        });
+
+        audio.addEventListener('ended', () => {
+            const nextIndex = (currentTrackIndex + 1) % tracks.length;
+            loadTrack(nextIndex, true);
+        });
+
+        seekBar.addEventListener('input', () => {
+            if (!audio.duration) return;
+            const newTime = (seekBar.value / 100) * audio.duration;
+            audio.currentTime = newTime;
+        });
+
+        loadTrack(0, false);
+    </script>
   <script>
-  // эффект «приземления» — просто прячем плавающую и показываем дублёр
-  (function(){
-    const fab  = document.getElementById('supportFab');
-    const dock = document.getElementById('supportDock');
-    if(!fab || !dock) return;
+  (function () {
+    const btn = document.getElementById('mobileMenuButton');
+    const menu = document.getElementById('mobileMenu');
+    const overlay = document.getElementById('mobileMenuOverlay');
+    if (!btn || !menu || !overlay) return;
 
-    const io = new IntersectionObserver(([ent])=>{
-      const onDock = ent.isIntersecting && ent.intersectionRatio > 0.6;
-      fab.hidden = onDock;                 // когда слот виден — прячем плавающую
-    }, {threshold:[0, .6, 1]});
-    io.observe(dock);
+    const links = menu.querySelectorAll('a');
+
+    function openMenu() {
+      btn.setAttribute('aria-expanded', 'true');
+      btn.classList.add('is-open');           // ← добавили
+      menu.hidden = false;
+      overlay.hidden = false;
+      requestAnimationFrame(() => {
+        menu.classList.add('open');
+        overlay.classList.add('show');
+      });
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeMenu() {
+      btn.setAttribute('aria-expanded', 'false');
+      btn.classList.remove('is-open');        // ← добавили
+      menu.classList.remove('open');
+      overlay.classList.remove('show');
+      setTimeout(() => {
+        menu.hidden = true;
+        overlay.hidden = true;
+      }, 280);
+      document.body.style.overflow = '';
+    }
+
+    function toggleMenu() {
+      const expanded = btn.getAttribute('aria-expanded') === 'true';
+      expanded ? closeMenu() : openMenu();
+    }
+
+    btn.addEventListener('click', toggleMenu);
+    overlay.addEventListener('click', closeMenu);
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeMenu(); });
+    links.forEach(a => a.addEventListener('click', closeMenu));
   })();
 </script>
+    <!-- Modal: Политика конфиденциальности -->
+<div class="policy-modal" id="policyModal" aria-hidden="true">
+  <div class="policy-backdrop" data-policy-close></div>
+  <div class="policy-dialog" role="dialog" aria-modal="true" aria-labelledby="policyTitle">
+    <button class="policy-close" type="button" aria-label="Закрыть" data-policy-close>✕</button>
+    <div class="policy-content">
+      <h2 id="policyTitle">Политика конфиденциальности</h2>
+      <p class="muted">Краткая версия. Полный текст доступен <a href="policy.html" target="_blank" rel="noopener">на отдельной странице</a>.</p>
 
+      <h3>Оператор</h3>
+      <p>Самозанятая <strong>Кузнецова Варвара Алексеевна</strong>.</p>
 
-  <!-- Политика и cookie-разметка -->
-  <div class="policy-modal" id="policyModal" aria-hidden="true">
-    <div class="policy-backdrop" data-policy-close></div>
-    <div class="policy-dialog" role="dialog" aria-modal="true" aria-labelledby="policyTitle">
-      <button class="policy-close" type="button" aria-label="Закрыть" data-policy-close>✕</button>
-      <div class="policy-content">
-        <h2 id="policyTitle">Политика конфиденциальности</h2>
-        <p class="muted">Краткая версия. Полный текст доступен <a href="policy.html" target="_blank" rel="noopener">на отдельной странице</a>.</p>
-        <h3>Оператор</h3><p>Самозанятая <strong>Кузнецова Варвара Алексеевна</strong>.</p>
-        <h3>Какие данные</h3><p>Обезличенные данные (cookies, IP, устройство/браузер, источник перехода, события на сайте).</p>
-        <h3>Зачем</h3>
-        <ul><li>Аналитика и улучшение UX</li><li>Измерение эффективности рекламы</li><li>Работа функционала сайта</li></ul>
-        <h3>Инструменты</h3><p>Яндекс.Метрика, Яндекс.Директ, ВК Реклама.</p>
-        <h3>Права</h3><p>Запросить сведения/удаление/уточнение. Связь: <a href="https://t.me/alekseevnavarvara" target="_blank" rel="noopener">@alekseevnavarvara</a>.</p>
-      </div>
+      <h3>Какие данные</h3>
+      <p>Обезличенные данные: cookies, IP-адрес, сведения об устройстве и браузере, источнике перехода, событиях на сайте.</p>
+
+      <h3>Зачем</h3>
+      <ul>
+        <li>Аналитика посещаемости, улучшение UX;</li>
+        <li>Измерение эффективности рекламы;</li>
+        <li>Работа функционала сайта.</li>
+      </ul>
+
+      <h3>Инструменты</h3>
+      <p>Яндекс.Метрика, Яндекс.Директ, ВК Реклама.</p>
+
+      <h3>Права пользователя</h3>
+      <p>Получать сведения об обработке, требовать уточнения/удаления данных, отзывать согласие. Связь: <a href="https://t.me/alekseevnavarvara" target="_blank" rel="noopener">@alekseevnavarvara</a>.</p>
+
+      <p>Полная редакция: <a href="policy.html" target="_blank" rel="noopener">policy.html</a></p>
     </div>
   </div>
-
-  <div class="cookie-banner" id="cookieBanner" hidden>
-    <div class="cookie-inner">
-      <p>Мой сайт становится лучше благодаря «печенькам». Остаётесь со мной — значит, вы ими делитесь. Подробности в <button class="cookie-link" data-open-policy>Политике</button>. Спасибо за угощение!</p>
-      <div class="cookie-actions">
-        <button class="cookie-accept" id="cookieAccept">Да, бери!</button>
-        <button class="cookie-decline" id="cookieDecline">Оставлю себе</button>
-      </div>
+</div>
+    <!-- Cookie consent -->
+<div class="cookie-banner" id="cookieBanner" hidden>
+  <div class="cookie-inner">
+    <p>Мой сайт становится лучше благодаря «печенькам». Остаётесь со мной — значит, вы ими делитесь.
+      Подробности в <button class="cookie-link" data-open-policy>Политике</button>. Спасибо за угощение!</p>
+    <div class="cookie-actions">
+      <button class="cookie-accept" id="cookieAccept">Да, бери!</button>
+      <button class="cookie-decline" id="cookieDecline">Оставлю себе</button>
     </div>
   </div>
-<a href="#support"
-   class="support-fab"
-   id="supportFab" aria-label="Поддержать">
-  ✨ Поддержать
-</a>
+</div>
+    <script>
+  // ===== Policy modal =====
+  (function(){
+    const modal = document.getElementById('policyModal');
+    if(!modal) return;
+    const openers = document.querySelectorAll('[data-open-policy]');
+    const closers = modal.querySelectorAll('[data-policy-close], .policy-close');
+
+    function openPolicy(){
+      modal.setAttribute('aria-hidden','false');
+      document.body.style.overflow='hidden';
+      // фокус на диалог
+      setTimeout(()=> modal.querySelector('.policy-close')?.focus(), 0);
+    }
+    function closePolicy(){
+      modal.setAttribute('aria-hidden','true');
+      document.body.style.overflow='';
+    }
+    openers.forEach(el=> el.addEventListener('click', openPolicy));
+    closers.forEach(el=> el.addEventListener('click', closePolicy));
+    document.addEventListener('keydown', e=>{ if(e.key==='Escape') closePolicy(); });
+  })();
+
+  // ===== Cookie consent =====
+  (function(){
+    const banner = document.getElementById('cookieBanner');
+    if(!banner) return;
+    const acceptBtn = document.getElementById('cookieAccept');
+    const declineBtn = document.getElementById('cookieDecline');
+
+    const KEY = 'cookieConsentVarvara';
+    const consent = localStorage.getItem(KEY);
+
+    function show(){ banner.hidden=false; banner.classList.add('show'); }
+    function hide(){ banner.classList.remove('show'); setTimeout(()=> banner.hidden=true, 280); }
+
+    // Подгрузка аналитики только после согласия
+    function loadAnalytics(){
+      // Яндекс.Метрика (пример): замените ID на ваш, если используется
+      // const ymScript = document.createElement('script');
+      // ymScript.src = 'https://mc.yandex.ru/metrika/tag.js';
+      // ymScript.async = true;
+      // document.head.appendChild(ymScript);
+      // ymScript.onload = function(){
+      //   window.ym = window.ym || function(){ (window.ym.a=window.ym.a||[]).push(arguments) };
+      //   ym(YOUR_ID, 'init', { clickmap:true, trackLinks:true, accurateTrackBounce:true, defer:true });
+      // };
+      // Аналогично можно подключать пиксели ВК/Директа.
+    }
+
+    if(consent === 'accepted'){ loadAnalytics(); }
+    else if(consent === 'declined'){ /* ничего не делаем */ }
+    else { show(); }
+
+    acceptBtn?.addEventListener('click', ()=>{
+      localStorage.setItem(KEY,'accepted');
+      hide(); loadAnalytics();
+    });
+    declineBtn?.addEventListener('click', ()=>{
+      localStorage.setItem(KEY,'declined');
+      hide(); // аналитика не грузится
+    });
+  })();
+</script>
+<script>
+  (function(){
+    const audio = document.getElementById('audioElement'); // реальный плеер
+    const root  = document.body;
+    if(!audio) return;
+
+    function onPlay(){ root.classList.add('player-playing'); }
+    function onStop(){ root.classList.remove('player-playing'); }
+
+    audio.addEventListener('play',  onPlay);
+    audio.addEventListener('pause', onStop);
+    audio.addEventListener('ended', onStop);
+
+    // если уже играет (например, после автоперехода к следующему треку)
+    if(!audio.paused && !audio.ended) onPlay();
+  })();
+</script>
 
 </body>
 </html>
