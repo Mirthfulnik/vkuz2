@@ -244,73 +244,6 @@ html {
             color: var(--color-text-muted);
         }
 
-        /* Fundraising */
-        .fundraising {
-            position: relative;
-            overflow: hidden;
-        }
-
-        .fundraising::after {
-            content: '';
-            position: absolute;
-            inset: -40% -20% auto -20%;
-            height: 80%;
-            background: radial-gradient(circle, rgba(242, 148, 192, 0.3), transparent 70%);
-            opacity: 0.6;
-            pointer-events: none;
-        }
-
-        .fundraising-content {
-            position: relative;
-            z-index: 1;
-            display: flex;
-            flex-direction: column;
-            gap: 28px;
-            align-items: center;
-            text-align: center;
-        }
-
-        .fundraising-canvas {
-            width: min(520px, 100%);
-            aspect-ratio: 3.6 / 1;
-            border-radius: 32px;
-            background: rgba(4, 9, 27, 0.6);
-            box-shadow: var(--shadow-inner);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 18px 24px;
-        }
-
-        #bitchesCanvas {
-            width: 100%;
-            height: 100%;
-            display: block;
-        }
-
-        .fundraising-stats {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            font-size: 18px;
-            text-align: center;
-        }
-
-        .fundraising-break {
-    display: none;
-}
-
-@media (max-width: 480px) {
-    .fundraising-break {
-        display: block;
-    }
-}
-
-        .fundraising-stats strong {
-            color: var(--color-gold);
-            font-weight: 400;
-        }
-
         .support-btn {
     display: inline-flex;
     align-items: center;
@@ -339,6 +272,20 @@ html {
     transform: translateY(-4px);
     box-shadow: 0 18px 30px rgba(242, 148, 192, 0.35);
     border-color: rgba(242, 148, 192, 0.7);
+}
+
+    /* фиксированная кнопка по центру снизу */
+.support-fab{
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: max(16px, env(safe-area-inset-bottom));
+  z-index: 1450;                /* ниже cookie-баннера (у него 1500) */
+  padding: 16px 28px;
+  white-space: nowrap;
+}
+@media (max-width: 480px){
+  .support-fab{ padding: 14px 22px; }
 }
 
         @keyframes supportGlow {
@@ -1290,7 +1237,7 @@ html { scroll-behavior: smooth; }
 
   <div id="mobileMenu" class="mobile-menu" hidden>
     <nav class="mobile-nav" role="menu">
-      <a href="#supportTitle"  role="menuitem">Поддержать</a>
+      <a href="#support">Поддержать</a>
       <a href="#calendarTitle" role="menuitem">Выступления</a>
       <a href="#musicTitle"    role="menuitem">Слушать</a>
       <a href="#contacts"      role="menuitem">Контакты</a>
@@ -1312,32 +1259,6 @@ html { scroll-behavior: smooth; }
                 </div>
             </div>
         </header>
-
-        <section class="fundraising section-card">
-          <div class="fundraising-content">
-            <div>
-            <h2 id="supportTitle" class="section-title">Собираю на съемки клипа</h2>
-            </div>
-
-            <div class="fundraising-canvas">
-              <canvas id="bitchesCanvas" aria-hidden="true"></canvas>
-            </div>
-              
-<div class="fundraising-stats">
-  <span class="fundraising-amount">
-    Собрано:
-    <strong id="fundraisingCurrent" data-amount="12450">12 450 ₽</strong>
-    <br class="fundraising-break">
-    из 250 000 ₽
-  </span>
-  <span>Цель: снять клип до конца осени.</span>
-</div>
-
-            <a class="support-btn" href="https://pay.cloudtips.ru/p/ee1db799" target="_blank" rel="noopener">
-              ✨ Поддержать
-            </a>
-          </div>
-        </section>
 
 <section class="calendar-section section-card" aria-labelledby="calendarTitle">
     <div class="calendar-header">
@@ -1831,134 +1752,7 @@ const fundraisingStages = [
 
 const fundraisingPercent = Math.max(
     0,
-    Math.min(100, (fundraisingCurrent / fundraisingGoal) * 100)
-);
-
-const canvas = document.getElementById('bitchesCanvas');
-const ctx = canvas.getContext('2d');
-const fullWord = 'Bitches';
-
-let coloredLettersCount = 1;
-let lastCanvasWidth = 0;
-
-function getStageText(percent) {
-    let result = fundraisingStages[0].text;
-    fundraisingStages.forEach(stage => {
-        if (percent >= stage.threshold) {
-            result = stage.text;
-        }
-    });
-    return result;
-}
-
-function updateColoredLetters() {
-    // длина строки Bi / Bit / ... = сколько букв красим розовым
-    coloredLettersCount = getStageText(fundraisingPercent).length;
-}
-
-const baseFontFamily =
-    getComputedStyle(document.documentElement)
-        .getPropertyValue('--font-family-base')
-        .trim() ||
-    'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif';
-        
-function resizeCanvas() {
-    const ratio = window.devicePixelRatio || 1;
-    const rect = canvas.parentElement.getBoundingClientRect();
-    const displayWidth = rect.width;
-    const displayHeight = displayWidth / 3.6; // пропорция как в CSS
-
-    lastCanvasWidth = displayWidth;
-
-    canvas.width = displayWidth * ratio;
-    canvas.height = displayHeight * ratio;
-    canvas.style.width = `${displayWidth}px`;
-    canvas.style.height = `${displayHeight}px`;
-
-    ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
-
-    const isMobile = window.matchMedia('(max-width: 600px)').matches;
-    const fontScale = isMobile ? 0.145 : 0.18;
-    const baseFont = Math.max(42, Math.min(displayWidth * fontScale, 110));
-
-    ctx.font = `${baseFont}px ${baseFontFamily}`;
-    ctx.textAlign = 'left';
-    ctx.textBaseline = 'middle';
-}
-
-function drawWord() {
-    const ratio = window.devicePixelRatio || 1;
-    const logicalWidth = canvas.width / ratio;
-    const logicalHeight = canvas.height / ratio;
-
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-    const isMobile = logicalWidth < 480;
-    const blur = isMobile ? 16 : 24;
-
-    const activeColor = '#F294C0';                     // розовые буквы
-    const inactiveColor = 'rgba(248, 245, 255, 0.35)'; // серые буквы
-
-    const letters = fullWord.split('');
-    const metrics = letters.map(ch => ctx.measureText(ch).width);
-    const avgWidth = metrics.reduce((a, w) => a + w, 0) / letters.length;
-    const letterSpacing = avgWidth * 0.18;
-
-    const totalWidth =
-        metrics.reduce((a, w) => a + w, 0) + letterSpacing * (letters.length - 1);
-
-    let x = (logicalWidth - totalWidth) / 2;
-    const y = logicalHeight / 2;
-
-    letters.forEach((ch, index) => {
-        const isActive = index < coloredLettersCount;
-
-        const posX = x;
-
-        // базовый серый текст — один и тот же для всех букв
-        ctx.shadowBlur = 0;
-        ctx.shadowColor = 'transparent';
-        ctx.fillStyle = inactiveColor;
-        ctx.fillText(ch, posX, y);
-
-        // поверх — розовый с glow для активных букв
-        if (isActive) {
-            ctx.shadowBlur = blur;
-            ctx.shadowColor = 'rgba(242, 148, 192, 0.6)';
-            ctx.fillStyle = activeColor;
-            ctx.fillText(ch, posX, y);
-        }
-
-        x += metrics[index] + letterSpacing;
-    });
-}
-
-
-function renderFundraisingWord(force = false) {
-    if (!canvas) return;
-
-    const containerWidth = canvas.parentElement.getBoundingClientRect().width;
-    if (!force && Math.abs(containerWidth - lastCanvasWidth) < 1) {
-        return;
-    }
-
-    updateColoredLetters();
-    resizeCanvas();
-    drawWord();
-}
-
-const debouncedResize = (() => {
-    let timeout;
-    return () => {
-        clearTimeout(timeout);
-        timeout = setTimeout(() => {
-            renderFundraisingWord(false);
-        }, 180);
-    };
-})();
-
-window.addEventListener('resize', debouncedResize);
-document.fonts.ready.then(() => renderFundraisingWord(true));
+    
 // Делает прямую ссылку из шэр-ссылки Dropbox
 function toDirectDropbox(url) {
   try {
@@ -2253,6 +2047,13 @@ function toDirectDropbox(url) {
     </div>
   </div>
 </div>
+    <a id="support"
+   class="support-btn support-fab"
+   href="https://pay.cloudtips.ru/p/ee1db799"
+   target="_blank" rel="noopener"
+   aria-label="Поддержать Варию Кузнецову">
+  ✨ Поддержать
+</a>
     <script>
   // ===== Policy modal =====
   (function(){
