@@ -981,6 +981,33 @@ html { scroll-behavior: smooth; }
             font-size: 14px;
             letter-spacing: 1px;
         }
+    /* socials row in footer */
+.site-footer .footer-socials{
+  margin: 8px 0 14px;
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--color-text-primary);
+}
+.site-footer .footer-socials a{
+  color: #F294C0;
+  text-decoration: none;
+}
+.site-footer .footer-socials a:hover{
+  text-decoration: underline;
+}
+.site-footer .footer-socials .sep{
+  opacity: .5;
+  margin: 0 8px;
+}
+
+/* instagram disclaimer */
+.site-footer .inst-disclaimer{
+  margin-top: 10px;
+  font-size: 12px;
+  line-height: 1.35;
+  color: var(--color-text-muted);
+}
+
 @media (min-width: 1024px) {
   .page { padding-top: calc(clamp(32px, 4vw, 64px) + 64px); }
 }
@@ -1379,8 +1406,20 @@ html { scroll-behavior: smooth; }
     <div class="event-wrapper" id="eventDetails"></div>
 </section>
 
-
         <footer id="contacts" class="site-footer">
+  <div class="footer-socials" aria-label="Social links">
+  <a href="https://t.me/+wxgE7OEOnawzM2Vi" target="_blank" rel="noopener">Telegram</a>
+  <span class="sep">|</span>
+  <a href="https://www.instagram.com/varya_kuzz?igsh=MThqODBrMDN1cXpuaQ%3D%3D&utm_source=qr" target="_blank" rel="noopener">Instagram*</a>
+  <span class="sep">|</span>
+  <a href="https://youtube.com/@varya_kuzz?si=LJJSc7AgWTvgPZQc" target="_blank" rel="noopener">YouTube</a>
+  <span class="sep">|</span>
+  <a href="https://www.tiktok.com/@varya.kuzz?_t=ZS-90yUwXSoRL0&_r=1" target="_blank" rel="noopener">TikTok</a>
+  <span class="sep">|</span>
+  <a href="https://vk.com/varya.kuzz" target="_blank" rel="noopener">VK</a>
+  <span class="sep">|</span>
+  <a href="https://pin.it/102kmodVY" target="_blank" rel="noopener">Pinterest</a>
+</div>  
   <div>По всем вопросам: 
   <a href="mailto:varrrvarkaaa@yandex.ru">varrrvarkaaa@yandex.ru</a>
 </div>
@@ -1390,6 +1429,9 @@ html { scroll-behavior: smooth; }
   <div style="margin-top:10px; color:var(--color-text-muted); font-size:14px;">© 2025 Варя Кузнецова. Все права защищены.</div>
   <div class="footer-made">Изготовлено <a class="footer-made-link" href="https://vibecard.ru/?utm_source=site&utm_medium=cpc&utm_campaign=varia_kuz&utm_content=link" target="_blank" rel="noopener">Vibe Card</a>
   </div>
+  <div class="inst-disclaimer">
+  * Данный интернет-ресурс был признан запрещённым в РФ, принадлежит Meta Inc., признанная экстремистской и террористической организацией на территории РФ.
+</div>
         </footer>
 
     </div>
