@@ -1069,17 +1069,17 @@ html { scroll-behavior: smooth; }
 
 /* ——— Мобильное меню: аккуратная пилюля внутри списка ——— */
 .mobile-nav a.nav-support{
-  display:inline-flex; align-items:center; justify-content:center;
-  padding:10px 18px;
-  margin:8px auto 6px;                                /* центрируем в столбце меню */
-  border:1px solid rgba(242,148,192,0.65);
-  border-radius:999px;
-  background: rgba(242,148,192,0.10);
-  width:auto;                                         /* «по контенту» */
+  display: block;
+  width: fit-content;        /* Safari ок, iOS 15+ ок */
+  margin: 8px auto 6px;      /* центрирование блока */
+  padding: 10px 18px;
+  border: 1px solid rgba(242,148,192,.65);
+  border-radius: 999px;
+  background: rgba(242,148,192,.10);
 }
 .mobile-nav a.nav-support:hover{
-  border-color: rgba(242,148,192,0.85);
-  background: rgba(242,148,192,0.16);
+  border-color: rgba(242,148,192,.85);
+  background: rgba(242,148,192,.16);
 }
 
 .mobile-nav a + a { border-top: 1px dashed rgba(242,148,192,0.18); }
