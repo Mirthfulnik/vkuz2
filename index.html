@@ -1245,6 +1245,16 @@ html { scroll-behavior: smooth; }
 .player-playing #nowPlayingTitle{ display:block; }
 /* временно скрыть кнопку Telegram в футере */
 .tg-chip { display: none !important; }
+    /* --- iOS safe-area + высота верхней полоски мобильной шапки --- */
+:root { --mobile-bar-h: 56px; }        /* фактическая высота .mobile-bar */
+.mobile-bar { height: var(--mobile-bar-h); }
+
+/* переопределяем паддинг выпадающего меню, чтобы ничего не обрезалось сверху */
+@media (max-width: 1023.98px) {
+  .mobile-menu{
+    padding-top: calc(env(safe-area-inset-top, 0px) + var(--mobile-bar-h) + 8px) !important;
+  }
+}
     </style>
 </head>
 <body>
@@ -1267,18 +1277,19 @@ html { scroll-behavior: smooth; }
     </button>
     <div class="mobile-brand"></div>
   </div>
+</header>
 
-  <div id="mobileMenu" class="mobile-menu" hidden>
+    <div id="mobileMenu" class="mobile-menu" hidden>
     <nav class="mobile-nav" role="menu">
-      <a href="#musicTitle"    role="menuitem">Слушать</a>
+      <a href="#musicTitle" role="menuitem">Слушать</a>
       <a href="#calendarTitle" role="menuitem">Выступления</a>
-      <a href="#contacts"      role="menuitem">Контакты</a>
-      <a class="nav-support" href="https://pay.cloudtips.ru/p/ee1db799" role="menuitem" target="_blank" rel="noopener">✨ Поддержать</a>
+      <a href="#contacts" role="menuitem">Контакты</a>
+      <a href="https://pay.cloudtips.ru/p/ee1db799" class="nav-support" target="_blank" rel="noopener">✨ Поддержать</a>
     </nav>
   </div>
-
   <div id="mobileMenuOverlay" class="mobile-overlay" hidden></div>
 </header>
+    
     <div class="page">
         <header class="hero">
             <div class="hero-inner">
