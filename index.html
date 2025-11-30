@@ -40,6 +40,37 @@
       --ff: var(--font-family-base);
     }
 
+    :root{
+  --page-gutter: clamp(16px, 4vw, 42px);          /* одинаковый внутренний отступ по краям */
+  --fab-w: clamp(180px, 25vw, 360px);             /* 1/4 экрана с ограничениями */
+  --fab-h: 64px;
+  --fab-r: 999px;
+}
+.container{padding-inline: var(--page-gutter);}
+
+.support-fab{
+  position: fixed; inset: auto var(--page-gutter) 18px auto; /* right привязан к тому же gutter */
+  width: var(--fab-w); height: var(--fab-h); border-radius: var(--fab-r);
+  display: inline-flex; align-items: center; justify-content: center; gap:10px;
+  background: linear-gradient(90deg,#3e3340,#4c3f41);
+  color:#ffd89a; border:1px solid rgba(255,216,154,.25);
+  box-shadow: 0 0 28px rgba(242,148,192,.18), 0 10px 34px rgba(0,0,0,.35);
+  transition: transform .25s ease, opacity .2s ease, box-shadow .25s ease;
+  z-index: 1000;
+}
+.support-fab:hover{ transform: translateY(-2px); box-shadow: 0 0 34px rgba(242,148,192,.26), 0 14px 40px rgba(0,0,0,.4);}
+.support-fab[hidden]{opacity:0; pointer-events:none;}
+
+.support-slot{
+  display:flex; justify-content:flex-end;          /* та же ось по правому краю */
+}
+.support-slot .slot-box{
+  width: var(--fab-w); height: var(--fab-h);
+  border-radius: var(--fab-r);
+  border: 2px dashed rgba(242,148,192,.45);
+  background: transparent;
+}
+
     html,body{margin:0;padding:0;background:var(--bg);color:var(--text)}
     body{
       font-family:var(--ff); line-height:1.55;
@@ -376,6 +407,22 @@
 .artist-name {
   font-family: inherit;
 }
+    .section{margin-block: clamp(28px,4vw,56px);} /* фикс слепания секций */
+
+.hero-frame{
+  height: clamp(220px, 36vw, 420px);
+  border-radius: 24px;
+  background: radial-gradient(120% 120% at 10% 0%, rgba(255,255,255,.07), rgba(8,14,30,.3));
+  border: 1px solid rgba(242,148,192,.18);
+  box-shadow: 0 10px 40px rgba(0,0,0,.35) inset, 0 20px 60px rgba(0,0,0,.25);
+  overflow: hidden;
+  display: grid; place-items: center;
+}
+.hero-frame img{
+  width: 100%; height: 100%; object-fit: cover;
+  filter: saturate(1.05) contrast(1.02);
+}
+
   </style>
 </head>
 <body>
@@ -389,6 +436,14 @@
       <a href="#contacts">Контакты</a>
     </nav>
   </header>
+
+  <section id="hero" class="section">
+  <div class="container">
+    <div class="hero-frame">
+      <img src="artist.jpg" alt="Варя Кузнецова" loading="eager" />
+    </div>
+  </div>
+</section>
 
   <!-- Mobile header (burger on right) -->
   <header class="site-header-mobile mobile-only" aria-label="Навигация">
@@ -479,13 +534,18 @@
     </section>
 
     <!-- SUPPORT (нижний блок с доком кнопки) -->
-    <section class="support-section section-card" aria-labelledby="supportTitle">
-      <h2 id="supportTitle" class="section-title">Собираю на сведение и мастеринг треков</h2>
-      <div class="support-grid">
-        <blockquote class="support-quote">«Собираю на сведение и мастеринг треков»</blockquote>
-        <div id="donateDock" class="support-dock" aria-label="Зона приземления кнопки «Поддержать»"></div>
+    <section id="support" class="section">
+  <div class="container">
+    <h2 class="section-title">Собираю на сведение и мастеринг треков</h2>
+
+    <div class="support-layout" style="display:grid;grid-template-columns:1fr auto;gap:24px;align-items:center;">
+      <blockquote class="quote" style="margin:0;color:#d6d7e1;opacity:.9">«Собираю на сведение и мастеринг треков»</blockquote>
+      <div class="support-slot">
+        <div class="slot-box" id="supportDock" aria-hidden="true"></div>
       </div>
-    </section>
+    </div>
+  </div>
+</section>
 
     <!-- FOOTER -->
     <footer id="contacts" class="site-footer">
@@ -831,7 +891,13 @@
         badge:'Премьера!',
         src:'https://www.dropbox.com/scl/fi/h5bv9k0q4r9ysmcq45zho/Varya_Kuznecova_-_Suki_-TheMP3.Info.wav?rlkey=aqji9437wfpsgx1pw96u2pd6c&st=azpf4e64&dl=0',
         cover:'images/Suki.png',
-        links:{}
+        links:{
+          yandex:'https://music.yandex.ru/album/39261991?utm_source=bandlink&utm_medium=%D0%92%D0%B0%D1%80%D1%8F%20%D0%9A%D1%83%D0%B7%D0%BD%D0%B5%D1%86%D0%BE%D0%B2%D0%B0&utm_campaign=%D0%A1%D1%83%D0%BA%D0%B8&utm_term=ZIGLl',
+          vk:'https://music.vk.com/link/uI0hm',
+          mts:'https://music.mts.ru/album/39261991',
+          spotify:'https://open.spotify.com/album/6dc8l7anhM2OFAMUfAnTdX',
+          apple:'https://band.link/ZIGLl'
+        }
       }
     ];
 
@@ -955,6 +1021,22 @@
     })();
   </script>
 
+  <script>
+  // эффект «приземления» — просто прячем плавающую и показываем дублёр
+  (function(){
+    const fab  = document.getElementById('supportFab');
+    const dock = document.getElementById('supportDock');
+    if(!fab || !dock) return;
+
+    const io = new IntersectionObserver(([ent])=>{
+      const onDock = ent.isIntersecting && ent.intersectionRatio > 0.6;
+      fab.hidden = onDock;                 // когда слот виден — прячем плавающую
+    }, {threshold:[0, .6, 1]});
+    io.observe(dock);
+  })();
+</script>
+
+
   <!-- Политика и cookie-разметка -->
   <div class="policy-modal" id="policyModal" aria-hidden="true">
     <div class="policy-backdrop" data-policy-close></div>
@@ -982,6 +1064,11 @@
       </div>
     </div>
   </div>
+<a href="#support"
+   class="support-fab"
+   id="supportFab" aria-label="Поддержать">
+  ✨ Поддержать
+</a>
 
 </body>
 </html>
