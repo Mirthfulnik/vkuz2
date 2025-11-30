@@ -12,8 +12,15 @@
 
   <!-- Оптимизация прямых доменов аудио -->
   <link rel="preconnect" href="https://dl.dropboxusercontent.com" crossorigin>
-
+  <link rel="preload" href="fonts/Excalifont-Regular.woff2" as="font" type="font/woff2" crossorigin>
   <style>
+    @font-face{
+  font-family: 'Excalifont';
+  src: url('fonts/Excalifont-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
     :root{
       --bg:#020714;
       --bg2:#0b1429;
@@ -29,6 +36,8 @@
       --r:20px;
       --r-lg:28px;
       --ff:'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Ubuntu, 'Helvetica Neue', Arial, 'Noto Sans', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji', sans-serif;
+      --font-family-base: 'Excalifont', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
+      --ff: var(--font-family-base);
     }
 
     html,body{margin:0;padding:0;background:var(--bg);color:var(--text)}
@@ -355,6 +364,18 @@
     .cookie-accept{ background:rgba(242,148,192,.2); border-color:rgba(242,148,192,.45); color:#F8F5FF; }
     .cookie-decline{ border-color:rgba(248,245,255,.25); color:#F8F5FF; opacity:.85; }
     .cookie-link{ color:var(--pink); background:none; border:0; padding:0; cursor:pointer; text-decoration:underline; text-underline-offset:3px; }
+    html, body, button, input, select, textarea {
+  font-family: var(--ff);
+}
+.section-title,
+.calendar-day,
+.track-item,
+.streaming-card,
+.support-fab,
+.mobile-nav a,
+.artist-name {
+  font-family: inherit;
+}
   </style>
 </head>
 <body>
