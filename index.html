@@ -38,6 +38,22 @@ _tmr.push({id: "3716134", type: "pageView", start: (new Date()).getTime()});
 <!-- /Top.Mail.Ru counter -->
     <link rel="preconnect" href="https://dl.dropboxusercontent.com" crossorigin>
     <title>Официальный сайт автора-исполнителя Вари Кузнецовой</title>
+    <head>
+  …
+  <link rel="icon" href="icons/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" sizes="180x180" href="icons/apple-touch-icon.png">
+  <link rel="manifest" href="icons/site.webmanifest">
+  <meta name="theme-color" content="#020714">
+
+  <!-- PRELOAD обложки первого трека -->
+  <link rel="preload" as="image" href="images/holodno.png">
+
+  <!-- можно оставить и ваш preconnect -->
+  <link rel="preconnect" href="https://dl.dropboxusercontent.com" crossorigin>
+
+  <style>
+    …
+
     <style>
         :root {
             --color-night-01: #020714;
@@ -437,6 +453,7 @@ html {
             transform: translateY(40%);
             pointer-events: none;
             transition: transform 520ms var(--transition-snappy), opacity 520ms var(--transition-snappy);
+            will-change: transform, opacity;
         }
 
         .calendar-month.is-active {
