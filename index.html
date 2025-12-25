@@ -1813,19 +1813,30 @@ function toDirectDropbox(url) {
 
         /* Audio player */
         const tracks = [
-            {
-  title: 'Суки',
-  artist: 'Варя Кузнецова',
-  src: 'https://www.dropbox.com/scl/fi/h5bv9k0q4r9ysmcq45zho/Varya_Kuznecova_-_Suki_-TheMP3.Info.wav?rlkey=aqji9437wfpsgx1pw96u2pd6c&dl=0',
-  cover: 'images/Suki.png',
-  badge: 'ПРЕМЬЕРА!',
-  links: {
-    mts:     'https://music.mts.ru/album/39261991',
-    spotify: 'https://open.spotify.com/album/6dc8l7anhM2OFAMUfAnTdX',
-    vk:      'https://music.vk.com/link/uI0hm',
-    yandex:  'https://music.yandex.ru/album/39261991?utm_source=bandlink&utm_medium=%D0%92%D0%B0%D1%80%D1%8F%20%D0%9A%D1%83%D0%B7%D0%BD%D0%B5%D1%86%D0%BE%D0%B2%D0%B0&utm_campaign=%D0%A1%D1%83%D0%BA%D0%B8&utm_term=ZIGLl',
-  }
-},
+  {
+    title: 'Первое января',
+    artist: 'Варя Кузнецова',
+    // твоя ссылка Dropbox; функция toDirectDropbox() сама сделает прямой src
+    src: 'https://www.dropbox.com/scl/fi/qdq2ga4h92be1ht3r6vbj/Varya_Kuznecova_-_Pervoye_Yanvarya_-TheMP3.Info.wav?rlkey=6ic34qp0yab4iyzuxspfqj6qo&st=pxki1ahw&dl=0',
+    cover: 'images/pervjan.png',
+    coverGif: 'images/pervjan.gif',
+    badge: 'ПРЕМЬЕРА!',
+    // при желании позже добавишь ссылки на сервисы
+    links: { }
+  },
+  {
+    title: 'Суки',
+    artist: 'Варя Кузнецова',
+    src: 'https://www.dropbox.com/scl/fi/h5bv9k0q4r9ysmcq45zho/Varya_Kuznecova_-_Suki_-TheMP3.Info.wav?rlkey=aqji9437wfpsgx1pw96u2pd6c&dl=0',
+    cover: 'images/Suki.png',
+    // badge убран
+    links: {
+      mts: 'https://music.mts.ru/album/39261991',
+      spotify: 'https://open.spotify.com/album/6dc8l7anhM2OFAMUfAnTdX',
+      vk: 'https://music.vk.com/link/uI0hm',
+      yandex: 'https://music.yandex.ru/album/39261991?utm_source=bandlink&utm_medium=%D0%92%D0%B0%D1%80%D1%8F%20%D0%9A%D1%83%D0%B7%D0%BD%D0%B5%D1%86%D0%BE%D0%B2%D0%B0&utm_campaign=%D0%A1%D1%83%D0%BA%D0%B8&utm_term=ZIGLl',
+    }
+  },
             {
                 title: 'Холодно',
                 artist: 'Варя Кузнецова',
@@ -1887,6 +1898,14 @@ function toDirectDropbox(url) {
             playPauseButton.textContent = isPlaying ? '❚❚' : '▶';
         }
 
+        function applyCoverByState() {
+              const t = tracks[currentTrackIndex];
+              const wantGif = isPlaying && t.coverGif;
+              trackCover.src = wantGif ? t.coverGif : (t.cover || 'images/holodno.png');
+              trackCover.alt = `Обложка трека «${t.title}»`;
+        }
+
+
         function updateStreamingLinks(track) {
             Object.entries(streamingButtons).forEach(([service, button]) => {
                 const link = track.links?.[service] || null;
@@ -1909,8 +1928,9 @@ function toDirectDropbox(url) {
             currentTrackIndex = index;
             audio.src = toDirectDropbox(track.src);
             audio.crossOrigin = 'anonymous';
-            trackCover.src = track.cover ||'images/holodno.png';
+            trackCover.src = track.cover || 'images/holodno.png';
             trackCover.alt = `Обложка трека «${track.title}»`;
+            applyCoverByState();;
             trackTitle.textContent = track.title;
             trackArtist.textContent = track.artist || '';
             seekBar.value = 0;
@@ -1958,22 +1978,26 @@ function toDirectDropbox(url) {
                 audio.play().then(() => {
                     isPlaying = true;
                     updatePlayPauseIcon();
+                    applyCoverByState();
                 });
             } else {
                 audio.pause();
                 isPlaying = false;
                 updatePlayPauseIcon();
+                applyCoverByState(); 
             }
         });
 
         prevTrackButton.addEventListener('click', () => {
             const nextIndex = (currentTrackIndex - 1 + tracks.length) % tracks.length;
             loadTrack(nextIndex, isPlaying);
+            applyCoverByState();
         });
 
         nextTrackButton.addEventListener('click', () => {
             const nextIndex = (currentTrackIndex + 1) % tracks.length;
             loadTrack(nextIndex, isPlaying);
+            applyCoverByState();
         });
 
         audio.addEventListener('loadedmetadata', () => {
