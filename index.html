@@ -656,6 +656,18 @@ html {
             display: block;
         }
 
+        .cover-frame { position: relative; }
+        .cover-frame img,
+        .cover-frame video{
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+       }
+       #trackCoverVideo{ display: none; } /* видео скрыто, пока трек не играет */
+    
         .cover-placeholder {
             width: 100%;
             height: 100%;
@@ -1316,8 +1328,9 @@ html { scroll-behavior: smooth; }
             </div>
             <div class="player-shell">
                 <div class="now-playing">
-                    <div class="cover-frame">
-                        <img id="trackCover" src="images/holodno.png" alt="Обложка выбранного трека" />
+                <div class="cover-frame">
+                      <img id="trackCoverImg" src="images/holodno.png" alt="Обложка выбранного трека">
+                      <video id="trackCoverVideo" muted playsinline loop preload="auto"></video>
                     </div>
                     <div class="now-playing-info">
                           <span id="nowPlayingTitle" class="now-playing-label">Сейчас звучит</span>
