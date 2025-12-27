@@ -1460,7 +1460,7 @@ html { scroll-behavior: smooth; }
 
     </div>
 
-    <audio id="audioElement" preload="metadata"></audio>
+    <audio id="audioElement" preload="auto"></audio>
 
     <script>
         const monthNames = [
@@ -1937,6 +1937,8 @@ function toDirectDropbox(url) {
         let isPlaying = false;
         const trackButtons = [];
 
+        
+
         function formatTime(seconds) {
             if (!Number.isFinite(seconds)) return '0:00';
             const mins = Math.floor(seconds / 60);
@@ -1951,6 +1953,19 @@ function toDirectDropbox(url) {
 function applyCoverByState() {
   const t = tracks[currentTrackIndex];
   const useVideo = isPlaying && t.coverVideo;
+
+
+function preloadCoverVideoFor(index){
+  const t = tracks[index];
+  if (!t?.coverVideo) return;
+  coverVideo.preload = 'auto';
+  if (coverVideo.src !== t.coverVideo) coverVideo.src = t.coverVideo;
+  coverVideo.load();
+}
+
+preloadCoverVideoFor(0);
+
+
 
   if (useVideo) {
     // показать видео, спрятать PNG
@@ -1990,21 +2005,25 @@ function applyCoverByState() {
             });
         }
 
-        function loadTrack(index, autoplay = false) {
-            const track = tracks[index];
-            currentTrackIndex = index;
-            audio.src = toDirectDropbox(track.src);
-            coverVideo.pause();
-            coverVideo.style.display = 'none';
-            coverImg.style.display = 'block';
-            coverImg.src = track.cover || 'images/holodno.png';
-            coverImg.alt = `Обложка трека «${track.title}»`;
-            audio.crossOrigin = 'anonymous';
-            trackCover.src = track.cover || 'images/holodno.png';
-            trackCover.alt = `Обложка трека «${track.title}»`;
-            applyCoverByState();;
-            trackTitle.textContent = track.title;
-            trackArtist.textContent = track.artist || '';
+function loadTrack(index, autoplay = false) {
+  const track = tracks[index];
+  currentTrackIndex = index;
+
+  audio.crossOrigin = 'anonymous';
+  audio.src = toDirectDropbox(track.src);
+  audio.preload = 'auto';
+  audio.load(); // важно для предзагрузки
+
+  // Сброс видео/обложки
+  coverVideo.pause();
+  coverVideo.style.display = 'none';
+  coverImg.style.display = 'block';
+  coverImg.src = track.cover || 'images/holodno.png';
+  coverImg.alt = `Обложка трека «${track.title}»`;
+
+  applyCoverByState();
+  trackTitle.textContent = track.title;
+  trackArtist.textContent = track.artist || '';
             seekBar.value = 0;
             currentTimeEl.textContent = '0:00';
             totalTimeEl.textContent = '0:00';
@@ -2096,6 +2115,14 @@ function applyCoverByState() {
         });
 
         loadTrack(0, false);
+        function warmupUrl(url) {
+          const direct = toDirectDropbox(url);
+          // прогреваем соединение: берём 1 байт (Range)
+          fetch(direct, { headers: { Range: 'bytes=0-0' } }).catch(()=>{});
+            }
+
+        warmupUrl(tracks[0].src);
+        if (tracks[1]) warmupUrl(tracks[1].src); // следующий трек тоже
     </script>
   <script>
   (function () {
