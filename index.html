@@ -1275,6 +1275,44 @@ html { scroll-behavior: smooth; }
 .mobile-nav a.nav-support{
   margin-top: 18px !important; /* было 8px — делаем явный зазор */
 }
+    /* Левый блок с названием и бейджем — всегда слева, в одну строку */
+.track-item { 
+  display: flex; 
+  align-items: center; 
+  justify-content: space-between; 
+  gap: 12px; 
+}
+.track-left{
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  min-width: 0;         /* ← позволяет блоку ужиматься */
+  flex: 1 1 auto;       /* ← левый блок растягивается, правый (длительность) — по содержимому */
+  text-align: left;
+}
+.track-title-name{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;  /* ← на мобилках не переносим, а даём троеточие */
+}
+.track-badge{
+  flex: 0 0 auto;
+  font-size: 12px;
+  line-height: 1;
+  padding: 2px 8px;
+  border: 1px solid rgba(242,148,192,.45);
+  border-radius: 999px;
+  color: #F294C0;
+  background: rgba(242,148,192,.12);
+}
+
+/* На узких — ещё чуть компактнее, всё равно левый край и одна строка */
+@media (max-width: 640px){
+  .track-item{ gap: 10px; padding: 14px 16px; }
+  .track-title-name{ font-size: 16px; }
+  .track-badge{ font-size: 11px; padding: 2px 7px; }
+}
+
     </style>
 </head>
 <body>
@@ -1991,10 +2029,7 @@ function applyCoverByState() {
             button.className = 'track-item';
             button.type = 'button';
             button.dataset.index = index;
-            button.innerHTML = `
-  <span>${track.title}${track.badge ? ' <span class="premiere-badge">'+track.badge+'</span>' : ''}</span>
-  <span class="track-duration" data-duration></span>
-`;
+            button.innerHTML = `<span>${track.title}
             button.addEventListener('click', () => {
                 const needAutoplay = currentTrackIndex === index ? !isPlaying : true;
                 loadTrack(index, needAutoplay);
