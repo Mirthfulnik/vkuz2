@@ -1829,13 +1829,11 @@ function toDirectDropbox(url) {
   {
     title: 'Первое января',
     artist: 'Варя Кузнецова',
-    // твоя ссылка Dropbox; функция toDirectDropbox() сама сделает прямой src
     src: 'https://www.dropbox.com/scl/fi/qdq2ga4h92be1ht3r6vbj/Varya_Kuznecova_-_Pervoye_Yanvarya_-TheMP3.Info.wav?rlkey=6ic34qp0yab4iyzuxspfqj6qo&st=pxki1ahw&dl=0',
     cover: 'images/pervjan.png',
-    coverGif: 'images/pervjan.gif',
+    coverVideo: 'images/pervjan.mp4', // ← было coverGif, теперь mp4
     badge: 'ПРЕМЬЕРА!',
-    // при желании позже добавишь ссылки на сервисы
-    links: { }
+    links: {}
   },
   {
     title: 'Суки',
@@ -1878,7 +1876,8 @@ function toDirectDropbox(url) {
         ];
 
         const audio = document.getElementById('audioElement');
-        const trackCover = document.getElementById('trackCover');
+        const coverImg   = document.getElementById('trackCoverImg');
+        const coverVideo = document.getElementById('trackCoverVideo');
         const trackTitle = document.getElementById('trackTitle');
         const trackArtist = document.getElementById('trackArtist');
         const playPauseButton = document.getElementById('playPause');
@@ -1911,12 +1910,29 @@ function toDirectDropbox(url) {
             playPauseButton.textContent = isPlaying ? '❚❚' : '▶';
         }
 
-        function applyCoverByState() {
-              const t = tracks[currentTrackIndex];
-              const wantGif = isPlaying && t.coverGif;
-              trackCover.src = wantGif ? t.coverGif : (t.cover || 'images/holodno.png');
-              trackCover.alt = `Обложка трека «${t.title}»`;
-        }
+function applyCoverByState() {
+  const t = tracks[currentTrackIndex];
+  const useVideo = isPlaying && t.coverVideo;
+
+  if (useVideo) {
+    // показать видео, спрятать PNG
+    coverImg.style.display = 'none';
+    coverVideo.style.display = 'block';
+
+    if (coverVideo.src !== t.coverVideo) {
+      coverVideo.src = t.coverVideo;   // подменили источник
+      coverVideo.currentTime = 0;      // начать с начала
+    }
+    coverVideo.play().catch(() => {}); // на iOS ok, т.к. muted+playsinline
+  } else {
+    // показать PNG, спрятать видео
+    coverVideo.pause();
+    coverVideo.style.display = 'none';
+    coverImg.style.display = 'block';
+    coverImg.src = t.cover || 'images/holodno.png';
+    coverImg.alt = `Обложка трека «${t.title}»`;
+  }
+}
 
 
         function updateStreamingLinks(track) {
@@ -1940,6 +1956,11 @@ function toDirectDropbox(url) {
             const track = tracks[index];
             currentTrackIndex = index;
             audio.src = toDirectDropbox(track.src);
+            coverVideo.pause();
+            coverVideo.style.display = 'none';
+            coverImg.style.display = 'block';
+            coverImg.src = track.cover || 'images/holodno.png';
+            coverImg.alt = `Обложка трека «${track.title}»`;
             audio.crossOrigin = 'anonymous';
             trackCover.src = track.cover || 'images/holodno.png';
             trackCover.alt = `Обложка трека «${track.title}»`;
