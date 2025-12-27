@@ -2052,24 +2052,30 @@ function loadTrack(index, autoplay = false) {
             }
         }
 
-        tracks.forEach((track, index) => {
-            const button = document.createElement('button');
-            button.className = 'track-item';
-            button.type = 'button';
-            button.dataset.index = index;
-            button.innerHTML = `
-              <span class="track-left">
-                <span class="track-title-name">${track.title}</span>
-                ${track.badge ? `<span class="track-badge">${track.badge}</span>` : ''}
-              </span>
-              <span class="track-duration" data-duration>—:—</span>
-                `;
-                const needAutoplay = currentTrackIndex === index ? !isPlaying : true;
-                loadTrack(index, needAutoplay);
-            });
-            trackListEl.appendChild(button);
-            trackButtons.push(button);
-        });
+// Список треков (исправлено)
+tracks.forEach((track, index) => {
+  const button = document.createElement('button');
+  button.className = 'track-item';
+  button.type = 'button';
+  button.dataset.index = index;
+  button.innerHTML = `
+    <span class="track-left">
+      <span class="track-title-name">${track.title}</span>
+      ${track.badge ? `<span class="track-badge">${track.badge}</span>` : ''}
+    </span>
+    <span class="track-duration" data-duration>—:—</span>
+  `;
+
+  // клик по треку — загрузка/воспроизведение
+  button.addEventListener('click', () => {
+    const needAutoplay = currentTrackIndex === index ? !isPlaying : true;
+    loadTrack(index, needAutoplay);
+    applyCoverByState();
+  });
+
+  trackListEl.appendChild(button);
+  trackButtons.push(button);
+});
 
         playPauseButton.addEventListener('click', () => {
             if (!audio.src) {
