@@ -1871,7 +1871,16 @@ function toDirectDropbox(url) {
     cover: 'images/pervjan.png',
     coverVideo: 'images/pervjan.mp4', // ← было coverGif, теперь mp4
     badge: 'ПРЕМЬЕРА!',
-    links: {}
+    links: {
+        
+                    yandex: 'https://music.yandex.ru/album/39768397?utm_source=bandlink&utm_medium=Варя%20Кузнецова&utm_campaign=Первое%20января&utm_term=MItxh',
+                    vk: 'https://music.vk.com/link/c1jtf',
+                    mts: 'https://music.mts.ru/album/39768397',
+                    spotify: 'https://open.spotify.com/album/53xX1xd614NoIpnhMZ7Woz',
+                    apple: 'https://band.link/MItxh'
+
+        
+    }
   },
   {
     title: 'Суки',
@@ -2048,8 +2057,13 @@ function loadTrack(index, autoplay = false) {
             button.className = 'track-item';
             button.type = 'button';
             button.dataset.index = index;
-            button.innerHTML = `<span>${track.title}
-            button.addEventListener('click', () => {
+            button.innerHTML = `
+              <span class="track-left">
+                <span class="track-title-name">${track.title}</span>
+                ${track.badge ? `<span class="track-badge">${track.badge}</span>` : ''}
+              </span>
+              <span class="track-duration" data-duration>—:—</span>
+                `;
                 const needAutoplay = currentTrackIndex === index ? !isPlaying : true;
                 loadTrack(index, needAutoplay);
             });
